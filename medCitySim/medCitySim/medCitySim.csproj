@@ -46,14 +46,36 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Building.cs" />
+    <Compile Include="Church.cs" />
+    <Compile Include="Citizen.cs" />
+    <Compile Include="CivilWatch.cs" />
+    <Compile Include="Criminal.cs" />
+    <Compile Include="Enemy.cs" />
+    <Compile Include="Farm.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="GameObject.cs" />
+    <Compile Include="GameWorld.cs" />
+    <Compile Include="House.cs" />
+    <Compile Include="Keyboard.cs" />
+    <Compile Include="Lumbermill.cs" />
+    <Compile Include="Mountain.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Quarry.cs" />
+    <Compile Include="Raider.cs" />
+    <Compile Include="RandomEvents.cs" />
+    <Compile Include="Well.cs" />
+    <Compile Include="WildAnimal.cs" />
+    <Compile Include="Witch.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
