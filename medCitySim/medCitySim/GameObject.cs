@@ -39,7 +39,6 @@ namespace MedCitySim
         public GameObject(string imagePath,Vector2D startPosition)
         {
             this.imagePath = imagePath;
-<<<<<<< HEAD
             this.StartPosition = startPosition;
         }
         public void Update(float currentFPS)
@@ -64,10 +63,7 @@ namespace MedCitySim
         }
         public virtual void OnCollision(GameObject other)
         {
-
-=======
             this.startPosition = startPosition;
->>>>>>> b08c498e2a977d0d3308047efabecae7a4476be9
         }
     }
 }

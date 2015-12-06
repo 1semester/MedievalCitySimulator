@@ -10,7 +10,7 @@ namespace MedCitySim
     {
         private int health;
         private int dmg;
-        public Raider(string imagePath, Vector2D startPostition, int health, int dmg) : base(imagePath, startPosition)
+        public Raider(string imagePath, Vector2D startPostition, int health, int dmg) : base(imagePath, startPostition)
         {
             this.health = health;
             this.dmg = dmg;
