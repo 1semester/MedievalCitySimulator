@@ -11,6 +11,7 @@ namespace MedCitySim
         public string Name { get; set; }
         public int Age { get; set; }
        public bool Gender { get; set; }
+        public bool morning = false;
 
         private enum assignment
         {
@@ -25,15 +26,27 @@ namespace MedCitySim
 
         public int Hunger { get; set; }
 
-        Citizen(string imagePath, Vector2D startPosition, int Age, string Name, bool Gender, Enum assignment)
+        Citizen(string imagePath, Vector2D startPosition, string Name, bool Gender, Enum assignment)
         {
-            
+            Hunger = 0;
+            Age = 0;
         }
 
         public void RiskOfDeath(int Age, int Hunger)
         {
-            
+
+            if (morning=true)
+            {
+             float deathChance = Age*(1+Hunger/10);
+
+            }
+            if (Hunger<=5)
+            {
+                
+            }
         }
+
+       
        
     }
 }
