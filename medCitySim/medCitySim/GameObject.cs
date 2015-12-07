@@ -7,7 +7,7 @@ using System.Drawing;
 
 namespace MedCitySim
 {
-    class GameObject
+    abstract class GameObject
     {
         protected Image sprite;
         protected Vector2D startPosition;
@@ -38,14 +38,21 @@ namespace MedCitySim
 
         public GameObject(string imagePath,Vector2D startPosition)
         {
-            this.imagePath = imagePath;
-            this.StartPosition = startPosition;
+            string[] imagePaths = imagePath.Split(';');
+            this.animationFrames = new List<Image>();
+            foreach (string path in imagePaths)
+            {
+                animationFrames.Add(Image.FromFile(path));
+            }
+            //this.imagePath = imagePath;
+            this.startPosition = startPosition;
+            this.sprite = this.animationFrames[0];
         }
-        public void Update(float currentFPS)
+        public virtual void Update(float currentFPS)
         {
 
         }
-        public void Draw(Graphics dc)
+        public virtual void Draw(Graphics dc)
         {
 
         }
