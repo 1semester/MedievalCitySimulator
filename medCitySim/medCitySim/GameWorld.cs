@@ -60,23 +60,57 @@ namespace MedCitySim
         }
         public GameWorld(Graphics dc, Rectangle displayRectangle)
         {
-
+            this.displayRectangle = displayRectangle;
+            this.backBuffer = BufferedGraphicsManager.Current.Allocate(dc, displayRectangle);
+            this.dc = backBuffer.Graphics;
+            objects = new List<GameObject>();
+            SetupWorld();
         }
         public void SetupWorld()
         {
 
+
+            //endTime skal kaldes sidst!
+            endTime = DateTime.Now;
         }
         public void GameLoop()
         {
-
+            foreach (GameObject go in toRemove)
+            {
+                Objects.Remove(go);
+            }
+            objects.AddRange(ToAdd);
+            toAdd.Clear();
+            toRemove.Clear();
+            DateTime startTime = DateTime.Now;
+            TimeSpan deltaTime = startTime - endTime;
+            int milliSeconds = deltaTime.Milliseconds > 0 ? deltaTime.Milliseconds : 1;
+            currentFPS = 1000 / milliSeconds;
+            Update(currentFPS);
+            UpdateAnimations(currentFPS);
+            Draw(dc);
+            endTime = DateTime.Now;
         }
         private void Update(float currentFPS)
         {
-
+            this.currentFPS = currentFPS;
+            foreach (GameObject go in objects)
+            {
+                go.Update(currentFPS);
+            }
         }
         private void Draw(Graphics dc)
         {
-
+            dc.Clear(Color.White);
+#if DEBUG
+            Font f = new Font("Yellow", 16);
+            dc.DrawString(string.Format("FPS: {0}", currentFPS), f, Brushes.Black, 0, 0);
+#endif
+            foreach (GameObject go in objects)
+            {
+                go.Draw(dc);
+            }
+            backBuffer.Render();
         }
         private void UpdateAnimations(float currentFPS)
         {
