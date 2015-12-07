@@ -9,12 +9,11 @@ namespace MedCitySim
 {
     abstract class GameObject
     {
-        protected Image sprite;
+        public Image sprite;
         protected Vector2D startPosition;
         protected List<Image> animationFrames = new List<Image>();
         protected float currentFrameIndex;
         private RectangleF collisionbox;
-        public string imagePath;
 
         public RectangleF Collisionbox
         {
@@ -40,13 +39,13 @@ namespace MedCitySim
         {
             string[] imagePaths = imagePath.Split(';');
             this.animationFrames = new List<Image>();
+
             foreach (string path in imagePaths)
             {
                 animationFrames.Add(Image.FromFile(path));
             }
-            //this.imagePath = imagePath;
-            this.startPosition = startPosition;
             this.sprite = this.animationFrames[0];
+            this.startPosition = startPosition;
         }
         public virtual void Update(float currentFPS)
         {
@@ -54,7 +53,7 @@ namespace MedCitySim
         }
         public virtual void Draw(Graphics dc)
         {
-
+            dc.DrawImage(sprite, new PointF(startPosition.X, startPosition.Y));
         }
         public void UpdateAnimations(float currentFPS)
         {

@@ -12,7 +12,7 @@ namespace MedCitySim
 
         //commit comment
         private Graphics dc;
-        private static List<GameObject> objects;
+        private List<GameObject> objs = new List<GameObject>();
         private static List<GameObject> toAdd = new List<GameObject>();
         private static List<GameObject> toRemove = new List<GameObject>();
         private Rectangle displayRectangle = new Rectangle();
@@ -23,20 +23,9 @@ namespace MedCitySim
         private int iron = 100;
         private int stone = 100;
 
-        public static List<GameObject> Objects
-        {
-            get
-            {
-                return objects;
-            }
+       
 
-            set
-            {
-                objects = value;
-            }
-        }
-
-        public static List<GameObject> ToAdd
+        internal static List<GameObject> ToAdd
         {
             get
             {
@@ -49,7 +38,7 @@ namespace MedCitySim
             }
         }
 
-        public static List<GameObject> ToRemove
+        internal static List<GameObject> ToRemove
         {
             get
             {
@@ -59,6 +48,13 @@ namespace MedCitySim
             set
             {
                 toRemove = value;
+            }
+        }
+        internal static List<GameObject> Objs
+        {
+            get
+            {
+                return Objs;
             }
         }
         #region Ressources
@@ -100,6 +96,10 @@ namespace MedCitySim
                 stone = value;
             }
         }
+
+        
+
+        
         #endregion
         public GameWorld(Graphics dc, Rectangle displayRectangle)
         {
@@ -107,12 +107,12 @@ namespace MedCitySim
             this.displayRectangle = displayRectangle;
             this.backBuffer = BufferedGraphicsManager.Current.Allocate(dc, displayRectangle);
             this.dc = backBuffer.Graphics;
-            objects = new List<GameObject>();
         }
         public void SetupWorld()
         {
-            Button test = new Button(new Vector2D(200, 200), "Buildsort.png;Buildrød.png");
-            objects.Add(test);
+
+            objs.Add(new House(@"Sprites\Hus.png", (new Vector2D(200, 200))));
+
 
             //endTime skal kaldes sidst!
             endTime = DateTime.Now;
@@ -122,9 +122,9 @@ namespace MedCitySim
 
             foreach (GameObject go in toRemove)
             {
-                Objects.Remove(go);
+                Objs.Remove(go);
             }
-            objects.AddRange(ToAdd);
+            objs.AddRange(ToAdd);
             toAdd.Clear();
             toRemove.Clear();
             DateTime startTime = DateTime.Now;
@@ -138,8 +138,9 @@ namespace MedCitySim
         }
         private void Update(float fps)
         {
+            
             this.currentFPS = fps;
-            foreach (GameObject go in objects)
+            foreach (GameObject go in objs)
             {
                 go.Update(currentFPS);
             }
@@ -154,7 +155,7 @@ namespace MedCitySim
             Font e = new Font("Lort", 16);
             dc.DrawString(string.Format("Wood: {0}  Iron: {1}  Stone: {2}", Lumber, Iron, Stone), e, Brushes.Black, 200, 0);
 
-            foreach (GameObject go in objects)
+            foreach (GameObject go in objs)
             {
                 go.Draw(dc);
             }
