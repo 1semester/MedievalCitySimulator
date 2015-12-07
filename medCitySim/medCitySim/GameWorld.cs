@@ -91,9 +91,9 @@ namespace MedCitySim
             Draw(dc);
             endTime = DateTime.Now;
         }
-        private void Update(float currentFPS)
+        private void Update(float fps)
         {
-            this.currentFPS = currentFPS;
+            this.currentFPS = fps;
             foreach (GameObject go in objects)
             {
                 go.Update(currentFPS);
@@ -101,7 +101,7 @@ namespace MedCitySim
         }
         private void Draw(Graphics dc)
         {
-            dc.Clear(Color.White);
+            dc.Clear(Color.Blue);
 #if DEBUG
             Font f = new Font("Yellow", 16);
             dc.DrawString(string.Format("FPS: {0}", currentFPS), f, Brushes.Black, 0, 0);
