@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace MedCitySim
 {
@@ -110,8 +112,13 @@ namespace MedCitySim
         }
         public void SetupWorld()
         {
-
-            objs.Add(new House(@"Sprites\Hus.png", (new Vector2D(200, 200))));
+            House house = new House(@"Sprites\Hus.png", new Vector2D(200, 200));
+           
+            objs.Add(house);
+           Citizen lars = new Citizen(@"Sprites\rsz_cop1.png", new Vector2D(10, 10), "lars", true, Citizen.assignment.farmer);
+            objs.Add(lars);
+        
+           
 
 
             //endTime skal kaldes sidst!
