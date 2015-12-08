@@ -22,6 +22,7 @@ namespace MedCitySim
         }
         protected override void Cost()
         {
+            GameWorld.
             base.Cost();
         }
     }

@@ -7,14 +7,13 @@ using System.Drawing;
 
 namespace MedCitySim
 {
-    class GameObject
+    abstract class GameObject
     {
-        protected Image sprite;
+        public Image sprite;
         protected Vector2D startPosition;
         protected List<Image> animationFrames = new List<Image>();
         protected float currentFrameIndex;
         private RectangleF collisionbox;
-        public string imagePath;
 
         public RectangleF Collisionbox
         {
@@ -38,16 +37,23 @@ namespace MedCitySim
 
         public GameObject(string imagePath,Vector2D startPosition)
         {
-            this.imagePath = imagePath;
-            this.StartPosition = startPosition;
+            string[] imagePaths = imagePath.Split(';');
+            this.animationFrames = new List<Image>();
+
+            foreach (string path in imagePaths)
+            {
+                animationFrames.Add(Image.FromFile(path));
+            }
+            this.sprite = this.animationFrames[0];
+            this.startPosition = startPosition;
         }
-        public void Update(float currentFPS)
+        public virtual void Update(float currentFPS)
         {
 
         }
-        public void Draw(Graphics dc)
+        public virtual void Draw(Graphics dc)
         {
-
+            dc.DrawImage(sprite, new PointF(startPosition.X, startPosition.Y));
         }
         public void UpdateAnimations(float currentFPS)
         {
