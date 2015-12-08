@@ -21,9 +21,9 @@ namespace MedCitySim
         private float currentFPS;
         private BufferedGraphics backBuffer;
         private DateTime endTime;
-        private int lumber = 100;
-        private int iron = 100;
-        private int stone = 100;
+        private static int lumber = 100;
+        private static int iron = 100;
+        private static int stone = 100;
 
        
 
@@ -60,7 +60,7 @@ namespace MedCitySim
             }
         }
         #region Ressources
-        public int Lumber
+        internal static int Lumber
         {
             get
             {
@@ -73,7 +73,7 @@ namespace MedCitySim
             }
         }
 
-        public int Iron
+        internal static int Iron
         {
             get
             {
@@ -86,7 +86,7 @@ namespace MedCitySim
             }
         }
 
-        public int Stone
+        internal static int Stone
         {
             get
             {
@@ -119,6 +119,8 @@ namespace MedCitySim
             objs.Add(lars);
         
            
+            //objs.Add(new Button(@"Sprites\Buildsort.png", (new Vector2D(2121, 1313))));
+            objs.Add(new House(@"Sprites\Hus.png", (new Vector2D(200, 200)), 50));
 
 
             //endTime skal kaldes sidst!
@@ -154,7 +156,7 @@ namespace MedCitySim
         }
         private void Draw()
         {
-            dc.Clear(Color.White);
+            dc.Clear(Color.Beige);
 #if DEBUG
             Font f = new Font("Yellow", 16);
             dc.DrawString(string.Format("FPS: {0}", currentFPS), f, Brushes.Black, 0, 0);
