@@ -38,13 +38,14 @@ namespace MedCitySim
             if (morning=true)
             {
              float deathChance = Age*(1+Hunger/10);
-
-            }
-            if (Hunger<=5)
-            {
-                
+              float noDeathChance= 100 - deathChance;
+                deathChance;
+                noDeathChance;
+                Random rnd= new Random();
             }
         }
+
+           
 
        
        
