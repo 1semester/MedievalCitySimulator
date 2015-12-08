@@ -102,10 +102,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Sprites\Buildrød.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Sprites\Buildsort.png">
+    <Content Include="Sprites\Buildsort.png" />
+    <Content Include="Sprites\BygHus.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Sprites\Hus.png">

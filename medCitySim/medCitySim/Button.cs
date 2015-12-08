@@ -16,7 +16,7 @@ namespace MedCitySim
         //    Hover,
         //    Pressed
         //}
-        public Button(Vector2D startPosition, string imagePath) : base (imagePath, startPosition)
+        public Button(string imagePath, Vector2D startPosition) : base (imagePath, startPosition)
         {
             
             //this.sprite = this.animationFrames[0];
@@ -28,6 +28,10 @@ namespace MedCitySim
         }
         public override void Update(float fps)
         {
+            if (Keyboard.IsKeyDown(System.Windows.Forms.Keys.B))
+            {
+                GameWorld.ToAdd.Add(new BuildMenu(@"Sprite\BygHus.png", (new Vector2D(2011, 993))));
+            }
             base.Update(fps);
         }
     }
