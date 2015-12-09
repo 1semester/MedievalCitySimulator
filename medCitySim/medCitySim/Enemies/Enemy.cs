@@ -37,7 +37,7 @@ namespace MedCitySim
                 health = value;
             }
         }
-        public Enemy(string imagePath, Vector2D startPosition) : base(imagePath, startPosition)
+        public Enemy(string imagePath, Vector2D position) : base(imagePath, position)
         {
 
         }

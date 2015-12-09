@@ -15,8 +15,10 @@ namespace MedCitySim
         public bool morning = false;
         private Vector2D currentnode;
         Random rnd = new Random();
+        private Assignment currentAssignment;
+        private Vector2D currentWaypoint;
 
-        internal enum assignment
+        internal enum Assignment
         {
             lumberJack,
             priest,
@@ -29,57 +31,76 @@ namespace MedCitySim
 
         public int Hunger { get; set; }
 
-        public Citizen(string imagePath, Vector2D startPosition, string Name, bool Gender, Enum assignment) : base(imagePath,startPosition)
+        public Citizen(string imagePath, Vector2D position, string Name, bool Gender, Assignment assignment) : base(imagePath,position)
         {
             Hunger = 0;
             Age = 0;
+            this.currentAssignment = assignment;
+            this.FindWaypoint();
         }
 
-        
+        private void FindWaypoint()
+        {
+            switch (currentAssignment)
+            {
+                case Assignment.lumberJack:
+                    House house = GameWorld.Objs.OfType<House>().FirstOrDefault();
+                    if (house != null)
+                    {
+                        currentWaypoint = house.Position;
+                        return;
+                    }
+                    break;
+                case Assignment.priest:
+                    break;
+                case Assignment.smith:
+                    break;
+                case Assignment.farmer:
+                    break;
+                case Assignment.civilWatch:
+                    break;
+                case Assignment.miner:
+                    break;
+                case Assignment.unassigned:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+            this.currentWaypoint = new Vector2D(500,500);
+        }
+
 
         public void RiskOfDeath(int Age, int Hunger)
         {
-
             if (morning = true)
             {
-                float deathChance = Age * (1 + Hunger / 10);//  Age*hunger/100??
+                float deathChance = Age*(1 + Hunger/10); //  Age*hunger/100??
 
 
-
-                float output = (float)rnd.NextDouble();
-                if (output * 100 > deathChance)
+                float output = (float) rnd.NextDouble();
+                if (output*100 > deathChance)
                 {
                     //no death occcured
-
                 }
-                else if (output * 100 < deathChance)
+                else if (output*100 < deathChance)
                 {
                     //GameWorld.ToRemove(this);
                 }
-
             }
-        }
-
-        public Vector2D WaypointWalk()
-        {
-
-           
-           // int startwaypoint=currentnode;
-           // int slutwaypoint=nextpoint;
-            int first = rnd.Next(10, 600);  // x koordinat for waypoint  citizen skal mod
-            int second = rnd.Next(10, 600); // y koordinat for waypoint  citizen skal mod
-          return  new Vector2D(first, second);
-
-
         }
 
         public override void Update(float currentFPS)
         {
-            Vector2D velocity = StartPosition.Subtract(WaypointWalk());
-            velocity.Normalize();
+            Vector2D deltaPosition = Position.Subtract(currentWaypoint);
+            float distanceFromWaypoint = deltaPosition.Magnitude;
+            if (distanceFromWaypoint < 10)
+            {
+                FindWaypoint();
+            }
+            deltaPosition.Normalize();
 
-            StartPosition.X += 1/currentFPS*(velocity.X*1000);
-            StartPosition.Y += 1 / currentFPS * (velocity.Y * 1000);
+            Position.X += 1/currentFPS*(deltaPosition.X*100);
+            Position.Y += 1/currentFPS*(deltaPosition.Y*100);
 
             base.Update(currentFPS);
         }

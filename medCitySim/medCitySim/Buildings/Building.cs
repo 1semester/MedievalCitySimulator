@@ -10,7 +10,7 @@ namespace MedCitySim
     {
         protected List<Citizen> citizens;
 
-        public Building(string imagepPath, Vector2D startPosition): base (imagepPath,startPosition)
+        public Building(string imagepPath, Vector2D position): base (imagepPath,position)
         {
 
         }

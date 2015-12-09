@@ -112,7 +112,7 @@ namespace MedCitySim
         }
         public void SetupWorld()
         {
-            House house = new House(@"Sprites\Hus.png", new Vector2D(200, 200));
+            House house = new House(@"Sprites\Hus.png", new Vector2D(200, 200),50);
            
             objs.Add(house);
            Citizen lars = new Citizen(@"Sprites\rsz_cop1.png", new Vector2D(10, 10), "lars", true, Citizen.assignment.farmer);
@@ -120,7 +120,7 @@ namespace MedCitySim
         
            
             //objs.Add(new Button(@"Sprites\Buildsort.png", (new Vector2D(2121, 1313))));
-            objs.Add(new House(@"Sprites\Hus.png", (new Vector2D(200, 200)), 50));
+            objs.Add(new House(@"Sprites\Hus.png", new Vector2D(200, 200), 50));
 
 
             //endTime skal kaldes sidst!

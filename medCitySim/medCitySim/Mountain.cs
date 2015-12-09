@@ -8,7 +8,7 @@ namespace MedCitySim
 {
     class Mountain : GameObject
     {
-        public Mountain(string imagePath, Vector2D startPosition) : base(imagePath, startPosition)
+        public Mountain(string imagePath, Vector2D position) : base(imagePath, position)
         {
 
         }

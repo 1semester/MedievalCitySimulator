@@ -32,19 +32,19 @@ namespace MedCitySim
         {
             if (Keyboard.IsKeyDown(System.Windows.Forms.Keys.A))
             {
-                startPosition.X -= (1 / currentFPS) * speed;
+                position.X -= (1 / currentFPS) * speed;
             }
             if (Keyboard.IsKeyDown(System.Windows.Forms.Keys.D))
             {
-                startPosition.X += (1 / currentFPS) * speed;
+                position.X += (1 / currentFPS) * speed;
             }
             if (Keyboard.IsKeyDown(System.Windows.Forms.Keys.W))
             {
-                startPosition.Y -= (1 / currentFPS) * speed;
+                position.Y -= (1 / currentFPS) * speed;
             }
             if (Keyboard.IsKeyDown(System.Windows.Forms.Keys.S))
             {
-                startPosition.Y += (1 / currentFPS) * speed;
+                position.Y += (1 / currentFPS) * speed;
             }
             if (Keyboard.IsKeyDown(System.Windows.Forms.Keys.Space))
             {

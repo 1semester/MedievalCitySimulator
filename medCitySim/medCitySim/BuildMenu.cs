@@ -8,7 +8,7 @@ namespace MedCitySim
 {
     class BuildMenu : GameObject
     {
-        public BuildMenu(string imagePath, Vector2D startPosition) : base (imagePath, startPosition)
+        public BuildMenu(string imagePath, Vector2D position) : base (imagePath, position)
         {
 
         }

@@ -16,7 +16,7 @@ namespace MedCitySim
         //    Hover,
         //    Pressed
         //}
-        public Button(string imagePath, Vector2D startPosition) : base (imagePath, startPosition)
+        public Button(string imagePath, Vector2D position) : base (imagePath, position)
         {
             
             //this.sprite = this.animationFrames[0];

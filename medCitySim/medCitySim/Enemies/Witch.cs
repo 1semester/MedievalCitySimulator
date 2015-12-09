@@ -10,7 +10,7 @@ namespace MedCitySim
     {
         private string name;
         private bool gender;
-        public Witch(string imagePath, Vector2D startPosition, bool gender, string name) : base(imagePath, startPosition)
+        public Witch(string imagePath, Vector2D position, bool gender, string name) : base(imagePath, position)
         {
             this.name = name;
             this.gender = gender;
