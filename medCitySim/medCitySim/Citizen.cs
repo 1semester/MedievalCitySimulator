@@ -45,8 +45,8 @@ namespace MedCitySim
             switch (currentAssignment)
             {
                 case Assignment.lumberJack:
-                    List<GameObject> mylist =new List<GameObject>() ;
-                    mylist = GameWorld.Objs;
+                   // List<GameObject> mylist =new List<GameObject>() ;
+                  //  mylist = GameWorld.Objs;
                    House house =GameWorld.objs.OfType<House>().FirstOrDefault();
                     
                  
@@ -99,7 +99,7 @@ namespace MedCitySim
         {
             Vector2D deltaPosition = Position.Subtract(currentWaypoint);
             float distanceFromWaypoint = deltaPosition.Magnitude;
-            if (distanceFromWaypoint < 10)
+            if (distanceFromWaypoint < 100)
             {
                 FindWaypoint();
             }
