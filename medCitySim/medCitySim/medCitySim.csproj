@@ -106,12 +106,19 @@
     <Content Include="Sprites\BygHus.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Sprites\Citizen lille.png" />
+    <Content Include="Sprites\food.png" />
+    <Content Include="Sprites\Hammer lille.png" />
     <Content Include="Sprites\Hus.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Sprites\Konisk kolbe lille.png" />
     <Content Include="Sprites\rsz_cop1.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Sprites\Stone lille.png" />
+    <Content Include="Sprites\User Interface.png" />
+    <Content Include="Sprites\wood lille.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
