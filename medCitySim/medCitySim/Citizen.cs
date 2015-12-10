@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.ExceptionServices;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -44,7 +45,12 @@ namespace MedCitySim
             switch (currentAssignment)
             {
                 case Assignment.lumberJack:
-                    House house = GameWorld.Objs.OfType<House>().FirstOrDefault();
+                    List<GameObject> mylist =new List<GameObject>() ;
+                    mylist = GameWorld.Objs;
+                   House house =GameWorld.objs.OfType<House>().FirstOrDefault();
+                    
+                 
+                 
                     if (house != null)
                     {
                         currentWaypoint = house.Position;
@@ -84,7 +90,7 @@ namespace MedCitySim
                 }
                 else if (output*100 < deathChance)
                 {
-                    //GameWorld.ToRemove(this);
+                    GameWorld.ToRemove.Add(this);
                 }
             }
         }

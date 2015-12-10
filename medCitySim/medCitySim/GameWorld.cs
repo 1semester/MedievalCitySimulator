@@ -14,7 +14,7 @@ namespace MedCitySim
 
         //commit comment
         private Graphics dc;
-        private List<GameObject> objs = new List<GameObject>();
+        public static List<GameObject> objs = new List<GameObject>();
         private static List<GameObject> toAdd = new List<GameObject>();
         private static List<GameObject> toRemove = new List<GameObject>();
         private Rectangle displayRectangle = new Rectangle();
@@ -52,13 +52,7 @@ namespace MedCitySim
                 toRemove = value;
             }
         }
-        internal static List<GameObject> Objs
-        {
-            get
-            {
-                return Objs;
-            }
-        }
+        public static List<GameObject> Objs { get; set; }
         #region Ressources
         internal static int Lumber
         {
@@ -112,10 +106,12 @@ namespace MedCitySim
         }
         public void SetupWorld()
         {
-            House house = new House(@"Sprites\Hus.png", new Vector2D(200, 200),50);
-           
+            House house;
+            house = new House(@"Sprites\Hus.png", new Vector2D(200, 200),50);
+
             objs.Add(house);
-           Citizen lars = new Citizen(@"Sprites\rsz_cop1.png", new Vector2D(10, 10), "lars", true, Citizen.assignment.farmer);
+            
+            Citizen lars = new Citizen(@"Sprites\rsz_cop1.png", new Vector2D(400, 400), "lars", true, Citizen.Assignment.lumberJack);
             objs.Add(lars);
         
            
@@ -131,7 +127,7 @@ namespace MedCitySim
 
             foreach (GameObject go in toRemove)
             {
-                Objs.Remove(go);
+                objs.Remove(go);
             }
             objs.AddRange(ToAdd);
             toAdd.Clear();
