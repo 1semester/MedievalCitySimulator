@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
 
 namespace MedCitySim
 {
@@ -12,14 +13,12 @@ namespace MedCitySim
 
         public Building(string imagepPath, Vector2D startPosition): base (imagepPath,startPosition)
         {
-
         }
         protected virtual void Work()
         {
         }
         protected virtual void Cost()
         {
-
         }
     }
 }

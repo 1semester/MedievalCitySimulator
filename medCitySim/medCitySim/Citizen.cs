@@ -8,42 +8,42 @@ namespace MedCitySim
 {
     class Citizen
     {
-        public string Name { get; set; }
-        public int Age { get; set; }
-       public bool Gender { get; set; }
-        public bool morning = false;
+       // public string Name { get; set; }
+       // public int Age { get; set; }
+       //public bool Gender { get; set; }
+       // public bool morning = false;
 
-        private enum assignment
-        {
-            lumberJack,
-            priest,
-            smith,
-            farmer,
-            civilWatch,
-            miner,
-            unassigned
-        };
+       // private enum assignment
+       // {
+       //     lumberJack,
+       //     priest,
+       //     smith,
+       //     farmer,
+       //     civilWatch,
+       //     miner,
+       //     unassigned
+       // };
 
-        public int Hunger { get; set; }
+       // public int Hunger { get; set; }
 
-        Citizen(string imagePath, Vector2D startPosition, string Name, bool Gender, Enum assignment)
-        {
-            Hunger = 0;
-            Age = 0;
-        }
+       // Citizen(string imagePath, Vector2D startPosition, string Name, bool Gender, Enum assignment)
+       // {
+       //     Hunger = 0;
+       //     Age = 0;
+       // }
 
-        public void RiskOfDeath(int Age, int Hunger)
-        {
+       // public void RiskOfDeath(int Age, int Hunger)
+       // {
 
-            if (morning=true)
-            {
-             float deathChance = Age*(1+Hunger/10);
-              float noDeathChance= 100 - deathChance;
-                deathChance;
-                noDeathChance;
-                Random rnd= new Random();
-            }
-        }
+       //     if (morning=true)
+       //     {
+       //      float deathChance = Age*(1+Hunger/10);
+       //       float noDeathChance= 100 - deathChance;
+       //         deathChance;
+       //         noDeathChance;
+       //         Random rnd= new Random();
+       //     }
+       // }
 
            
 

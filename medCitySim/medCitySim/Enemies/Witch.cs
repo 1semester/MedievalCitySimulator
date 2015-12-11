@@ -15,5 +15,9 @@ namespace MedCitySim
             this.name = name;
             this.gender = gender;
         }
+        protected override void OnCollision(GameObject other)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

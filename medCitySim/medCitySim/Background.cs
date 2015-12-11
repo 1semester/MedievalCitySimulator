@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
 
 namespace MedCitySim
 {
-    class Mountain : GameObject
+    class Background : GameObject
     {
-        public Mountain(string imagePath, Vector2D startPosition) : base(imagePath, startPosition)
+        public Background(string imagePath, Vector2D startPosition) : base (imagePath, startPosition)
         {
 
         }
+
     }
 }

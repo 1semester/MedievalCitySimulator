@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
+
 
 namespace MedCitySim
 {
     class CivilWatch : Building
     {
+        private Graphics dc;
+        private bool canBuild = true;
         private int speed;
-
         public CivilWatch(string imagePath, Vector2D startposition, int speed) : base(imagePath, startposition)
         {
             this.speed = speed;
@@ -18,38 +21,51 @@ namespace MedCitySim
         {
             base.Work();
         }
-        public override void OnCollision(GameObject other)
+        protected override void OnCollision(GameObject other)
         {
-            base.OnCollision(other);
+            if (other is Building)
+            {
+                canBuild = false;
+            }
+            else if (other is Background)
+            {
+                canBuild = true;
+            }
         }
         protected override void Cost()
         {
-            GameWorld.Lumber -= 2;
-            GameWorld.Stone -= 3;
+            GameWorld.Lumber -= 5;
+            GameWorld.Stone -= 5;
             base.Cost();
         }
         public override void Update(float currentFPS)
         {
-            if (Keyboard.IsKeyDown(System.Windows.Forms.Keys.A))
+            if (Keyboard.IsKeyDown(System.Windows.Forms.Keys.Left))
             {
-                startPosition.X -= (1 / currentFPS) * speed;
+                position.X -= (1 / currentFPS) * speed;
             }
-            if (Keyboard.IsKeyDown(System.Windows.Forms.Keys.D))
+            if (Keyboard.IsKeyDown(System.Windows.Forms.Keys.Right))
             {
-                startPosition.X += (1 / currentFPS) * speed;
+                position.X += (1 / currentFPS) * speed;
             }
-            if (Keyboard.IsKeyDown(System.Windows.Forms.Keys.W))
+            if (Keyboard.IsKeyDown(System.Windows.Forms.Keys.Up))
             {
-                startPosition.Y -= (1 / currentFPS) * speed;
+                position.Y -= (1 / currentFPS) * speed;
             }
-            if (Keyboard.IsKeyDown(System.Windows.Forms.Keys.S))
+            if (Keyboard.IsKeyDown(System.Windows.Forms.Keys.Down))
             {
-                startPosition.Y += (1 / currentFPS) * speed;
+                position.Y += (1 / currentFPS) * speed;
             }
-            if (Keyboard.IsKeyDown(System.Windows.Forms.Keys.Space))
+
+            if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.Space))
             {
-                speed = 0;
+                if (canBuild == true && speed > 0)
+                {
+                    speed = 0;
+                    Cost();
+                }
             }
+
             base.Update(currentFPS);
         }
     }

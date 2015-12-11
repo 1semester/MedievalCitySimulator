@@ -12,17 +12,19 @@ namespace MedCitySim
 
         //commit comment
         private Graphics dc;
+        
         private List<GameObject> objs = new List<GameObject>();
         private static List<GameObject> toAdd = new List<GameObject>();
         private static List<GameObject> toRemove = new List<GameObject>();
-        private Rectangle displayRectangle = new Rectangle();
+        private Rectangle window = new Rectangle();
+        private static Rectangle displayRectangle = new Rectangle();
         private float currentFPS;
         private BufferedGraphics backBuffer;
         private DateTime endTime;
         private static int lumber = 100;
         private static int iron = 100;
         private static int stone = 100;
-
+        private string cantBuild = "You cant build there!";
        
 
         internal static List<GameObject> ToAdd
@@ -50,13 +52,7 @@ namespace MedCitySim
                 toRemove = value;
             }
         }
-        internal static List<GameObject> Objs
-        {
-            get
-            {
-                return Objs;
-            }
-        }
+        internal static List<GameObject> Objs { get; private set; }
         #region Ressources
         internal static int Lumber
         {
@@ -97,21 +93,48 @@ namespace MedCitySim
             }
         }
 
-        
+        internal static Rectangle DisplayRectangle
+        {
+            get
+            {
+                return displayRectangle;
+            }
 
-        
+            set
+            {
+                displayRectangle = value;
+            }
+        }
+
+        internal string CantBuild
+        {
+            get
+            {
+                return cantBuild;
+            }
+
+            set
+            {
+                cantBuild = value;
+            }
+        }
+
+
+
+
         #endregion
         public GameWorld(Graphics dc, Rectangle displayRectangle)
         {
+            Objs = objs;
             SetupWorld();
-            this.displayRectangle = displayRectangle;
+            this.window = displayRectangle;
             this.backBuffer = BufferedGraphicsManager.Current.Allocate(dc, displayRectangle);
             this.dc = backBuffer.Graphics;
         }
         public void SetupWorld()
         {
-            //objs.Add(new Button(@"Sprites\Buildsort.png", (new Vector2D(2121, 1313))));
-            objs.Add(new House(@"Sprites\Hus.png", (new Vector2D(200, 200)), 50));
+            objs.Add(new Background(@"Sprites\Background.png", (new Vector2D(0, 0))));
+            objs.Add(new Button(@"Sprites\Buildsort.png", (new Vector2D(20, 20))));
 
 
             //endTime skal kaldes sidst!
@@ -138,7 +161,7 @@ namespace MedCitySim
         }
         private void Update(float fps)
         {
-            
+            Keyboard.Update();
             this.currentFPS = fps;
             foreach (GameObject go in objs)
             {
@@ -164,6 +187,11 @@ namespace MedCitySim
         private void UpdateAnimations(float currentFPS)
         {
 
+        }
+        public static void PrintStringOnScreen(string s, Graphics dc)
+        {
+            Font f = new Font("Yellow", 16);
+            dc.DrawString(string.Format(s), f, Brushes.Red, GameWorld.DisplayRectangle.Width / 2, GameWorld.DisplayRectangle.Height / 2);
         }
     }
 }

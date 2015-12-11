@@ -46,13 +46,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BlackSmith.cs" />
     <Compile Include="Buildings\Building.cs" />
     <Compile Include="Buildings\Church.cs" />
+    <Compile Include="Buildings\Quarry.cs" />
     <Compile Include="BuildMenu.cs" />
     <Compile Include="Button.cs" />
     <Compile Include="Citizen.cs" />
     <Compile Include="Buildings\CivilWatch.cs" />
-    <Compile Include="Enemies\Criminal.cs" />
     <Compile Include="Enemies\Enemy.cs" />
     <Compile Include="Buildings\Farm.cs" />
     <Compile Include="Form1.cs">
@@ -66,15 +67,14 @@
     <Compile Include="Buildings\House.cs" />
     <Compile Include="Keyboard.cs" />
     <Compile Include="Buildings\Lumbermill.cs" />
-    <Compile Include="Mountain.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Buildings\Quarry.cs" />
     <Compile Include="Enemies\Raider.cs" />
     <Compile Include="RandomEvents.cs" />
     <Compile Include="Buildings\Well.cs" />
     <Compile Include="Enemies\WildAnimal.cs" />
     <Compile Include="Enemies\Witch.cs" />
+    <Compile Include="Background.cs" />
     <Compile Include="Vector2D.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -102,11 +102,37 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Sprites\Buildsort.png" />
-    <Content Include="Sprites\BygHus.png">
+    <Content Include="Sprites\Background.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Sprites\Hus.png">
+    <Content Include="Sprites\Buildings\Blacksmith.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sprites\Buildings\Well.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sprites\BuildMenu.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sprites\Buildsort.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sprites\Buildings\CivilWatch.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sprites\Buildings\Farm.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sprites\Buildings\House.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sprites\Buildings\Church.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sprites\Buildings\LumberMill.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sprites\Buildings\Quarry.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

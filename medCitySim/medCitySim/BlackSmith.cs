@@ -7,14 +7,13 @@ using System.Drawing;
 
 namespace MedCitySim
 {
-    class House : Building
+    class Blacksmith : Building
     {
         private Graphics dc;
         private bool canBuild = true;
         private int speed;
-        public House(string imagePath, Vector2D startposition, int speed, Graphics dc) : base(imagePath, startposition)
+        public Blacksmith(string imagePath, Vector2D startposition, int speed) : base(imagePath, startposition)
         {
-            this.dc = dc;
             this.speed = speed;
         }
         protected override void Work()
@@ -27,7 +26,7 @@ namespace MedCitySim
             {
                 canBuild = false;
             }
-            else if (other is Background)
+            else
             {
                 canBuild = true;
             }
@@ -56,6 +55,7 @@ namespace MedCitySim
             {
                 position.Y += (1 / currentFPS) * speed;
             }
+
             if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.Space))
             {
                 if (canBuild == true && speed > 0)
@@ -64,6 +64,7 @@ namespace MedCitySim
                     Cost();
                 }
             }
+
             base.Update(currentFPS);
         }
     }

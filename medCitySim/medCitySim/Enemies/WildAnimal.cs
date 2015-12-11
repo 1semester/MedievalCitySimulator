@@ -15,5 +15,9 @@ namespace MedCitySim
             this.dmg = dmg;
             this.health = health;
         }
+        protected override void OnCollision(GameObject other)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
