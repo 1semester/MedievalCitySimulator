@@ -10,6 +10,7 @@ namespace MedCitySim
     class House : Building
     {
         private Graphics dc;
+        //private static List<Citizen> population = new List<Citizen>(4);
         private bool canBuild = true;
         private int speed;
         public House(string imagePath, Vector2D startposition, int speed, Graphics dc) : base(imagePath, startposition)

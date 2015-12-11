@@ -16,7 +16,7 @@ namespace MedCitySim
 
         private static HashSet<Keys> keysDown = new HashSet<Keys>();
         private static HashSet<Keys> prevKeysDown = new HashSet<Keys>();
-        private static readonly Keys[] keysToCheck = new Keys[] {Keys.R, Keys.B, Keys.C, Keys.F, Keys.H, Keys.L, Keys.W, Keys.S, Keys.Q, Keys.Space, Keys.Up, Keys.Down, Keys.Left, Keys.Right };
+        private static readonly Keys[] keysToCheck = new Keys[] {Keys.Escape, Keys.R, Keys.B, Keys.C, Keys.F, Keys.H, Keys.L, Keys.W, Keys.S, Keys.Q, Keys.Space, Keys.Up, Keys.Down, Keys.Left, Keys.Right };
         //static Keyboard()
         //{
         //    var keyNames = Enum.GetNames(typeof(Keys));

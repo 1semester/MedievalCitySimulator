@@ -24,9 +24,9 @@ namespace MedCitySim
         private float currentFPS;
         private BufferedGraphics backBuffer;
         private DateTime endTime;
-        private static int lumber = 100;
-        private static int iron = 100;
-        private static int stone = 100;
+        private static int lumber = 20;
+        private static int iron = 20;
+        private static int stone = 20;
         private static int food = 5;
         private string cantBuild = "You cant build there!";
        
