@@ -10,8 +10,8 @@ namespace MedCitySim
     class BuildMenu : GameObject
     {
         private Graphics dc;
-        public BuildMenu(string imagePath, Vector2D startPosition) : base(imagePath, startPosition)
-       // public BuildMenu(string imagePath, Vector2D position) : base (imagePath, position)
+       public BuildMenu(string imagePath, Vector2D startPosition) : base(imagePath, startPosition)
+      // public BuildMenu(string imagePath, Vector2D position) : base (imagePath, position)
         {
         }
         public override void Update(float currentFPS)

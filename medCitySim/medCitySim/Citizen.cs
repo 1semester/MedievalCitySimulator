@@ -115,6 +115,11 @@ namespace MedCitySim
                 case Assignment.miner:
                     break;
                 case Assignment.unassigned:
+
+               float   First=  rnd.Next(10, 800);
+             float       second = rnd.Next(10, 800);
+                 currentWaypoint= new Vector2D(First,second);
+                    return;
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();

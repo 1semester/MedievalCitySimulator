@@ -48,7 +48,7 @@ namespace MedCitySim
             }
             this.sprite = this.animationFrames[0];
             this.position = startPosition;
-            this.position = position;
+           // this.position = position;
         }
         public virtual void Update(float currentFPS)
         {
@@ -92,7 +92,7 @@ namespace MedCitySim
         protected virtual void OnCollision(GameObject other)
         {
             
-            this.position = position;
+            //this.position = position;
         }
     }
 }

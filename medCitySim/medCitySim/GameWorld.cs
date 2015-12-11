@@ -129,7 +129,7 @@ namespace MedCitySim
         #endregion
         public GameWorld(Graphics dc, Rectangle displayRectangle)
         {
-            Objs = objs;
+           Objs = objs;
             SetupWorld();
             this.window = displayRectangle;
             this.backBuffer = BufferedGraphicsManager.Current.Allocate(dc, displayRectangle);
@@ -137,19 +137,19 @@ namespace MedCitySim
         }
         public void SetupWorld()
         {
-            objs.Add(new Background(@"Sprites\Background.png", (new Vector2D(0, 0))));
-            objs.Add(new Button(@"Sprites\Buildsort.png", (new Vector2D(20, 20))));
-            House house;
-            house = new House(@"Sprites\Hus.png", new Vector2D(200, 200),50,dc);
+          objs.Add(new Background(@"Sprites\Background.png", (new Vector2D(0, 0))));
+            objs.Add(new Button(@"Sprites\Hus.png", (new Vector2D(20, 20))));
+         //   House house;
+          //  house = new House(@"Sprites\Hus.png", new Vector2D(200, 200),50,dc);
 
-            objs.Add(house);
+            //objs.Add(house);
             
-            Citizen lars = new Citizen(@"Sprites\rsz_cop1.png", new Vector2D(400, 400), "lars", true, Citizen.Assignment.lumberJack);
+            Citizen lars = new Citizen(@"Sprites\rsz_cop1.png", new Vector2D(400, 400), "lars", true, Citizen.Assignment.unassigned);
             objs.Add(lars);
         
            
             //objs.Add(new Button(@"Sprites\Buildsort.png", (new Vector2D(2121, 1313))));
-            objs.Add(new House(@"Sprites\Hus.png", new Vector2D(200, 200), 50,dc));
+           // objs.Add(new House(@"Sprites\Hus.png", new Vector2D(200, 200), 50,dc));
 
 
             //endTime skal kaldes sidst!
