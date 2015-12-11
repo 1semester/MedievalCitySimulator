@@ -26,7 +26,10 @@ namespace MedCitySim
                     GameWorld.ToAdd.Add(new Citizen(@"Sprites\rsz_cop1.png", new Vector2D(400, 400), "lars", true, Citizen.Assignment.unassigned));
                     GameWorld.Food -= 1;
                 }
-                
+            }
+            if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.S))
+            {
+
             }
         }
         protected override void OnCollision(GameObject other)

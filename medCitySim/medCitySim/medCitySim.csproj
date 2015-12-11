@@ -46,7 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BlackSmith.cs" />
+    <Compile Include="Buildings\BlackSmith.cs" />
     <Compile Include="Buildings\Building.cs" />
     <Compile Include="Buildings\Church.cs" />
     <Compile Include="Buildings\Quarry.cs" />
@@ -133,7 +133,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Sprites\Buildings\Quarry.png">
-      </Content>
+    </Content>
     <Content Include="Sprites\Citizen lille.png" />
     <Content Include="Sprites\food.png" />
     <Content Include="Sprites\Hammer lille.png" />
