@@ -15,7 +15,7 @@ namespace MedCitySim
         //commit comment
         private Graphics dc;
         
-        private List<GameObject> objs = new List<GameObject>();
+        //private List<GameObject> objs = new List<GameObject>();
         public static List<GameObject> objs = new List<GameObject>();
         private static List<GameObject> toAdd = new List<GameObject>();
         private static List<GameObject> toRemove = new List<GameObject>();
@@ -55,7 +55,7 @@ namespace MedCitySim
                 toRemove = value;
             }
         }
-        internal static List<GameObject> Objs { get; private set; }
+        //internal static List<GameObject> Objs { get; private set; }
         public static List<GameObject> Objs { get; set; }
         #region Ressources
         internal static int Lumber
@@ -140,7 +140,7 @@ namespace MedCitySim
             objs.Add(new Background(@"Sprites\Background.png", (new Vector2D(0, 0))));
             objs.Add(new Button(@"Sprites\Buildsort.png", (new Vector2D(20, 20))));
             House house;
-            house = new House(@"Sprites\Hus.png", new Vector2D(200, 200),50);
+            house = new House(@"Sprites\Hus.png", new Vector2D(200, 200),50,dc);
 
             objs.Add(house);
             
@@ -149,7 +149,7 @@ namespace MedCitySim
         
            
             //objs.Add(new Button(@"Sprites\Buildsort.png", (new Vector2D(2121, 1313))));
-            objs.Add(new House(@"Sprites\Hus.png", new Vector2D(200, 200), 50));
+            objs.Add(new House(@"Sprites\Hus.png", new Vector2D(200, 200), 50,dc));
 
 
             //endTime skal kaldes sidst!

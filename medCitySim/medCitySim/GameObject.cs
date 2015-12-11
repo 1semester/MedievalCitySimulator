@@ -37,7 +37,7 @@ namespace MedCitySim
         }
 
         public GameObject(string imagePath, Vector2D startPosition)
-        public GameObject(string imagePath,Vector2D position)
+        //public GameObject(string imagePath,Vector2D position)
         {
             string[] imagePaths = imagePath.Split(';');
             this.animationFrames = new List<Image>();
