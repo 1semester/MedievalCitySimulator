@@ -10,7 +10,7 @@ namespace MedCitySim
     {
         private int health;
         private int dmg;
-        public WildAnimal(string imagePath, Vector2D startPosition, int health, int dmg) : base(imagePath, startPosition)
+        public WildAnimal(string imagePath, Vector2D position, int health, int dmg) : base(imagePath, position)
         {
             this.dmg = dmg;
             this.health = health;

@@ -40,13 +40,16 @@ namespace MedCitySim
             this.x = x;
             this.y = y;
         }
-        private float Lenght()
+        public float Magnitude
         {
-            return (float)Math.Sqrt((this.x * this.x) + (this.y * this.y));
+            get
+            {
+                return (float)Math.Sqrt((x * x) + (y * y));
+            }
         }
         public void Normalize()
         {
-            float lenght = Lenght();
+            float lenght = Magnitude;
 
             this.x = this.x / lenght;
             this.y = this.y / lenght;
