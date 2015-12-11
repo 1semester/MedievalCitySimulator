@@ -82,19 +82,18 @@ namespace MedCitySim
             switch (currentAssignment)
             {
                 case Assignment.lumberJack:
-                   // List<GameObject> mylist =new List<GameObject>() ;
-                  //  mylist = GameWorld.Objs;
-                   House house =GameWorld.objs.OfType<House>().FirstOrDefault();
+                
+                   Lumbermill Lumbermill =GameWorld.objs.OfType<Lumbermill>().FirstOrDefault();
 
                   
 
-                    if (house != null && currentWaypoint!=house.Position )
+                    if (Lumbermill != null && currentWaypoint!=Lumbermill.Position )
                     {
-                        currentWaypoint = house.Position;
+                        currentWaypoint = Lumbermill.Position;
                        
                         return;
                     }
-                    if (currentWaypoint==house.Position )
+                    if (currentWaypoint==Lumbermill.Position )
                     {
                         currentWaypoint = new Vector2D(500, 500);
 
@@ -105,14 +104,63 @@ namespace MedCitySim
 
                     break;
                 case Assignment.priest:
+                    Church church = GameWorld.objs.OfType<Church>().FirstOrDefault();
+
+
+
+                    if (church != null && currentWaypoint != church.Position)
+                    {
+                        currentWaypoint = church.Position;
+
+                        return;
+                    }
+                    if (currentWaypoint == church.Position)
+                    {
+                        currentWaypoint = new Vector2D(500, 500);
+
+                        return;
+                    }
                     break;
                 case Assignment.smith:
+
                     break;
                 case Assignment.farmer:
+                    Farm farm = GameWorld.objs.OfType<Farm>().FirstOrDefault();
+
+
+
+                    if (farm != null && currentWaypoint != farm.Position)
+                    {
+                        currentWaypoint = farm.Position;
+
+                        return;
+                    }
+                    if (currentWaypoint == farm.Position)
+                    {
+                        currentWaypoint = new Vector2D(500, 500);
+
+                        return;
+                    }
                     break;
                 case Assignment.civilWatch:
                     break;
                 case Assignment.miner:
+                    Quarry quarry = GameWorld.objs.OfType<Quarry>().FirstOrDefault();
+
+
+
+                    if (quarry != null && currentWaypoint != quarry.Position)
+                    {
+                        currentWaypoint = quarry.Position;
+
+                        return;
+                    }
+                    if (currentWaypoint == quarry.Position)
+                    {
+                        currentWaypoint = new Vector2D(500, 500);
+
+                        return;
+                    }
                     break;
                 case Assignment.unassigned:
 
