@@ -27,6 +27,7 @@ namespace MedCitySim
         private static int lumber = 100;
         private static int iron = 100;
         private static int stone = 100;
+        private static int food = 5;
         private string cantBuild = "You cant build there!";
        
 
@@ -123,6 +124,19 @@ namespace MedCitySim
             }
         }
 
+        internal static int Food
+        {
+            get
+            {
+                return food;
+            }
+
+            set
+            {
+                food = value;
+            }
+        }
+
 
 
 
@@ -137,20 +151,19 @@ namespace MedCitySim
         }
         public void SetupWorld()
         {
-          objs.Add(new Background(@"Sprites\Background.png", (new Vector2D(0, 0))));
-            objs.Add(new Button(@"Sprites\Hus.png", (new Vector2D(20, 20))));
-         //   House house;
-          //  house = new House(@"Sprites\Hus.png", new Vector2D(200, 200),50,dc);
-
-            //objs.Add(house);
+            //Font e = new Font("Ressourcer", 16);
+            //dc.DrawString(string.Format("Wood: {0}  Iron: {1}  Stone: {2}", Lumber, Iron, Stone), e, Brushes.Black, 200, 0);
+            objs.Add(new Background(@"Sprites\Background.png", (new Vector2D(0, 0))));
+            objs.Add(new Button(@"Sprites\Buildsort.png", (new Vector2D(20, 20))));
+        
+            
+            
+        
+           
+            
             
             Citizen lars = new Citizen(@"Sprites\rsz_cop1.png", new Vector2D(400, 400), "lars", true, Citizen.Assignment.unassigned);
             objs.Add(lars);
-        
-           
-            //objs.Add(new Button(@"Sprites\Buildsort.png", (new Vector2D(2121, 1313))));
-           // objs.Add(new House(@"Sprites\Hus.png", new Vector2D(200, 200), 50,dc));
-
 
             //endTime skal kaldes sidst!
             endTime = DateTime.Now;
@@ -190,7 +203,7 @@ namespace MedCitySim
             Font f = new Font("Yellow", 16);
             dc.DrawString(string.Format("FPS: {0}", currentFPS), f, Brushes.Black, 0, 0);
 #endif
-            Font e = new Font("Lort", 16);
+            Font e = new Font("Ressourcer", 16);
             dc.DrawString(string.Format("Wood: {0}  Iron: {1}  Stone: {2}", Lumber, Iron, Stone), e, Brushes.Black, 200, 0);
 
             foreach (GameObject go in objs)

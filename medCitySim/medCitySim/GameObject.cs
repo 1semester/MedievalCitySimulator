@@ -58,7 +58,7 @@ namespace MedCitySim
         {
             dc.DrawImage(sprite, position.X, position.Y, sprite.Width, sprite.Height);
             dc.DrawRectangle(new Pen(Brushes.Red), CollisionBox.X, CollisionBox.Y, CollisionBox.Width, CollisionBox.Height);
-            dc.DrawImage(sprite, new PointF(position.X, position.Y));
+            //dc.DrawImage(sprite, new PointF(position.X, position.Y));
         }
         public void UpdateAnimations(float currentFPS)
         {
