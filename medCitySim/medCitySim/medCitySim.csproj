@@ -133,6 +133,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Sprites\Buildings\Quarry.png">
+      </Content>
     <Content Include="Sprites\Citizen lille.png" />
     <Content Include="Sprites\food.png" />
     <Content Include="Sprites\Hammer lille.png" />
