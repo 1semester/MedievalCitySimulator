@@ -18,6 +18,7 @@ namespace MedCitySim
         Random rnd = new Random();
         private Assignment currentAssignment;
         private Vector2D currentWaypoint;
+      
 
         internal enum Assignment
         {
@@ -48,14 +49,24 @@ namespace MedCitySim
                    // List<GameObject> mylist =new List<GameObject>() ;
                   //  mylist = GameWorld.Objs;
                    House house =GameWorld.objs.OfType<House>().FirstOrDefault();
-                    
-                 
-                 
-                    if (house != null)
+
+                  
+
+                    if (house != null && currentWaypoint!=house.Position )
                     {
                         currentWaypoint = house.Position;
+                       
                         return;
                     }
+                    if (currentWaypoint==house.Position )
+                    {
+                        currentWaypoint = new Vector2D(500, 500);
+
+                        return;
+                    }
+
+
+
                     break;
                 case Assignment.priest:
                     break;
@@ -99,10 +110,14 @@ namespace MedCitySim
         {
             Vector2D deltaPosition = Position.Subtract(currentWaypoint);
             float distanceFromWaypoint = deltaPosition.Magnitude;
-            if (distanceFromWaypoint < 100)
+            if (distanceFromWaypoint < 10 )
             {
+                //currentWaypoint = new Vector2D(500, 500);
+               
                 FindWaypoint();
             }
+           
+
             deltaPosition.Normalize();
 
             Position.X += 1/currentFPS*(deltaPosition.X*100);
