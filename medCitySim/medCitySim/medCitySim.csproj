@@ -105,8 +105,16 @@
     <Content Include="Sprites\Background.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Sprites\Blacksmith.png" />
+    <Content Include="Sprites\Blacksmith.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Sprites\Buildings\Blacksmith.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sprites\CitizenLille.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sprites\Research.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Sprites\Buildings\Well.png">
@@ -135,19 +143,39 @@
     </Content>
     <Content Include="Sprites\Buildings\Quarry.png">
     </Content>
-    <Content Include="Sprites\Church.png" />
-    <Content Include="Sprites\Farm.png" />
-    <Content Include="Sprites\HammerLille.png" />
-    <Content Include="Sprites\House.png" />
-    <Content Include="Sprites\Lumberjack.png" />
-    <Content Include="Sprites\Mountain.png" />
-    <Content Include="Sprites\Quarry.png" />
+    <Content Include="Sprites\Church.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sprites\Farm.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sprites\HammerLille.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sprites\House.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sprites\Lumberjack.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sprites\Mountain.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sprites\Quarry.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Sprites\rsz_cop1.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Sprites\TreeLineLeft.png" />
-    <Content Include="Sprites\TreeLineRight.png" />
-    <Content Include="Sprites\UserInterface.png" />
+    <Content Include="Sprites\TreeLineLeft.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sprites\TreeLineRight.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sprites\UserInterface.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
