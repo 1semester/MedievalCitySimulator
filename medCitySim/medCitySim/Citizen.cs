@@ -10,47 +10,12 @@ namespace MedCitySim
 {
     class Citizen :GameObject
     {
-       // public string Name { get; set; }
-       // public int Age { get; set; }
-       //public bool Gender { get; set; }
-       // public bool morning = false;
-
-       // private enum assignment
-       // {
-       //     lumberJack,
-       //     priest,
-       //     smith,
-       //     farmer,
-       //     civilWatch,
-       //     miner,
-       //     unassigned
-       // };
-
-       // public int Hunger { get; set; }
-
-       // Citizen(string imagePath, Vector2D startPosition, string Name, bool Gender, Enum assignment)
-       // {
-       //     Hunger = 0;
-       //     Age = 0;
-       // }
-
-       // public void RiskOfDeath(int Age, int Hunger)
-       // {
-
-       //     if (morning=true)
-       //     {
-       //      float deathChance = Age*(1+Hunger/10);
-       //       float noDeathChance= 100 - deathChance;
-       //         deathChance;
-       //         noDeathChance;
-       //         Random rnd= new Random();
-       //     }
-       // }
+      
         public string Name { get; set; }
         public int Age { get; set; }
         public bool Gender { get; set; }
-        public bool morning = false;
-        private Vector2D currentnode;
+        public int morning = 0;
+       // private Vector2D currentnode;
         Random rnd = new Random();
         private Assignment currentAssignment;
         private Vector2D currentWaypoint;
@@ -178,7 +143,7 @@ namespace MedCitySim
 
         public void RiskOfDeath(int Age, int Hunger)
         {
-            if (morning = true)
+            if (morning==500)
             {
                 float deathChance = Age*(1 + Hunger/10); //  Age*hunger/100??
 
@@ -192,6 +157,7 @@ namespace MedCitySim
                 {
                     GameWorld.ToRemove.Add(this);
                 }
+                morning = 0;
             }
         }
 
@@ -201,16 +167,26 @@ namespace MedCitySim
             float distanceFromWaypoint = deltaPosition.Magnitude;
             if (distanceFromWaypoint < 10 )
             {
-                //currentWaypoint = new Vector2D(500, 500);
+               
                
                 FindWaypoint();
             }
+            morning++;
+          //  Age++;
+            RiskOfDeath(Age,Hunger);
+           deltaPosition.Normalize();
+            Vector2D newPosition = new Vector2D(10,10);
+            newPosition.X = Position.X + 1/currentFPS*(deltaPosition.X*100);
+            newPosition.Y = Position.Y + 1/currentFPS*(deltaPosition.Y*100);
+
+            if (!GameWorld.positionOcuppied(new Vector2D(newPosition.X, newPosition.Y)))
+                Position = newPosition;
+            else if (!GameWorld.positionOcuppied(new Vector2D(newPosition.X, Position.Y)))
+                Position.X = Position.X + 1 / currentFPS * (100);
+            else if (!GameWorld.positionOcuppied(new Vector2D(Position.X, newPosition.Y)))
+                Position.Y = Position.Y + 1 / currentFPS * (100);
            
 
-            deltaPosition.Normalize();
-
-            Position.X += 1/currentFPS*(deltaPosition.X*100);
-            Position.Y += 1/currentFPS*(deltaPosition.Y*100);
 
             base.Update(currentFPS);
         }

@@ -153,7 +153,7 @@ namespace MedCitySim
         {
             //Font e = new Font("Ressourcer", 16);
             //dc.DrawString(string.Format("Wood: {0}  Iron: {1}  Stone: {2}", Lumber, Iron, Stone), e, Brushes.Black, 200, 0);
-            objs.Add(new Background(@"Sprites\Background.png", (new Vector2D(0, 0))));
+            objs.Add(new Background(@"Sprites\Background.png", (new Vector2D(0, 30))));
             objs.Add(new Button(@"Sprites\Buildsort.png", (new Vector2D(20, 20))));
         
             
@@ -220,6 +220,31 @@ namespace MedCitySim
         {
             Font f = new Font("Yellow", 16);
             dc.DrawString(string.Format(s), f, Brushes.Red, GameWorld.DisplayRectangle.Width / 2, GameWorld.DisplayRectangle.Height / 2);
+        }
+
+        public static bool positionOcuppied(Vector2D position)
+        {
+            Rectangle rect = new Rectangle();
+            rect.X = Convert.ToInt32(position.X);
+            rect.Y = Convert.ToInt32(position.Y) ;
+
+           rect.Width = rect.Height = 1;
+            
+            
+            foreach (GameObject go in objs)
+            {
+                if (go is Background)
+                    continue;
+                if (go is Citizen)
+                    continue;
+                if (go.CollisionBox.IntersectsWith(rect))
+                {
+                     return true;
+                }
+                    
+               
+            }
+            return false;
         }
     }
 }
