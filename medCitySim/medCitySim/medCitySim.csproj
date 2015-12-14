@@ -105,6 +105,7 @@
     <Content Include="Sprites\Background.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Sprites\Blacksmith.png" />
     <Content Include="Sprites\Buildings\Blacksmith.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -134,19 +135,19 @@
     </Content>
     <Content Include="Sprites\Buildings\Quarry.png">
     </Content>
-    <Content Include="Sprites\Citizen lille.png" />
-    <Content Include="Sprites\food.png" />
-    <Content Include="Sprites\Hammer lille.png" />
-    <Content Include="Sprites\Hus.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Sprites\Konisk kolbe lille.png" />
+    <Content Include="Sprites\Church.png" />
+    <Content Include="Sprites\Farm.png" />
+    <Content Include="Sprites\HammerLille.png" />
+    <Content Include="Sprites\House.png" />
+    <Content Include="Sprites\Lumberjack.png" />
+    <Content Include="Sprites\Mountain.png" />
+    <Content Include="Sprites\Quarry.png" />
     <Content Include="Sprites\rsz_cop1.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Sprites\Stone lille.png" />
-    <Content Include="Sprites\User Interface.png" />
-    <Content Include="Sprites\wood lille.png" />
+    <Content Include="Sprites\TreeLineLeft.png" />
+    <Content Include="Sprites\TreeLineRight.png" />
+    <Content Include="Sprites\UserInterface.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
