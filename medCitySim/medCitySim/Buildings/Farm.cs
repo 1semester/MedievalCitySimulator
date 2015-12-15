@@ -12,13 +12,28 @@ namespace MedCitySim
         private Graphics dc;
         private bool canBuild = true;
         private int speed;
+        private int farmers;
+        
         public Farm(string imagePath, Vector2D startposition, int speed) : base(imagePath, startposition)
         {
             this.speed = speed;
         }
         protected override void Work()
         {
-            base.Work();
+                farmers = 0;
+                foreach (GameObject go in GameWorld.objs)
+                {
+                if (go == Citizen)
+                { 
+                    if (go.currentAssignment == Citizen.Assignment.farmer)
+                    {
+                        farmers++;
+                        GameWorld.Food += 1;
+                    }
+                }
+            }
+
+            
         }
         protected override void OnCollision(GameObject other)
         {
@@ -64,7 +79,7 @@ namespace MedCitySim
                     Cost();
                 }
             }
-
+            Work();
             base.Update(currentFPS);
         }
     }

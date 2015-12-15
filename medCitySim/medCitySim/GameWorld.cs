@@ -29,8 +29,9 @@ namespace MedCitySim
         private static int stone = 20;
         private static int food = 5;
         private string cantBuild = "You cant build there!";
-       
-
+        private static Timer timeOfDay;
+        DateTime timeOfDay2 = new DateTime();
+        
         internal static List<GameObject> ToAdd
         {
             get
@@ -137,8 +138,18 @@ namespace MedCitySim
             }
         }
 
+        public static Timer TimeOfDay
+        {
+            get
+            {
+                return timeOfDay;
+            }
 
-
+            set
+            {
+                timeOfDay = value;
+            }
+        }
 
         #endregion
         public GameWorld(Graphics dc, Rectangle displayRectangle)
@@ -151,18 +162,16 @@ namespace MedCitySim
         }
         public void SetupWorld()
         {
+            //TimeOfDay.Start();
             //Font e = new Font("Ressourcer", 16);
-            //dc.DrawString(string.Format("Wood: {0}  Iron: {1}  Stone: {2}", Lumber, Iron, Stone), e, Brushes.Black, 200, 0);
+            //dc.DrawString(string.Format("Wood: {0}  Iron: {1}  Stone: {2}  Food: {3}", Lumber, Iron, Stone, Food), e, Brushes.Black, 200, 0);
             objs.Add(new Background(@"Sprites\Background.png", (new Vector2D(0, 30))));
             objs.Add(new Button(@"Sprites\Buildsort.png", (new Vector2D(20, 20))));
-        
+            objs.Add(new Farm(@"Sprites\Buildings\farm.png", new Vector2D(100, 100), 0));
             
             
-        
-           
             
-            
-            Citizen lars = new Citizen(@"Sprites\rsz_cop1.png", new Vector2D(400, 400), "lars", true, Citizen.Assignment.unassigned);
+            Citizen lars = new Citizen(@"Sprites\rsz_cop1.png", new Vector2D(400, 400), "lars", true, Citizen.Assignment.farmer);
             objs.Add(lars);
 
             //endTime skal kaldes sidst!
@@ -171,6 +180,7 @@ namespace MedCitySim
         public void GameLoop()
         {
 
+            //timeOfDay2.Second.
             foreach (GameObject go in toRemove)
             {
                 objs.Remove(go);
@@ -204,7 +214,7 @@ namespace MedCitySim
             dc.DrawString(string.Format("FPS: {0}", currentFPS), f, Brushes.Black, 0, 0);
 #endif
             Font e = new Font("Ressourcer", 16);
-            dc.DrawString(string.Format("Wood: {0}  Iron: {1}  Stone: {2}", Lumber, Iron, Stone), e, Brushes.Black, 200, 0);
+            dc.DrawString(string.Format("Wood: {0}  Iron: {1}  Stone: {2}  Food: {3}", Lumber, Iron, Stone, Food), e, Brushes.Black, 200, 0);
 
             foreach (GameObject go in objs)
             {

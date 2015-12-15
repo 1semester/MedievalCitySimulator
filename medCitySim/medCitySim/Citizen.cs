@@ -17,11 +17,11 @@ namespace MedCitySim
         public int morning = 0;
        // private Vector2D currentnode;
         Random rnd = new Random();
-        private Assignment currentAssignment;
+        public Assignment currentAssignment;
         private Vector2D currentWaypoint;
       
 
-        internal enum Assignment
+        public enum Assignment
         {
             lumberJack,
             priest,
