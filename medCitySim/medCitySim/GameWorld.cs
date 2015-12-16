@@ -198,7 +198,7 @@ namespace MedCitySim
             
             
             
-            Citizen lars = new Citizen(@"Sprites\rsz_cop1.png", new Vector2D(400, 400), "lars", true, Citizen.Assignment.unassigned);
+            Citizen lars = new Citizen(@"Sprites\rsz_cop1.png", new Vector2D(400, 400), "lars", true, Citizen.Assignment.farmer);
             objs.Add(lars);
 
             //endTime skal kaldes sidst!
@@ -281,6 +281,8 @@ namespace MedCitySim
                 if (go is Background)
                     continue;
                 if (go is Citizen)
+                    continue;
+                if (go is UserInterface)
                     continue;
                 if (go.CollisionBox.IntersectsWith(rect))
                 {

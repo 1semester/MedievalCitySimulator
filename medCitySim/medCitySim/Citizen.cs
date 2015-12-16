@@ -58,7 +58,7 @@ namespace MedCitySim
                        
                         return;
                     }
-                    if (currentWaypoint==Lumbermill.Position )
+                    if (Lumbermill != null && currentWaypoint == Lumbermill.Position )
                     {
                         currentWaypoint = new Vector2D(500, 500);
 
@@ -79,7 +79,7 @@ namespace MedCitySim
 
                         return;
                     }
-                    if (currentWaypoint == church.Position)
+                    if (church != null && currentWaypoint == church.Position)
                     {
                         currentWaypoint = new Vector2D(500, 500);
 
@@ -100,7 +100,7 @@ namespace MedCitySim
 
                         return;
                     }
-                    if (currentWaypoint == farm.Position)
+                    if (farm != null && currentWaypoint == farm.Position)
                     {
                         currentWaypoint = new Vector2D(500, 500);
 
@@ -120,7 +120,7 @@ namespace MedCitySim
 
                         return;
                     }
-                    if (currentWaypoint == quarry.Position)
+                    if (quarry != null && currentWaypoint == quarry.Position)
                     {
                         currentWaypoint = new Vector2D(500, 500);
 
