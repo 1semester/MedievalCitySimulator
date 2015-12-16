@@ -240,13 +240,21 @@ namespace MedCitySim
             Font f = new Font("Yellow", 16);
             dc.DrawString(string.Format("FPS: {0}", currentFPS), f, Brushes.Black, 0, 0);
 #endif
-            Font e = new Font("Ressourcer", 16);
-            dc.DrawString(string.Format("Wood: {0}  Iron: {1}  Stone: {2}  Food: {3} Citizens: {4}", Lumber, Iron, Stone, Food, citizenPop), e, Brushes.Black, 200, 0);
 
             foreach (GameObject go in objs)
             {
                 go.Draw(dc);
             }
+            Font e = new Font("Ressourcer", 16);
+            dc.DrawString(string.Format("{0}", Food), e, Brushes.Black, 36, 7);
+            dc.DrawString(string.Format("{0}", Lumber), e, Brushes.Black, 142, 7);
+            dc.DrawString(string.Format("{0}", Stone), e, Brushes.Black, 252, 7);
+            dc.DrawString(string.Format("{0}", Iron), e, Brushes.Black, 357, 7);
+            dc.DrawString(string.Format("{0}", citizenPop), e, Brushes.Black, 1180, 7);
+
+
+
+
             backBuffer.Render();
         }
         private void UpdateAnimations(float currentFPS)

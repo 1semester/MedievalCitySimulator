@@ -20,11 +20,11 @@ namespace MedCitySim
         }
         protected override void Work()
         {
-                farmers = 0;
-                foreach (GameObject go in GameWorld.objs)
-                {
+            farmers = 0;
+            foreach (GameObject go in GameWorld.objs)
+            {
                 if (go == Citizen)
-                { 
+                {
                     if (go.currentAssignment == Citizen.Assignment.farmer)
                     {
                         farmers++;
@@ -33,7 +33,7 @@ namespace MedCitySim
                 }
             }
 
-            
+
         }
         protected override void OnCollision(GameObject other)
         {
