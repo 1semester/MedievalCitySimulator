@@ -21,7 +21,7 @@ namespace MedCitySim
         private Vector2D currentWaypoint;
       
 
-        internal enum Assignment
+        public enum Assignment
         {
             lumberJack,
             priest,

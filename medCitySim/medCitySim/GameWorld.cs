@@ -14,7 +14,8 @@ namespace MedCitySim
 
         //commit comment
         private Graphics dc;
-        
+        private static int citizenPop;
+        private static int citizenCap = 4;
         //private List<GameObject> objs = new List<GameObject>();
         public static List<GameObject> objs = new List<GameObject>();
         private static List<GameObject> toAdd = new List<GameObject>();
@@ -29,7 +30,9 @@ namespace MedCitySim
         private static int stone = 20;
         private static int food = 5;
         private string cantBuild = "You cant build there!";
-       
+        private static Timer timeOfDay;
+        DateTime timeOfDay2 = new DateTime();
+        #region Get and Sets.
 
         internal static List<GameObject> ToAdd
         {
@@ -58,7 +61,6 @@ namespace MedCitySim
         }
         //internal static List<GameObject> Objs { get; private set; }
         public static List<GameObject> Objs { get; set; }
-        #region Ressources
         internal static int Lumber
         {
             get
@@ -137,8 +139,44 @@ namespace MedCitySim
             }
         }
 
+        public static Timer TimeOfDay
+        {
+            get
+            {
+                return timeOfDay;
+            }
 
+            set
+            {
+                timeOfDay = value;
+            }
+        }
 
+        internal static int CitizenPop
+        {
+            get
+            {
+                return citizenPop;
+            }
+
+            set
+            {
+                citizenPop = value;
+            }
+        }
+
+        internal static int CitizenCap
+        {
+            get
+            {
+                return citizenCap;
+            }
+
+            set
+            {
+                citizenCap = value;
+            }
+        }
 
         #endregion
         public GameWorld(Graphics dc, Rectangle displayRectangle)
@@ -151,15 +189,13 @@ namespace MedCitySim
         }
         public void SetupWorld()
         {
+            //TimeOfDay.Start();
             //Font e = new Font("Ressourcer", 16);
-            //dc.DrawString(string.Format("Wood: {0}  Iron: {1}  Stone: {2}", Lumber, Iron, Stone), e, Brushes.Black, 200, 0);
+            //dc.DrawString(string.Format("Wood: {0}  Iron: {1}  Stone: {2}  Food: {3}", Lumber, Iron, Stone, Food), e, Brushes.Black, 200, 0);
+            objs.Add(new UserInterface(@"Sprites\UserInterface.png", (new Vector2D(0, 0))));
             objs.Add(new Background(@"Sprites\Background.png", (new Vector2D(0, 30))));
-            objs.Add(new Button(@"Sprites\Buildsort.png", (new Vector2D(20, 20))));
-        
+            objs.Add(new Button(@"Sprites\Buildsort.png", (new Vector2D(992,562))));
             
-            
-        
-           
             
             
             Citizen lars = new Citizen(@"Sprites\rsz_cop1.png", new Vector2D(400, 400), "lars", true, Citizen.Assignment.unassigned);
@@ -171,6 +207,7 @@ namespace MedCitySim
         public void GameLoop()
         {
 
+            //timeOfDay2.Second.
             foreach (GameObject go in toRemove)
             {
                 objs.Remove(go);
@@ -204,7 +241,7 @@ namespace MedCitySim
             dc.DrawString(string.Format("FPS: {0}", currentFPS), f, Brushes.Black, 0, 0);
 #endif
             Font e = new Font("Ressourcer", 16);
-            dc.DrawString(string.Format("Wood: {0}  Iron: {1}  Stone: {2}", Lumber, Iron, Stone), e, Brushes.Black, 200, 0);
+            dc.DrawString(string.Format("Wood: {0}  Iron: {1}  Stone: {2}  Food: {3} Citizens: {4}", Lumber, Iron, Stone, Food, citizenPop), e, Brushes.Black, 200, 0);
 
             foreach (GameObject go in objs)
             {
