@@ -63,6 +63,7 @@ namespace MedCitySim
                 {
                     speed = 0;
                     Cost();
+                    GameWorld.CitizenCap += 4;
                 }
             }
             base.Update(currentFPS);
