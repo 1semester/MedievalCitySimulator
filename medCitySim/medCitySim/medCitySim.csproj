@@ -111,7 +111,9 @@
     <Content Include="Sprites\Buildings\Blacksmith.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Sprites\Buildings\BuildMenu.png" />
+    <Content Include="Sprites\Buildings\BuildMenu.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Sprites\CitizenLille.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

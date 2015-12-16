@@ -13,6 +13,8 @@ namespace MedCitySim
         private bool canBuild = true;
         private int speed;
         private int farmers;
+        private float workInterval = 5f;
+        private float workCooldown;
         
         public Farm(string imagePath, Vector2D startposition, int speed) : base(imagePath, startposition)
         {
@@ -20,18 +22,20 @@ namespace MedCitySim
         }
         protected override void Work()
         {
-                farmers = 0;
-                foreach (GameObject go in GameWorld.objs)
+            farmers = 0;
+            foreach (GameObject go in GameWorld.objs)
+            {
+                var citizen = go as Citizen;    
+                
+                
+                if (citizen != null && citizen.currentAssignment == Citizen.Assignment.farmer)
                 {
-                if (go == Citizen)
-                { 
-                    if (go.currentAssignment == Citizen.Assignment.farmer)
-                    {
-                        farmers++;
-                        GameWorld.Food += 1;
-                    }
+                    farmers++;
+                        
                 }
             }
+            GameWorld.Food += farmers;
+            
 
             
         }
@@ -77,9 +81,23 @@ namespace MedCitySim
                 {
                     speed = 0;
                     Cost();
+                
                 }
             }
-            Work();
+            if (speed == 0)
+            {
+                float deltaTime = 1f / currentFPS;
+
+                workCooldown -= deltaTime;
+
+                if (workCooldown <= 0)
+                {
+                    Work();
+                    workCooldown += workInterval;
+                }
+            }
+
+
             base.Update(currentFPS);
         }
     }

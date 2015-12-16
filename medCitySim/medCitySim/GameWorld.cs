@@ -167,7 +167,7 @@ namespace MedCitySim
             //dc.DrawString(string.Format("Wood: {0}  Iron: {1}  Stone: {2}  Food: {3}", Lumber, Iron, Stone, Food), e, Brushes.Black, 200, 0);
             objs.Add(new Background(@"Sprites\Background.png", (new Vector2D(0, 30))));
             objs.Add(new Button(@"Sprites\Buildsort.png", (new Vector2D(20, 20))));
-            objs.Add(new Farm(@"Sprites\Buildings\farm.png", new Vector2D(100, 100), 0));
+            objs.Add(new Farm(@"Sprites\Buildings\farm.png", new Vector2D(100, 100), 50));
             
             
             
