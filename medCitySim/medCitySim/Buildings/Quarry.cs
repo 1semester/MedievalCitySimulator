@@ -12,13 +12,29 @@ namespace MedCitySim
         private Graphics dc;
         private bool canBuild = true;
         private int speed;
+        private int masons;
+        private float workInterval = 5f;
+        private float workCooldown;
         public Quarry(string imagePath, Vector2D startposition, int speed) : base (imagePath, startposition)
         {
             this.speed = speed;
         }
         protected override void Work()
         {
-            base.Work();
+            masons = 0;
+            foreach (GameObject go in GameWorld.objs)
+            {
+                var citizen = go as Citizen;
+
+
+                if (citizen != null && citizen.currentAssignment == Citizen.Assignment.mason)
+                {
+                    masons++;
+
+                }
+            }
+            GameWorld.Stone += 1 + masons;
+
         }
         protected override void OnCollision(GameObject other)
         {
@@ -62,6 +78,18 @@ namespace MedCitySim
                 {
                     speed = 0;
                     Cost();
+                }
+            }
+            if (speed == 0)
+            {
+                float deltaTime = 1f / currentFPS;
+
+                workCooldown -= deltaTime;
+
+                if (workCooldown <= 0)
+                {
+                    Work();
+                    workCooldown += workInterval;
                 }
             }
 

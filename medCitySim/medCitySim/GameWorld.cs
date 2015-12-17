@@ -198,7 +198,7 @@ namespace MedCitySim
             
             
             
-            Citizen lars = new Citizen(@"Sprites\rsz_cop1.png", new Vector2D(400, 400), "lars", true, Citizen.Assignment.farmer);
+            Citizen lars = new Citizen(@"Sprites\rsz_cop1.png", new Vector2D(400, 400), "lars", true, Citizen.Assignment.civilWatch);
             objs.Add(lars);
 
             //endTime skal kaldes sidst!
