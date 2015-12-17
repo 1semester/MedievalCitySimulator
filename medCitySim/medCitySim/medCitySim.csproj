@@ -110,22 +110,18 @@
     <Content Include="Sprites\Buildings\Blacksmith.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Sprites\Buildings\BuildMenu.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Content Include="Sprites\Buildings\BuildMenu.png" />
+    <Content Include="Sprites\Buildings\IronMineLille.png" />
+    <Content Include="Sprites\Buildings\WatchTowerLille.png" />
+    <Content Include="Sprites\Buildings\WellLille.png" />
+    <Content Include="Sprites\Button.png" />
     <Content Include="Sprites\CitizenLille.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Sprites\Research.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Sprites\Buildings\Well.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Sprites\Buildsort.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Sprites\Buildings\CivilWatch.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Sprites\Buildings\Church.png">
