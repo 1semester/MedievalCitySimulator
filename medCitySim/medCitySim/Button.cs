@@ -19,14 +19,10 @@ namespace MedCitySim
                 GameWorld.ToAdd.Add(new BuildMenu(@"Sprites\Buildings\BuildMenu.png", new Vector2D(992, 20)));
                 GameWorld.ToRemove.Add(this);
             }
-            if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.R))
+            if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.C))
             {
-                if (GameWorld.Food >= 1 && GameWorld.CitizenPop < GameWorld.CitizenCap)
-                {
-                    GameWorld.ToAdd.Add(new Citizen(@"Sprites\rsz_cop1.png", new Vector2D(400, 400), "lars", true, Citizen.Assignment.unassigned));
-                    GameWorld.Food -= 1;
-                    GameWorld.CitizenPop += 1;
-                }
+                GameWorld.ToAdd.Add(new CitizenMenu(@"Sprites\rsz_cop1.png", new Vector2D(992, 600)));
+                GameWorld.ToRemove.Add(this);
             }
             if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.S))
             {
