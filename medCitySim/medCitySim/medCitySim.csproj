@@ -126,6 +126,10 @@
     <Content Include="Sprites\Button.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Sprites\Buildings\IronMineLille.png" />
+    <Content Include="Sprites\Buildings\WatchTowerLille.png" />
+    <Content Include="Sprites\Buildings\WellLille.png" />
+    <Content Include="Sprites\Button.png" />
     <Content Include="Sprites\CitizenLille.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
