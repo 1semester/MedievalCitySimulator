@@ -24,6 +24,12 @@ namespace MedCitySim
                     GameWorld.ToAdd.Add(new Button(@"Sprites\Buildsort.png", new Vector2D(992, 562)));
                 }
             }
+            if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.W))
+            {
+               // GameWorld.ToAdd.Add(new Citizen(@"Sprites\rsz_cop1.png", new Vector2D(700, 700), "lars", true, Citizen.Assignment.civilWatch));
+                GameWorld.ToAdd.Add(new Raider(@"Sprites\rsz_cop1.png", new Vector2D(100, 100)));
+                //GameWorld.ToRemove.Add(this);
+            }
             base.Update(currentFPS);
         }
     }

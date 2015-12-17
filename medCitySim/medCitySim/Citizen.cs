@@ -191,5 +191,21 @@ namespace MedCitySim
 
             base.Update(currentFPS);
         }
+
+        protected override void OnCollision(GameObject other)
+        {
+            foreach (GameObject go in GameWorld.objs)
+            {
+                var raider = go as Raider;
+
+
+                if (raider  != null && currentAssignment != Citizen.Assignment.civilWatch)
+                {
+                    GameWorld.ToRemove.Add(this);
+
+                }
+            }
+            base.OnCollision(other);
+        }
     }
 }
