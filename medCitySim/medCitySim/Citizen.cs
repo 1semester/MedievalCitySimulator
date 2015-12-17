@@ -29,6 +29,7 @@ namespace MedCitySim
             farmer,
             civilWatch,
             miner,
+            mason,
             unassigned
         };
 
@@ -175,16 +176,16 @@ namespace MedCitySim
           //  Age++;
             RiskOfDeath(Age,Hunger);
            deltaPosition.Normalize();
-            Vector2D newPosition = new Vector2D(10,10);
-            newPosition.X = Position.X + 1/currentFPS*(deltaPosition.X*100);
-            newPosition.Y = Position.Y + 1/currentFPS*(deltaPosition.Y*100);
+            //Vector2D newPosition = new Vector2D(10,10);
+            Position.X += 1/currentFPS*(deltaPosition.X*100);
+          Position.Y += 1/currentFPS*(deltaPosition.Y*100);
 
-            if (!GameWorld.positionOcuppied(new Vector2D(newPosition.X, newPosition.Y)))
-                Position = newPosition;
-            else if (!GameWorld.positionOcuppied(new Vector2D(newPosition.X, Position.Y)))
-                Position.X = Position.X + 1 / currentFPS * (100);
-            else if (!GameWorld.positionOcuppied(new Vector2D(Position.X, newPosition.Y)))
-                Position.Y = Position.Y + 1 / currentFPS * (100);
+            //if (!GameWorld.positionOcuppied(new Vector2D(newPosition.X, newPosition.Y)))
+            //    Position = newPosition;
+            //else if (!GameWorld.positionOcuppied(new Vector2D(newPosition.X, Position.Y)))
+            //    Position.X = Position.X + 1 / currentFPS * (100);
+            //else if (!GameWorld.positionOcuppied(new Vector2D(Position.X, newPosition.Y)))
+            //    Position.Y = Position.Y + 1 / currentFPS * (100);
            
 
 

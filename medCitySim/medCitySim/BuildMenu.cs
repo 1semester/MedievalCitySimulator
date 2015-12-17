@@ -90,6 +90,15 @@ namespace MedCitySim
                     GameWorld.ToAdd.Add(new Button(@"Sprites\Buildsort.png", new Vector2D(992, 562)));
                 }
             }
+            if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.M))
+            {
+                if (GameWorld.Lumber >= 5 && GameWorld.Stone >= 5)
+                {
+                    GameWorld.ToAdd.Add(new Mine(@"Sprites\Buildings\Blacksmith.png", (new Vector2D(200, 200)), 300));
+                    GameWorld.ToRemove.Add(this);
+                    GameWorld.ToAdd.Add(new Button(@"Sprites\Buildsort.png", new Vector2D(992, 562)));
+                }
+            }
 
             if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.Escape))
             {

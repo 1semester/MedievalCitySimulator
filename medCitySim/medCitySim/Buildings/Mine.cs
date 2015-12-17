@@ -5,37 +5,35 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 
-
 namespace MedCitySim
 {
-    class Lumbermill : Building
+    class Mine : Building
     {
         private Graphics dc;
         private bool canBuild = true;
         private int speed;
-        private int lumberjacks;
+        private int miners;
         private float workInterval = 5f;
         private float workCooldown;
-
-        public Lumbermill(string imagePath, Vector2D startposition, int speed) : base(imagePath,startposition)
+        public Mine(string imagePath, Vector2D startposition, int speed) : base (imagePath, startposition)
         {
             this.speed = speed;
         }
         protected override void Work()
         {
-            lumberjacks = 0;
+            miners = 0;
             foreach (GameObject go in GameWorld.objs)
             {
                 var citizen = go as Citizen;
 
 
-                if (citizen != null && citizen.currentAssignment == Citizen.Assignment.lumberJack)
+                if (citizen != null && citizen.currentAssignment == Citizen.Assignment.miner)
                 {
-                    lumberjacks++;
+                    miners++;
 
                 }
             }
-            GameWorld.Food += lumberjacks;
+            GameWorld.Iron += 1 + miners;
 
         }
         protected override void OnCollision(GameObject other)
