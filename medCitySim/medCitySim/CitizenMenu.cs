@@ -21,7 +21,7 @@ namespace MedCitySim
                     GameWorld.ToAdd.Add(new Citizen(@"Sprites\rsz_cop1.png", new Vector2D(400, 400), "lars", true, Citizen.Assignment.unassigned));
                     GameWorld.CitizenPop += 1;
                     GameWorld.ToRemove.Add(this);
-                    GameWorld.ToAdd.Add(new Button(@"Sprites\Buildsort.png", new Vector2D(992, 562)));
+                    GameWorld.ToAdd.Add(new Button(@"Sprites\Button.png", new Vector2D(999, 614)));
                 }
             }
             base.Update(currentFPS);
