@@ -246,11 +246,11 @@ namespace MedCitySim
                 go.Draw(dc);
             }
             Font e = new Font("Ressourcer", 16);
-            dc.DrawString(string.Format("{0}", Food), e, Brushes.Black, 36, 7);
-            dc.DrawString(string.Format("{0}", Lumber), e, Brushes.Black, 142, 7);
-            dc.DrawString(string.Format("{0}", Stone), e, Brushes.Black, 252, 7);
-            dc.DrawString(string.Format("{0}", Iron), e, Brushes.Black, 357, 7);
-            dc.DrawString(string.Format("{0}", citizenPop), e, Brushes.Black, 1180, 7);
+            dc.DrawString(string.Format("{0}", Food), e, Brushes.Yellow, 36, 7);
+            dc.DrawString(string.Format("{0}", Lumber), e, Brushes.Yellow, 142, 7);
+            dc.DrawString(string.Format("{0}", Stone), e, Brushes.Yellow, 252, 7);
+            dc.DrawString(string.Format("{0}", Iron), e, Brushes.Yellow, 357, 7);
+            dc.DrawString(string.Format("{0}/{1}", citizenPop, citizenCap), e, Brushes.Yellow, 1180, 7);
 
 
 

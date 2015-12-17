@@ -41,7 +41,7 @@ namespace MedCitySim
         {
 
         }
-        public void Update(float fps)
+        public override void Update(float fps)
         {
 
         }

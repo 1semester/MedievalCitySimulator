@@ -24,7 +24,6 @@ namespace MedCitySim
                     GameWorld.ToRemove.Add(this);
                     GameWorld.ToAdd.Add(new Button(@"Sprites\Buildsort.png", new Vector2D(992, 562)));
                 }
-                    
             }
             if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.C))
             {
@@ -54,7 +53,7 @@ namespace MedCitySim
                     GameWorld.ToAdd.Add(new Button(@"Sprites\Buildsort.png", new Vector2D(992, 562)));
                 }
             }
-            if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.S))
+            if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.T))
             {
                 if (GameWorld.Lumber >= 5 && GameWorld.Stone >= 5)
                 {
@@ -81,7 +80,7 @@ namespace MedCitySim
                     GameWorld.ToAdd.Add(new Button(@"Sprites\Buildsort.png", new Vector2D(992, 562)));
                 }
             }
-            if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.B))
+            if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.O))
             {
                 if (GameWorld.Lumber >= 5 && GameWorld.Stone >= 5)
                 {
@@ -89,13 +88,13 @@ namespace MedCitySim
                     GameWorld.ToRemove.Add(this);
                     GameWorld.ToAdd.Add(new Button(@"Sprites\Buildsort.png", new Vector2D(992, 562)));
                 }
+
             }
 
             if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.Escape))
             {
                 GameWorld.ToRemove.Add(this);
                 GameWorld.ToAdd.Add(new Button(@"Sprites\Buildsort.png", new Vector2D(992, 562)));
-
             }
             base.Update(currentFPS);
         }

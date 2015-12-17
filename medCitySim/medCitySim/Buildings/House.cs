@@ -66,6 +66,13 @@ namespace MedCitySim
                     GameWorld.CitizenCap += 4;
                 }
             }
+            if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.W))
+            {
+                if (speed > 0)
+                {
+                    GameWorld.ToRemove.Add(this);
+                }
+            }
             base.Update(currentFPS);
         }
     }
