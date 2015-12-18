@@ -28,7 +28,7 @@ namespace MedCitySim
             {
                 if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.R))
                 {
-                    GameWorld.ToAdd.Add(new ResearchMenu(@"Sprites\Buildings\BuildMenu.png", new Vector2D(992, 20)));
+                    GameWorld.ToAdd.Add(new ResearchMenu(@"Sprites\ResearchMenu.png", new Vector2D(992, 30)));
                     GameWorld.ToRemove.Add(this);
                 }
             }

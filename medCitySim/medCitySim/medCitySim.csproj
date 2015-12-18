@@ -194,6 +194,9 @@
     <Content Include="Sprites\Buildings\Quarry.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Sprites\ResearchMenu.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Sprites\rsz_cop1.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
