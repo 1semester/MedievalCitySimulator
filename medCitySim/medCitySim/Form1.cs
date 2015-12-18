@@ -12,29 +12,17 @@ namespace medCitySim
 {
     public partial class Form1 : Form
     {
-        Graphics dc;
-        MedCitySim.GameWorld gw;
+        
         public Form1()
         {
             InitializeComponent();
         }
-        //a comment
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            if(gw == null)
-            {
-                gw = new MedCitySim.GameWorld(dc, this.DisplayRectangle);
-            }
-            gw.GameLoop();
-        }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-            if (dc == null)
-            {
-                dc = CreateGraphics();
-            }
-            gw = new MedCitySim.GameWorld(dc, this.DisplayRectangle);
+            Game g = new Game();
+            g.Show();
+            this.Hide();
         }
     }
 }
