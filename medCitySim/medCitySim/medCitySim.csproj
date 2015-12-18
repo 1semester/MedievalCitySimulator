@@ -104,6 +104,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Sprites\Background.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -114,7 +115,22 @@
     <Content Include="Sprites\Buildings\BuildMenu.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Sprites\Buildings\Church.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sprites\Buildings\Farm.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sprites\Buildings\House.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Sprites\Buildings\IronMineLille.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sprites\Buildings\LumberMill.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sprites\Buildings\Quarry.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Sprites\Buildings\WatchTowerLille.png">
@@ -126,38 +142,7 @@
     <Content Include="Sprites\Button.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Sprites\Buildings\IronMineLille.png" />
-    <Content Include="Sprites\Buildings\WatchTowerLille.png" />
-    <Content Include="Sprites\Buildings\WellLille.png" />
-    <Content Include="Sprites\Button.png" />
-    <Content Include="Sprites\CitizenLille.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Sprites\Research.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Sprites\Buildsort.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Sprites\Buildings\Church.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Sprites\Buildings\Farm.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Sprites\HammerLille.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Sprites\Buildings\House.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Sprites\Buildings\LumberMill.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Sprites\Mountain.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Sprites\Buildings\Quarry.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Sprites\rsz_cop1.png">

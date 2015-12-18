@@ -54,11 +54,11 @@ namespace MedCitySim
                     GameWorld.ToAdd.Add(new Button(@"Sprites\Button.png", new Vector2D(999, 614)));
                 }
             }
-            if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.S))
+            if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.T))
             {
                 if (GameWorld.Lumber >= 5 && GameWorld.Stone >= 5)
                 {
-                    GameWorld.ToAdd.Add(new CivilWatch(@"Sprites\Buildings\CivilWatch.png", (new Vector2D(200, 200)), 300));
+                    GameWorld.ToAdd.Add(new CivilWatch(@"Sprites\Buildings\WatchTowerLille.png", (new Vector2D(200, 200)), 300));
                     GameWorld.ToRemove.Add(this);
                     GameWorld.ToAdd.Add(new Button(@"Sprites\Button.png", new Vector2D(999, 614)));
                 }
