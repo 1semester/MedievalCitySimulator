@@ -164,7 +164,9 @@
     <Content Include="Sprites\CitizenMenu.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Sprites\Night.png" />
+    <Content Include="Sprites\Night.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Sprites\Research.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
