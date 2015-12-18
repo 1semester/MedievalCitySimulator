@@ -26,10 +26,10 @@ namespace MedCitySim
         private float currentFPS;
         private BufferedGraphics backBuffer;
         private DateTime endTime;
-        private static int lumber = 20;
-        private static int iron = 20;
-        private static int stone = 20;
-        private static int food = 5;
+        private static int lumber = 150;
+        private static int iron = 10;
+        private static int stone = 150;
+        private static int food = 10;
         private string cantBuild = "You cant build there!";
         public static float dayInterval = 300f;
         private float dayCooldown;
@@ -199,7 +199,7 @@ namespace MedCitySim
             //dc.DrawString(string.Format("Wood: {0}  Iron: {1}  Stone: {2}  Food: {3}", Lumber, Iron, Stone, Food), e, Brushes.Black, 200, 0);
             objs.Add(new UserInterface(@"Sprites\UserInterface.png", (new Vector2D(0, 0))));
             objs.Add(new Background(@"Sprites\Background.png", (new Vector2D(0, 30))));
-            objs.Add(new Button(@"Sprites\Button.png", (new Vector2D(992,562))));
+            objs.Add(new Button(@"Sprites\Button.png", (new Vector2D(999, 614))));
 
             StartSounds();
             
