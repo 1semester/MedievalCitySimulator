@@ -61,6 +61,7 @@ namespace MedCitySim
                 {
                     speed = 0;
                     Cost();
+                    BuildSound();
                 }
             }
 

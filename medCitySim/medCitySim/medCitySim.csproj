@@ -12,6 +12,7 @@
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -22,6 +23,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -31,8 +33,12 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="irrKlang.NET4">
+      <HintPath>..\..\..\..\..\..\Downloads\irrKlang-64bit-1.5.0\bin\dotnet-4-64\irrKlang.NET4.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -49,6 +55,7 @@
     <Compile Include="Buildings\BlackSmith.cs" />
     <Compile Include="Buildings\Building.cs" />
     <Compile Include="Buildings\Church.cs" />
+    <Compile Include="Buildings\Mine.cs" />
     <Compile Include="Buildings\Quarry.cs" />
     <Compile Include="BuildMenu.cs" />
     <Compile Include="Button.cs" />
@@ -76,6 +83,7 @@
     <Compile Include="Enemies\WildAnimal.cs" />
     <Compile Include="Enemies\Witch.cs" />
     <Compile Include="Background.cs" />
+    <Compile Include="ResearchMenu.cs" />
     <Compile Include="UserInterface.cs" />
     <Compile Include="Vector2D.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -89,6 +97,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -104,6 +113,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Libraries\ikpFlac.dll" />
+    <Content Include="Libraries\ikpMP3.dll" />
+    <Content Include="Libraries\irrKlang.NET4.dll" />
     <Content Include="Sprites\Background.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

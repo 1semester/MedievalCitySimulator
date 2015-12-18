@@ -7,24 +7,38 @@ using System.Drawing;
 
 namespace MedCitySim
 {
-    class House : Building
+    class Mine : Building
     {
         private Graphics dc;
-        //private static List<Citizen> population = new List<Citizen>(4);
         private bool canBuild = true;
         private int speed;
-        public House(string imagePath, Vector2D startposition, int speed, Graphics dc) : base(imagePath, startposition)
+        private int miners;
+        public static float workInterval = 5f;
+        private float workCooldown;
+        public Mine(string imagePath, Vector2D startposition, int speed) : base (imagePath, startposition)
         {
-            this.dc = dc;
             this.speed = speed;
         }
         protected override void Work()
         {
-            base.Work();
+            miners = 0;
+            foreach (GameObject go in GameWorld.objs)
+            {
+                var citizen = go as Citizen;
+
+
+                if (citizen != null && citizen.currentAssignment == Citizen.Assignment.miner)
+                {
+                    miners++;
+
+                }
+            }
+            GameWorld.Iron += 1 + miners;
+
         }
         protected override void OnCollision(GameObject other)
         {
-            if (other is Building)
+            if (other is Building || other is UserInterface)
             {
                 canBuild = false;
             }
@@ -57,20 +71,35 @@ namespace MedCitySim
             {
                 position.Y += (1 / currentFPS) * speed;
             }
+
             if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.Space))
             {
                 if (canBuild == true && speed > 0)
                 {
                     speed = 0;
                     Cost();
-                    BuildSound();
-                    GameWorld.CitizenCap += 4;
-                    if(ResearchMenu.improvedHouse == false)
-                    {
-                        GameWorld.CitizenCap += 4;
-                    }
                 }
             }
+            if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.Escape))
+            {
+                if (speed > 0)
+                {
+                    GameWorld.ToRemove.Add(this);
+                }
+            }
+            if (speed == 0)
+            {
+                float deltaTime = 1f / currentFPS;
+
+                workCooldown -= deltaTime;
+
+                if (workCooldown <= 0)
+                {
+                    Work();
+                    workCooldown += workInterval;
+                }
+            }
+
             base.Update(currentFPS);
         }
     }

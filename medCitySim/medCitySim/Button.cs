@@ -24,9 +24,10 @@ namespace MedCitySim
                 GameWorld.ToAdd.Add(new CitizenMenu(@"Sprites\rsz_cop1.png", new Vector2D(992, 600)));
                 GameWorld.ToRemove.Add(this);
             }
-            if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.S))
+            if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.R))
             {
-
+                GameWorld.ToAdd.Add(new ResearchMenu(@"Sprites\Buildings\BuildMenu.png", new Vector2D(992, 20)));
+                GameWorld.ToRemove.Add(this);
             }
         }
         protected override void OnCollision(GameObject other)

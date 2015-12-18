@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
+using IrrKlang;
 
 namespace MedCitySim
 {
@@ -33,6 +34,20 @@ namespace MedCitySim
         private static Timer timeOfDay;
         DateTime timeOfDay2 = new DateTime();
         #region Get and Sets.
+
+        private ISoundEngine engine;
+        private void StartSounds()
+        {
+            try
+            {
+                engine = new ISoundEngine();
+                engine.Play2D("Media/Song1.mp3", true);
+                //engine.Play2D("Media/Song2.mp3", false);
+                //engine.Play2D("Media/Song3.mp3", true);
+            }
+            catch (Exception ex) { }
+        }
+
 
         internal static List<GameObject> ToAdd
         {
@@ -195,8 +210,8 @@ namespace MedCitySim
             objs.Add(new UserInterface(@"Sprites\UserInterface.png", (new Vector2D(0, 0))));
             objs.Add(new Background(@"Sprites\Background.png", (new Vector2D(0, 30))));
             objs.Add(new Button(@"Sprites\Buildsort.png", (new Vector2D(992,562))));
-            
-            
+
+            StartSounds();
             
             Citizen lars = new Citizen(@"Sprites\rsz_cop1.png", new Vector2D(400, 400), "lars", true, Citizen.Assignment.farmer);
             objs.Add(lars);
