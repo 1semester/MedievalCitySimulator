@@ -25,14 +25,7 @@ namespace MedCitySim
         protected override void Work()
         {
             lumberjacks = 0;
-            if (Citizen.witch == true)
-            {
-                workInterval = workInterval=2;
-            }
-            else if (Citizen.witch == false)
-            {
-                workInterval = workInterval*1;
-            }
+            
             foreach (GameObject go in GameWorld.objs)
             {
                 var citizen = go as Citizen;
@@ -110,6 +103,14 @@ namespace MedCitySim
                 if (workCooldown <= 0)
                 {
                     Work();
+                    if (Citizen.witch == true)
+                    {
+                        workInterval = workInterval * 2;
+                    }
+                    else if (Citizen.witch == false)
+                    {
+                        workInterval = workInterval * 1;
+                    }
                     workCooldown += workInterval;
                 }
             }
