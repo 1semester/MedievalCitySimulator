@@ -12,6 +12,8 @@ namespace MedCitySim
     {
         protected List<Citizen> citizens;
         protected ISoundEngine engine;
+        private float workInterval;
+
         public Building(string imagepPath, Vector2D position): base (imagepPath,position)
         {
         }
@@ -29,6 +31,15 @@ namespace MedCitySim
                 engine.Play2D("Media/Construction.mp3", false);
             }
             catch(Exception ex) { }
+        }
+        protected virtual float WorkTimer(float WorkInterval)
+        {
+            float WorkTimer = workInterval;
+            if (Witch.witchAlive == true)
+            {
+                WorkTimer = WorkInterval * 2;
+            }
+            return WorkTimer;
         }
     }
 }

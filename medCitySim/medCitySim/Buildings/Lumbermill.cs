@@ -14,9 +14,9 @@ namespace MedCitySim
         private bool canBuild = true;
         private int speed;
         private int lumberjacks;
-        public static float workInterval = 5f;
         private float workCooldown;
         public static bool lumberjack = false;
+        public static float workInterval = 5;
 
         public Lumbermill(string imagePath, Vector2D startposition, int speed) : base(imagePath,startposition)
         {
@@ -99,19 +99,12 @@ namespace MedCitySim
                 float deltaTime = 1f / currentFPS;
 
                 workCooldown -= deltaTime;
-
+                
                 if (workCooldown <= 0)
                 {
                     Work();
-                    if (Citizen.witch == true)
-                    {
-                        workInterval = workInterval * 2;
-                    }
-                    else if (Citizen.witch == false)
-                    {
-                        workInterval = workInterval * 1;
-                    }
-                    workCooldown += workInterval;
+                    
+                    workCooldown += WorkTimer(workInterval);
                 }
             }
 
