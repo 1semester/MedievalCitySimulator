@@ -35,7 +35,7 @@ namespace MedCitySim
                         well = false;
                         {
                             //GameWorld.ToAdd.Add(new House(@"", (new Vector2D(200, 200)), 300, dc));
-                            GameWorld.ToAdd.Add(new Button(@"Sprites\Buildsort.png", new Vector2D(992, 562)));
+                            GameWorld.ToAdd.Add(new Button(@"Sprites\Button.png", new Vector2D(992, 562)));
                         }
                     }
                 }
@@ -47,7 +47,7 @@ namespace MedCitySim
                     if (GameWorld.Lumber >= 10 && GameWorld.Stone >= 10)
                     {
                         //Water management?
-                        GameWorld.ToAdd.Add(new Button(@"Sprites\Buildsort.png", new Vector2D(992, 562)));
+                        GameWorld.ToAdd.Add(new Button(@"Sprites\Button.png", new Vector2D(992, 562)));
                     }
                 }
             }
@@ -58,7 +58,7 @@ namespace MedCitySim
                     if (GameWorld.Lumber >= 10 && GameWorld.Stone >= 10)
                     {
                         //Sewers, fights pest
-                        GameWorld.ToAdd.Add(new Button(@"Sprites\Buildsort.png", new Vector2D(992, 562)));
+                        GameWorld.ToAdd.Add(new Button(@"Sprites\Button.png", new Vector2D(992, 562)));
                     }
                 }
             }
@@ -70,7 +70,7 @@ namespace MedCitySim
                     {
                         //GameWorld.ToAdd.Add(new House(@"", (new Vector2D(200, 200)), 300, dc));
                         //change house sprite
-                        GameWorld.ToAdd.Add(new Button(@"Sprites\Buildsort.png", new Vector2D(992, 562)));
+                        GameWorld.ToAdd.Add(new Button(@"Sprites\Button.png", new Vector2D(992, 562)));
                     }
                 }
             }
@@ -84,7 +84,7 @@ namespace MedCitySim
                         //GameWorld.ToAdd.Add(new House(@"", (new Vector2D(200, 200)), 300, dc));
                         animalBreed = false;
                         GameWorld.ToRemove.Add(this);
-                        GameWorld.ToAdd.Add(new Button(@"Sprites\Buildsort.png", new Vector2D(992, 562)));
+                        GameWorld.ToAdd.Add(new Button(@"Sprites\Button.png", new Vector2D(992, 562)));
                     }
                 }
             }
@@ -98,7 +98,7 @@ namespace MedCitySim
                         //GameWorld.ToAdd.Add(new House(@"", (new Vector2D(200, 200)), 300, dc));
                         windmill = false;
                         GameWorld.ToRemove.Add(this);
-                        GameWorld.ToAdd.Add(new Button(@"Sprites\Buildsort.png", new Vector2D(992, 562)));
+                        GameWorld.ToAdd.Add(new Button(@"Sprites\Button.png", new Vector2D(992, 562)));
                     }
                 }
             }
@@ -112,7 +112,7 @@ namespace MedCitySim
                         //GameWorld.ToAdd.Add(new House(@"", (new Vector2D(200, 200)), 300, dc));
                         sawmill = false;
                         GameWorld.ToRemove.Add(this);
-                        GameWorld.ToAdd.Add(new Button(@"Sprites\Buildsort.png", new Vector2D(992, 562)));
+                        GameWorld.ToAdd.Add(new Button(@"Sprites\Button.png", new Vector2D(992, 562)));
                     }
                 }
             }
@@ -126,7 +126,7 @@ namespace MedCitySim
                         //GameWorld.ToAdd.Add(new House(@"", (new Vector2D(200, 200)), 300, dc));
                         sawmillTwo = false;
                         GameWorld.ToRemove.Add(this);
-                        GameWorld.ToAdd.Add(new Button(@"Sprites\Buildsort.png", new Vector2D(992, 562)));
+                        GameWorld.ToAdd.Add(new Button(@"Sprites\Button.png", new Vector2D(992, 562)));
                     }
                 }
             }
@@ -140,7 +140,7 @@ namespace MedCitySim
                         //GameWorld.ToAdd.Add(new House(@"", (new Vector2D(200, 200)), 300, dc));
                         mineUpgrade = false;
                         GameWorld.ToRemove.Add(this);
-                        GameWorld.ToAdd.Add(new Button(@"Sprites\Buildsort.png", new Vector2D(992, 562)));
+                        GameWorld.ToAdd.Add(new Button(@"Sprites\Button.png", new Vector2D(992, 562)));
                     }
                 }
             }
@@ -154,7 +154,7 @@ namespace MedCitySim
                         //GameWorld.ToAdd.Add(new House(@"", (new Vector2D(200, 200)), 300, dc));
                         mineUpgradeTwo = false;
                         GameWorld.ToRemove.Add(this);
-                        GameWorld.ToAdd.Add(new Button(@"Sprites\Buildsort.png", new Vector2D(992, 562)));
+                        GameWorld.ToAdd.Add(new Button(@"Sprites\Button.png", new Vector2D(992, 562)));
                     }
                 }
             }
@@ -168,7 +168,7 @@ namespace MedCitySim
                         //GameWorld.ToAdd.Add(new House(@"", (new Vector2D(200, 200)), 300, dc));
                         quarryUpgrade = false;
                         GameWorld.ToRemove.Add(this);
-                        GameWorld.ToAdd.Add(new Button(@"Sprites\Buildsort.png", new Vector2D(992, 562)));
+                        GameWorld.ToAdd.Add(new Button(@"Sprites\Button.png", new Vector2D(992, 562)));
                     }
                 }
             }
@@ -182,14 +182,14 @@ namespace MedCitySim
                         //GameWorld.ToAdd.Add(new House(@"", (new Vector2D(200, 200)), 300, dc));
                         quarryUpgradeTwo = false;
                         GameWorld.ToRemove.Add(this);
-                        GameWorld.ToAdd.Add(new Button(@"Sprites\Buildsort.png", new Vector2D(992, 562)));
+                        GameWorld.ToAdd.Add(new Button(@"Sprites\Button.png", new Vector2D(992, 562)));
                     }
                 }
             }
             if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.Escape))
             {
                 GameWorld.ToRemove.Add(this);
-                GameWorld.ToAdd.Add(new Button(@"Sprites\Buildsort.png", new Vector2D(992, 562)));
+                GameWorld.ToAdd.Add(new Button(@"Sprites\Button.png", new Vector2D(992, 562)));
 
             }
         }
