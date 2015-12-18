@@ -14,7 +14,7 @@ namespace MedCitySim
         public string Name { get; set; }
         public int Age { get; set; }
         public bool Gender { get; set; }
-        public int morning = 0;
+       
        // private Vector2D currentnode;
         Random rnd = new Random();
         public Assignment currentAssignment;
@@ -159,24 +159,70 @@ namespace MedCitySim
             this.currentWaypoint = new Vector2D(500,500);
         }
 
+        public void Eat()
+        {
+            //int citizens = GameWorld.CitizenPop;
+            //if (GameWorld.Food>=citizens*5)
+            //{
+            //    GameWorld.Food -= citizens * 5;
+            //}
+            //else if (GameWorld.Food <= citizens * 5)
+            //{
+               
+                foreach (GameObject go in GameWorld.objs)
+                {
+                    var citizen = go as Citizen;
+
+                    
+                    if (citizen != null)
+                    {
+                        if (GameWorld.Food >= 5)
+                        {
+                            
+                        GameWorld.Food -= 5;
+                        }
+                         else if (GameWorld.Food < 5)
+                        {
+                            Hunger++;
+                        }
+
+                    }
+                //}
+              
+            }
+           
+        }
 
         public void RiskOfDeath(int Age, int Hunger)
         {
-            if (morning==500)
+            if (GameWorld.dayCooldown>=300)
             {
-                float deathChance = Age*(1 + Hunger/10); //  Age*hunger/100??
+                Age++;
+                Eat();
+                //
+                foreach (GameObject go in GameWorld.objs)
+                {
+                    var citizen = go as Citizen;
+
+
+                    if (citizen != null)
+                    {
+                      
+                float deathChance = Age*(1 + Hunger/10); 
 
 
                 float output = (float) rnd.NextDouble();
-                if (output*100 > deathChance)
-                {
-                    //no death occcured
-                }
-                else if (output*100 < deathChance)
+               
+                 if (output*100 < deathChance)
                 {
                     GameWorld.ToRemove.Add(this);
                 }
-                morning = 0;
+
+                    }
+                   
+
+                }
+               
             }
         }
 
@@ -190,8 +236,8 @@ namespace MedCitySim
                
                 FindWaypoint();
             }
-            morning++;
-          //  Age++;
+          
+          
             RiskOfDeath(Age,Hunger);
            deltaPosition.Normalize();
             //Vector2D newPosition = new Vector2D(10,10);

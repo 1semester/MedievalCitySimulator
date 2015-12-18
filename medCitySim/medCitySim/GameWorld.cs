@@ -15,7 +15,7 @@ namespace MedCitySim
 
         //commit comment
         private Graphics dc;
-        private static int citizenPop;
+        public static int citizenPop;
         private static int citizenCap = 4;
         //private List<GameObject> objs = new List<GameObject>();
         public static List<GameObject> objs = new List<GameObject>();
@@ -32,9 +32,10 @@ namespace MedCitySim
         private static int food = 10;
         private string cantBuild = "You cant build there!";
         public static float dayInterval = 300f;
-        private float dayCooldown;
+        public static float dayCooldown;
         private int daycount;
         private bool nightTime = false;
+        
         #region Get and Sets.
 
         private ISoundEngine engine;
