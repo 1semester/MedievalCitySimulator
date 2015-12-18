@@ -4,20 +4,37 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+
 namespace MedCitySim
 {
-    class Church : Building
+    class Mine : Building
     {
         private Graphics dc;
         private bool canBuild = true;
         private int speed;
-        public Church(string imagePath, Vector2D startposition, int speed) : base(imagePath, startposition)
+        private int miners;
+        private float workInterval = 5f;
+        private float workCooldown;
+        public Mine(string imagePath, Vector2D startposition, int speed) : base (imagePath, startposition)
         {
             this.speed = speed;
         }
         protected override void Work()
         {
-            base.Work();
+            miners = 0;
+            foreach (GameObject go in GameWorld.objs)
+            {
+                var citizen = go as Citizen;
+
+
+                if (citizen != null && citizen.currentAssignment == Citizen.Assignment.miner)
+                {
+                    miners++;
+
+                }
+            }
+            GameWorld.Iron += 1 + miners;
+
         }
         protected override void OnCollision(GameObject other)
         {
@@ -68,6 +85,18 @@ namespace MedCitySim
                 if (speed > 0)
                 {
                     GameWorld.ToRemove.Add(this);
+                }
+            }
+            if (speed == 0)
+            {
+                float deltaTime = 1f / currentFPS;
+
+                workCooldown -= deltaTime;
+
+                if (workCooldown <= 0)
+                {
+                    Work();
+                    workCooldown += workInterval;
                 }
             }
 

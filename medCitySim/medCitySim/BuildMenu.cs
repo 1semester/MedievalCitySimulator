@@ -22,8 +22,9 @@ namespace MedCitySim
                 {
                     GameWorld.ToAdd.Add(new House(@"Sprites\Buildings\House.png", (new Vector2D(200, 200)), 300, dc));
                     GameWorld.ToRemove.Add(this);
-                    GameWorld.ToAdd.Add(new Button(@"Sprites\Buildsort.png", new Vector2D(992, 562)));
+                    GameWorld.ToAdd.Add(new Button(@"Sprites\Button.png", new Vector2D(999, 614)));
                 }
+                    
             }
             if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.C))
             {
@@ -31,7 +32,7 @@ namespace MedCitySim
                 {
                     GameWorld.ToAdd.Add(new Church(@"Sprites\Buildings\Church.png", (new Vector2D(200, 200)), 300));
                     GameWorld.ToRemove.Add(this);
-                    GameWorld.ToAdd.Add(new Button(@"Sprites\Buildsort.png", new Vector2D(992, 562)));
+                    GameWorld.ToAdd.Add(new Button(@"Sprites\Button.png", new Vector2D(999, 614)));
                 }
                 
             }
@@ -39,9 +40,9 @@ namespace MedCitySim
             {
                 if (GameWorld.Lumber >= 5 && GameWorld.Stone >= 5)
                 {
-                    GameWorld.ToAdd.Add(new Well(@"Sprites\Buildings\Well.png", (new Vector2D(200, 200)), 300));
+                    GameWorld.ToAdd.Add(new Well(@"Sprites\Buildings\WellLille.png", (new Vector2D(200, 200)), 300));
                     GameWorld.ToRemove.Add(this);
-                    GameWorld.ToAdd.Add(new Button(@"Sprites\Buildsort.png", new Vector2D(992, 562)));
+                    GameWorld.ToAdd.Add(new Button(@"Sprites\Button.png", new Vector2D(999, 614)));
                 }
             }
             if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.F))
@@ -50,16 +51,16 @@ namespace MedCitySim
                 {
                     GameWorld.ToAdd.Add(new Farm(@"Sprites\Buildings\Farm.png", (new Vector2D(200, 200)), 300));
                     GameWorld.ToRemove.Add(this);
-                    GameWorld.ToAdd.Add(new Button(@"Sprites\Buildsort.png", new Vector2D(992, 562)));
+                    GameWorld.ToAdd.Add(new Button(@"Sprites\Button.png", new Vector2D(999, 614)));
                 }
             }
-            if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.T))
+            if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.S))
             {
                 if (GameWorld.Lumber >= 5 && GameWorld.Stone >= 5)
                 {
                     GameWorld.ToAdd.Add(new CivilWatch(@"Sprites\Buildings\CivilWatch.png", (new Vector2D(200, 200)), 300));
                     GameWorld.ToRemove.Add(this);
-                    GameWorld.ToAdd.Add(new Button(@"Sprites\Buildsort.png", new Vector2D(992, 562)));
+                    GameWorld.ToAdd.Add(new Button(@"Sprites\Button.png", new Vector2D(999, 614)));
                 }
             }
             if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.L))
@@ -68,7 +69,7 @@ namespace MedCitySim
                 {
                     GameWorld.ToAdd.Add(new Lumbermill(@"Sprites\Buildings\LumberMill.png", (new Vector2D(200, 200)), 300));
                     GameWorld.ToRemove.Add(this);
-                    GameWorld.ToAdd.Add(new Button(@"Sprites\Buildsort.png", new Vector2D(992, 562)));
+                    GameWorld.ToAdd.Add(new Button(@"Sprites\Button.png", new Vector2D(999, 614)));
                 }
             }
             if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.Q))
@@ -77,24 +78,33 @@ namespace MedCitySim
                 {
                     GameWorld.ToAdd.Add(new Quarry(@"Sprites\Buildings\Quarry.png", (new Vector2D(200, 200)), 300));
                     GameWorld.ToRemove.Add(this);
-                    GameWorld.ToAdd.Add(new Button(@"Sprites\Buildsort.png", new Vector2D(992, 562)));
+                    GameWorld.ToAdd.Add(new Button(@"Sprites\Button.png", new Vector2D(999, 614)));
                 }
             }
-            if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.O))
+            if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.B))
             {
                 if (GameWorld.Lumber >= 5 && GameWorld.Stone >= 5)
                 {
                     GameWorld.ToAdd.Add(new Blacksmith(@"Sprites\Buildings\Blacksmith.png", (new Vector2D(200, 200)), 300));
                     GameWorld.ToRemove.Add(this);
-                    GameWorld.ToAdd.Add(new Button(@"Sprites\Buildsort.png", new Vector2D(992, 562)));
+                    GameWorld.ToAdd.Add(new Button(@"Sprites\Button.png", new Vector2D(999, 614)));
                 }
-
+            }
+            if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.M))
+            {
+                if (GameWorld.Lumber >= 5 && GameWorld.Stone >= 5)
+                {
+                    GameWorld.ToAdd.Add(new Mine(@"Sprites\Buildings\IronMineLille.png", (new Vector2D(200, 200)), 300));
+                    GameWorld.ToRemove.Add(this);
+                    GameWorld.ToAdd.Add(new Button(@"Sprites\Button.png", new Vector2D(999, 614)));
+                }
             }
 
             if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.Escape))
             {
                 GameWorld.ToRemove.Add(this);
-                GameWorld.ToAdd.Add(new Button(@"Sprites\Buildsort.png", new Vector2D(992, 562)));
+                GameWorld.ToAdd.Add(new Button(@"Sprites\Button.png", new Vector2D(999, 614)));
+
             }
             base.Update(currentFPS);
         }

@@ -13,17 +13,34 @@ namespace MedCitySim
         private Graphics dc;
         private bool canBuild = true;
         private int speed;
+        private int lumberjacks;
+        private float workInterval = 5f;
+        private float workCooldown;
+
         public Lumbermill(string imagePath, Vector2D startposition, int speed) : base(imagePath,startposition)
         {
             this.speed = speed;
         }
         protected override void Work()
         {
-            base.Work();
+            lumberjacks = 0;
+            foreach (GameObject go in GameWorld.objs)
+            {
+                var citizen = go as Citizen;
+
+
+                if (citizen != null && citizen.currentAssignment == Citizen.Assignment.lumberJack)
+                {
+                    lumberjacks++;
+
+                }
+            }
+            GameWorld.Food += lumberjacks;
+
         }
         protected override void OnCollision(GameObject other)
         {
-            if (other is Building)
+            if (other is Building || other is UserInterface)
             {
                 canBuild = false;
             }
@@ -63,6 +80,25 @@ namespace MedCitySim
                 {
                     speed = 0;
                     Cost();
+                }
+            }
+            if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.Escape))
+            {
+                if (speed > 0)
+                {
+                    GameWorld.ToRemove.Add(this);
+                }
+            }
+            if (speed == 0)
+            {
+                float deltaTime = 1f / currentFPS;
+
+                workCooldown -= deltaTime;
+
+                if (workCooldown <= 0)
+                {
+                    Work();
+                    workCooldown += workInterval;
                 }
             }
 
