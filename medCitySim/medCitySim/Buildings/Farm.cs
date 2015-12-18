@@ -103,7 +103,7 @@ namespace MedCitySim
                 if (workCooldown <= 0)
                 {
                     Work();
-                    workCooldown += workInterval;
+                    workCooldown += WorkTimer(workInterval);
                 }
             }
 

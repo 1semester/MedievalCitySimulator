@@ -10,10 +10,11 @@ namespace MedCitySim
     {
         private string name;
         private bool gender;
+        public static bool witchAlive = false;
         
         public Witch(string imagePath, Vector2D position, bool gender, string name) : base(imagePath, position)
         {
-            Citizen.witch = true;
+            witchAlive = true;
             this.name = name;
             this.gender = gender;
         }
