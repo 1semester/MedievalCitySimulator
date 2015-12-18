@@ -22,16 +22,13 @@ namespace MedCitySim
 
             if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.P))
             {
-                if (Church.priest == true)
+                if (GameWorld.Food >= 1 && GameWorld.CitizenPop < GameWorld.CitizenCap && Church.priest == true)
                 {
-                    if (GameWorld.Food >= 1 && GameWorld.CitizenPop < GameWorld.CitizenCap)
-                    {
-                        GameWorld.Food--;
-                        GameWorld.CitizenPop++;
-                        GameWorld.ToAdd.Add(new Citizen(@"Sprites\rsz_cop1.png", new Vector2D(400, 400), "lars", true, Citizen.Assignment.priest));
-                        GameWorld.ToRemove.Add(this);
-                        GameWorld.ToAdd.Add(new Button(@"Sprites\Button.png", new Vector2D(999, 614)));
-                    }
+                    GameWorld.Food--;
+                    GameWorld.CitizenPop++;
+                    GameWorld.ToAdd.Add(new Citizen(@"Sprites\rsz_cop1.png", new Vector2D(400, 400), "lars", true, Citizen.Assignment.priest));
+                    GameWorld.ToRemove.Add(this);
+                    GameWorld.ToAdd.Add(new Button(@"Sprites\Button.png", new Vector2D(999, 614)));
                 }
 
                 else
@@ -42,16 +39,13 @@ namespace MedCitySim
             }
             if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.F))
             {
-                if (Farm.farmer == true)
+                if (GameWorld.Food >= 1 && GameWorld.CitizenPop < GameWorld.CitizenCap && Farm.farmer == true)
                 {
-                    if (GameWorld.Food >= 1 && GameWorld.CitizenPop < GameWorld.CitizenCap)
-                    {
-                        GameWorld.Food--;
-                        GameWorld.CitizenPop++;
-                        GameWorld.ToAdd.Add(new Citizen(@"Sprites\rsz_cop1.png", new Vector2D(400, 400), "lars", true, Citizen.Assignment.farmer));
-                        GameWorld.ToRemove.Add(this);
-                        GameWorld.ToAdd.Add(new Button(@"Sprites\Button.png", new Vector2D(999, 614)));
-                    }
+                    GameWorld.Food--;
+                    GameWorld.CitizenPop++;
+                    GameWorld.ToAdd.Add(new Citizen(@"Sprites\rsz_cop1.png", new Vector2D(400, 400), "lars", true, Citizen.Assignment.farmer));
+                    GameWorld.ToRemove.Add(this);
+                    GameWorld.ToAdd.Add(new Button(@"Sprites\Button.png", new Vector2D(999, 614)));
                 }
 
                 else
@@ -59,18 +53,15 @@ namespace MedCitySim
                     CantRecruit();
                 }
             }
-            if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.T))
+            if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.O))
             {
-                if (CivilWatch.soldier == true)
+                if (GameWorld.Food >= 1 && GameWorld.CitizenPop < GameWorld.CitizenCap && CivilWatch.soldier == true)
                 {
-                    if (GameWorld.Food >= 1 && GameWorld.CitizenPop < GameWorld.CitizenCap)
-                    {
-                        GameWorld.Food--;
-                        GameWorld.CitizenPop++;
-                        GameWorld.ToAdd.Add(new Citizen(@"Sprites\rsz_cop1.png", new Vector2D(400, 400), "lars", true, Citizen.Assignment.soldier));
-                        GameWorld.ToRemove.Add(this);
-                        GameWorld.ToAdd.Add(new Button(@"Sprites\Button.png", new Vector2D(999, 614)));
-                    }
+                    GameWorld.Food--;
+                    GameWorld.CitizenPop++;
+                    GameWorld.ToAdd.Add(new Citizen(@"Sprites\rsz_cop1.png", new Vector2D(400, 400), "lars", true, Citizen.Assignment.soldier));
+                    GameWorld.ToRemove.Add(this);
+                    GameWorld.ToAdd.Add(new Button(@"Sprites\Button.png", new Vector2D(999, 614)));
                 }
 
                 else
@@ -80,16 +71,13 @@ namespace MedCitySim
             }
             if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.L))
             {
-                if (Lumbermill.lumberjack == true)
+                if (GameWorld.Food >= 1 && GameWorld.CitizenPop < GameWorld.CitizenCap && Lumbermill.lumberjack == true)
                 {
-                    if (GameWorld.Food >= 1 && GameWorld.CitizenPop < GameWorld.CitizenCap)
-                    {
-                        GameWorld.Food--;
-                        GameWorld.CitizenPop++;
-                        GameWorld.ToAdd.Add(new Citizen(@"Sprites\rsz_cop1.png", new Vector2D(400, 400), "lars", true, Citizen.Assignment.lumberJack));
-                        GameWorld.ToRemove.Add(this);
-                        GameWorld.ToAdd.Add(new Button(@"Sprites\Button.png", new Vector2D(999, 614)));
-                    }
+                    GameWorld.Food--;
+                    GameWorld.CitizenPop++;
+                    GameWorld.ToAdd.Add(new Citizen(@"Sprites\rsz_cop1.png", new Vector2D(400, 400), "lars", true, Citizen.Assignment.lumberJack));
+                    GameWorld.ToRemove.Add(this);
+                    GameWorld.ToAdd.Add(new Button(@"Sprites\Button.png", new Vector2D(999, 614)));
                 }
 
                 else
@@ -99,16 +87,13 @@ namespace MedCitySim
             }
             if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.A))
             {
-                if (Quarry.mason == true)
+                if (GameWorld.Food >= 1 && GameWorld.CitizenPop < GameWorld.CitizenCap && Quarry.mason == true)
                 {
-                    if (GameWorld.Food >= 1 && GameWorld.CitizenPop < GameWorld.CitizenCap)
-                    {
-                        GameWorld.Food--;
-                        GameWorld.CitizenPop++;
-                        GameWorld.ToAdd.Add(new Citizen(@"Sprites\rsz_cop1.png", new Vector2D(400, 400), "lars", true, Citizen.Assignment.mason));
-                        GameWorld.ToRemove.Add(this);
-                        GameWorld.ToAdd.Add(new Button(@"Sprites\Button.png", new Vector2D(999, 614)));
-                    }
+                    GameWorld.Food--;
+                    GameWorld.CitizenPop++;
+                    GameWorld.ToAdd.Add(new Citizen(@"Sprites\rsz_cop1.png", new Vector2D(400, 400), "lars", true, Citizen.Assignment.mason));
+                    GameWorld.ToRemove.Add(this);
+                    GameWorld.ToAdd.Add(new Button(@"Sprites\Button.png", new Vector2D(999, 614)));
                 }
 
                 else
@@ -118,16 +103,13 @@ namespace MedCitySim
             }
             if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.S))
             {
-                if (Blacksmith.blacksmith == true)
+                if (GameWorld.Food >= 1 && GameWorld.CitizenPop < GameWorld.CitizenCap && Blacksmith.blacksmith == true)
                 {
-                    if (GameWorld.Food >= 1 && GameWorld.CitizenPop < GameWorld.CitizenCap)
-                    {
-                        GameWorld.Food--;
-                        GameWorld.CitizenPop++;
-                        GameWorld.ToAdd.Add(new Citizen(@"Sprites\rsz_cop1.png", new Vector2D(400, 400), "lars", true, Citizen.Assignment.smith));
-                        GameWorld.ToRemove.Add(this);
-                        GameWorld.ToAdd.Add(new Button(@"Sprites\Button.png", new Vector2D(999, 614)));
-                    }
+                    GameWorld.Food--;
+                    GameWorld.CitizenPop++;
+                    GameWorld.ToAdd.Add(new Citizen(@"Sprites\rsz_cop1.png", new Vector2D(400, 400), "lars", true, Citizen.Assignment.smith));
+                    GameWorld.ToRemove.Add(this);
+                    GameWorld.ToAdd.Add(new Button(@"Sprites\Button.png", new Vector2D(999, 614)));
                 }
 
                 else
@@ -137,16 +119,13 @@ namespace MedCitySim
             }
             if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.M))
             {
-                if (Mine.miner == true)
+                if (GameWorld.Food >= 1 && GameWorld.CitizenPop < GameWorld.CitizenCap && Mine.miner == true)
                 {
-                    if (GameWorld.Food >= 1 && GameWorld.CitizenPop < GameWorld.CitizenCap)
-                    {
-                        GameWorld.Food--;
-                        GameWorld.CitizenPop++;
-                        GameWorld.ToAdd.Add(new Citizen(@"Sprites\rsz_cop1.png", new Vector2D(400, 400), "lars", true, Citizen.Assignment.miner));
-                        GameWorld.ToRemove.Add(this);
-                        GameWorld.ToAdd.Add(new Button(@"Sprites\Button.png", new Vector2D(999, 614)));
-                    }
+                    GameWorld.Food--;
+                    GameWorld.CitizenPop++;
+                    GameWorld.ToAdd.Add(new Citizen(@"Sprites\rsz_cop1.png", new Vector2D(400, 400), "lars", true, Citizen.Assignment.miner));
+                    GameWorld.ToRemove.Add(this);
+                    GameWorld.ToAdd.Add(new Button(@"Sprites\Button.png", new Vector2D(999, 614)));
                 }
                 else
                 {
