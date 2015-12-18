@@ -203,7 +203,7 @@ namespace MedCitySim
             objs.Add(new Button(@"Sprites\Button.png", (new Vector2D(999, 614))));
 
             StartSounds();
-            objs.Add(new Witch(@"Sprites\rsz_cop1.png", new Vector2D(400, 400),false, "john"));
+            
             Citizen lars = new Citizen(@"Sprites\rsz_cop1.png", new Vector2D(400, 400), "lars", true, Citizen.Assignment.farmer);
             objs.Add(lars);
 
