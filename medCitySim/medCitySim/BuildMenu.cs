@@ -4,12 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using IrrKlang;
 
 namespace MedCitySim
 {
     class BuildMenu : GameObject
     {
-        private Graphics dc;
+        protected ISoundEngine engine;
+       private Graphics dc;
        public BuildMenu(string imagePath, Vector2D startPosition) : base(imagePath, startPosition)
       // public BuildMenu(string imagePath, Vector2D position) : base (imagePath, position)
         {
@@ -24,6 +26,10 @@ namespace MedCitySim
                     GameWorld.ToRemove.Add(this);
                     GameWorld.ToAdd.Add(new Button(@"Sprites\Button.png", new Vector2D(999, 614)));
                 }
+                else
+                {
+                    CantBuild();
+                }   
                     
             }
             if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.C))
@@ -34,7 +40,11 @@ namespace MedCitySim
                     GameWorld.ToRemove.Add(this);
                     GameWorld.ToAdd.Add(new Button(@"Sprites\Button.png", new Vector2D(999, 614)));
                 }
-                
+                else
+                {
+                    CantBuild();
+                }
+
             }
             if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.W))
             {
@@ -43,6 +53,10 @@ namespace MedCitySim
                     GameWorld.ToAdd.Add(new Well(@"Sprites\Buildings\WellLille.png", (new Vector2D(200, 200)), 300));
                     GameWorld.ToRemove.Add(this);
                     GameWorld.ToAdd.Add(new Button(@"Sprites\Button.png", new Vector2D(999, 614)));
+                }
+                else
+                {
+                    CantBuild();
                 }
             }
             if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.F))
@@ -53,14 +67,22 @@ namespace MedCitySim
                     GameWorld.ToRemove.Add(this);
                     GameWorld.ToAdd.Add(new Button(@"Sprites\Button.png", new Vector2D(999, 614)));
                 }
+                else
+                {
+                    CantBuild();
+                }
             }
             if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.T))
             {
-                if (GameWorld.Lumber >= 25 && GameWorld.Stone >= 50 && GameWorld.Stone >= 15)
+                if (GameWorld.Lumber >= 25 && GameWorld.Stone >= 50 && GameWorld.Iron >= 15)
                 {
                     GameWorld.ToAdd.Add(new CivilWatch(@"Sprites\Buildings\WatchTowerLille.png", (new Vector2D(200, 200)), 300));
                     GameWorld.ToRemove.Add(this);
                     GameWorld.ToAdd.Add(new Button(@"Sprites\Button.png", new Vector2D(999, 614)));
+                }
+                else
+                {
+                    CantBuild();
                 }
             }
             if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.L))
@@ -71,6 +93,10 @@ namespace MedCitySim
                     GameWorld.ToRemove.Add(this);
                     GameWorld.ToAdd.Add(new Button(@"Sprites\Button.png", new Vector2D(999, 614)));
                 }
+                else
+                {
+                    CantBuild();
+                }
             }
             if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.Q))
             {
@@ -79,6 +105,10 @@ namespace MedCitySim
                     GameWorld.ToAdd.Add(new Quarry(@"Sprites\Buildings\Quarry.png", (new Vector2D(200, 200)), 300));
                     GameWorld.ToRemove.Add(this);
                     GameWorld.ToAdd.Add(new Button(@"Sprites\Button.png", new Vector2D(999, 614)));
+                }
+                else
+                {
+                    CantBuild();
                 }
             }
             if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.O))
@@ -89,6 +119,10 @@ namespace MedCitySim
                     GameWorld.ToRemove.Add(this);
                     GameWorld.ToAdd.Add(new Button(@"Sprites\Button.png", new Vector2D(999, 614)));
                 }
+                else
+                {
+                    CantBuild();
+                }
             }
             if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.M))
             {
@@ -97,6 +131,10 @@ namespace MedCitySim
                     GameWorld.ToAdd.Add(new Mine(@"Sprites\Buildings\IronMineLille.png", (new Vector2D(200, 200)), 300));
                     GameWorld.ToRemove.Add(this);
                     GameWorld.ToAdd.Add(new Button(@"Sprites\Button.png", new Vector2D(999, 614)));
+                }
+                else
+                {
+                    CantBuild();
                 }
             }
 
@@ -111,6 +149,16 @@ namespace MedCitySim
         protected override void OnCollision(GameObject other)
         {
             //    throw new NotImplementedException();
+        }
+
+        protected void CantBuild()
+        {
+            try
+            {
+                engine = new ISoundEngine();
+                engine.Play2D("Media/efx_NO-Fabio_Farinelli-955789468.mp3", false);
+            }
+            catch (Exception ex) { }
         }
     }
 }

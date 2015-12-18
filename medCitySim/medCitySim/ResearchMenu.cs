@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using IrrKlang;
 
 namespace MedCitySim
 {
     class ResearchMenu : GameObject
     {
-        //private Graphics dc;
+        protected ISoundEngine engine;
         public ResearchMenu(string imagePath, Vector2D startPosition) : base(imagePath, startPosition) { }
         bool bunker = true;
         public static bool well = true;
@@ -28,161 +29,172 @@ namespace MedCitySim
         {
             if (well == true)
             {
-                if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.Q))
+                if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.D))
                 {
                     if (GameWorld.Lumber >= 10 && GameWorld.Stone >= 10)
                     {
                         well = false;
-                        {
+                        
                             //GameWorld.ToAdd.Add(new House(@"", (new Vector2D(200, 200)), 300, dc));
                             GameWorld.ToAdd.Add(new Button(@"Sprites\Button.png", new Vector2D(992, 562)));
-                        }
+
                     }
-                }
-            }
-            if (waterManagement == true)
-            {
-                if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.R))
-                {
-                    if (GameWorld.Lumber >= 10 && GameWorld.Stone >= 10)
+                    else
                     {
-                        //Water management?
-                        GameWorld.ToAdd.Add(new Button(@"Sprites\Button.png", new Vector2D(992, 562)));
-                    }
-                }
-            }
-            if (sewer == true)
-            {
-                if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.A))
-                {
-                    if (GameWorld.Lumber >= 10 && GameWorld.Stone >= 10)
-                    {
-                        //Sewers, fights pest
-                        GameWorld.ToAdd.Add(new Button(@"Sprites\Button.png", new Vector2D(992, 562)));
+                        CantResserach();
                     }
                 }
             }
             if (improvedHouse == true)
             {
-                if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.S))
+                if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.H))
                 {
                     if (GameWorld.Lumber >= 10 && GameWorld.Stone >= 10)
                     {
-                        //GameWorld.ToAdd.Add(new House(@"", (new Vector2D(200, 200)), 300, dc));
                         //change house sprite
+                        GameWorld.ToRemove.Add(this);
                         GameWorld.ToAdd.Add(new Button(@"Sprites\Button.png", new Vector2D(992, 562)));
+                    }
+
+                    else
+                    {
+                        CantResserach();
                     }
                 }
             }
             if (animalBreed == true)
-            {
-                if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.D))
-                {
-                    if (GameWorld.Lumber >= 10 && GameWorld.Stone >= 10)
-                    {
-                        Farm.workInterval -= 1f;
-                        //GameWorld.ToAdd.Add(new House(@"", (new Vector2D(200, 200)), 300, dc));
-                        animalBreed = false;
-                        GameWorld.ToRemove.Add(this);
-                        GameWorld.ToAdd.Add(new Button(@"Sprites\Button.png", new Vector2D(992, 562)));
-                    }
-                }
-            }
-            if (windmill == true)
             {
                 if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.F))
                 {
                     if (GameWorld.Lumber >= 10 && GameWorld.Stone >= 10)
                     {
                         Farm.workInterval -= 1f;
-                        //GameWorld.ToAdd.Add(new House(@"", (new Vector2D(200, 200)), 300, dc));
+                        animalBreed = false;
+                        GameWorld.ToRemove.Add(this);
+                        GameWorld.ToAdd.Add(new Button(@"Sprites\Button.png", new Vector2D(992, 562)));
+                    }
+                    else
+                    {
+                        CantResserach();
+                    }
+                }
+            }
+            if (windmill == true)
+            {
+                if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.A))
+                {
+                    if (GameWorld.Lumber >= 10 && GameWorld.Stone >= 10)
+                    {
+                        Farm.workInterval -= 1f;
                         windmill = false;
                         GameWorld.ToRemove.Add(this);
                         GameWorld.ToAdd.Add(new Button(@"Sprites\Button.png", new Vector2D(992, 562)));
+                    }
+                    else
+                    {
+                        CantResserach();
                     }
                 }
             }
             if (sawmill == true)
             {
-                if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.Z))
+                if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.L))
                 {
                     if (GameWorld.Lumber >= 10 && GameWorld.Stone >= 10)
                     {
                         Lumbermill.workInterval -= 1f;
-                        //GameWorld.ToAdd.Add(new House(@"", (new Vector2D(200, 200)), 300, dc));
                         sawmill = false;
                         GameWorld.ToRemove.Add(this);
                         GameWorld.ToAdd.Add(new Button(@"Sprites\Button.png", new Vector2D(992, 562)));
+                    }
+                    else
+                    {
+                        CantResserach();
                     }
                 }
             }
             if (sawmillTwo == true)
             {
-                if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.X))
+                if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.U))
                 {
                     if (GameWorld.Lumber >= 10 && GameWorld.Stone >= 10)
                     {
                         Lumbermill.workInterval -= 1f;
-                        //GameWorld.ToAdd.Add(new House(@"", (new Vector2D(200, 200)), 300, dc));
                         sawmillTwo = false;
                         GameWorld.ToRemove.Add(this);
                         GameWorld.ToAdd.Add(new Button(@"Sprites\Button.png", new Vector2D(992, 562)));
+                    }
+                    else
+                    {
+                        CantResserach();
                     }
                 }
             }
             if (mineUpgrade == true)
             {
-                if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.C))
+                if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.M))
                 {
                     if (GameWorld.Lumber >= 10 && GameWorld.Stone >= 10)
                     {
                         Mine.workInterval -= 1f;
-                        //GameWorld.ToAdd.Add(new House(@"", (new Vector2D(200, 200)), 300, dc));
                         mineUpgrade = false;
                         GameWorld.ToRemove.Add(this);
                         GameWorld.ToAdd.Add(new Button(@"Sprites\Button.png", new Vector2D(992, 562)));
+                    }
+                    else
+                    {
+                        CantResserach();
                     }
                 }
             }
             if (mineUpgradeTwo == true)
             {
-                if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.V))
+                if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.E))
                 {
                     if (GameWorld.Lumber >= 10 && GameWorld.Stone >= 10)
                     {
                         Mine.workInterval -= 1f;
-                        //GameWorld.ToAdd.Add(new House(@"", (new Vector2D(200, 200)), 300, dc));
                         mineUpgradeTwo = false;
                         GameWorld.ToRemove.Add(this);
                         GameWorld.ToAdd.Add(new Button(@"Sprites\Button.png", new Vector2D(992, 562)));
+                    }
+                    else
+                    {
+                        CantResserach();
                     }
                 }
             }
             if (quarryUpgrade == true)
             {
-                if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.T))
+                if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.Q))
                 {
                     if (GameWorld.Lumber >= 10 && GameWorld.Stone >= 10)
                     {
                         Quarry.workInterval -= 1f;
-                        //GameWorld.ToAdd.Add(new House(@"", (new Vector2D(200, 200)), 300, dc));
                         quarryUpgrade = false;
                         GameWorld.ToRemove.Add(this);
                         GameWorld.ToAdd.Add(new Button(@"Sprites\Button.png", new Vector2D(992, 562)));
+                    }
+                    else
+                    {
+                        CantResserach();
                     }
                 }
             }
             if (quarryUpgradeTwo == true)
             {
-                if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.G))
+                if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.R))
                 {
                     if (GameWorld.Lumber >= 10 && GameWorld.Stone >= 10)
                     {
                         Quarry.workInterval -= 1f;
-                        //GameWorld.ToAdd.Add(new House(@"", (new Vector2D(200, 200)), 300, dc));
                         quarryUpgradeTwo = false;
                         GameWorld.ToRemove.Add(this);
                         GameWorld.ToAdd.Add(new Button(@"Sprites\Button.png", new Vector2D(992, 562)));
+                    }
+                    else
+                    {
+                        CantResserach();
                     }
                 }
             }
@@ -192,6 +204,18 @@ namespace MedCitySim
                 GameWorld.ToAdd.Add(new Button(@"Sprites\Button.png", new Vector2D(992, 562)));
 
             }
+
+        }
+
+
+        protected void CantResserach()
+        {
+            try
+            {
+                engine = new ISoundEngine();
+                engine.Play2D("Media/efx_NO-Fabio_Farinelli-955789468.mp3", false);
+            }
+            catch (Exception ex) { }
         }
     }
 }
