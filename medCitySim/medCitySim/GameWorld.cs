@@ -232,10 +232,14 @@ namespace MedCitySim
             UpdateAnimations(currentFPS);
             Draw();
             endTime = DateTime.Now;
-            float dayTime = 1f / currentFPS;
 
+            
+        }
+        private void Update(float fps)
+        {
+            float dayTime = 1f / currentFPS;
             dayCooldown += dayTime;
-            if (dayCooldown <240)
+            if (dayCooldown < 240)
             {
                 nightTime = false;
             }
@@ -250,9 +254,6 @@ namespace MedCitySim
                 daycount++;
                 dayCooldown -= dayInterval;
             }
-        }
-        private void Update(float fps)
-        {
             citizenPop = 0;
             Keyboard.Update();
             this.currentFPS = fps;
@@ -283,6 +284,8 @@ namespace MedCitySim
             dc.DrawString(string.Format("{0}", Stone), e, Brushes.Yellow, 252, 7);
             dc.DrawString(string.Format("{0}", Iron), e, Brushes.Yellow, 357, 7);
             dc.DrawString(string.Format("{0}/{1}", citizenPop, citizenCap), e, Brushes.Yellow, 1180, 7);
+            dc.DrawString(string.Format("Day: {0}", daycount), e, Brushes.Yellow, 1020, 7);
+
 
 
 
