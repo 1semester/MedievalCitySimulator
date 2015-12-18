@@ -18,7 +18,7 @@ namespace MedCitySim
         {
             if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.H))
             {
-                if (GameWorld.Lumber >= 5 && GameWorld.Stone >= 5)
+                if (GameWorld.Lumber >= 30 && GameWorld.Stone >= 15)
                 {
                     GameWorld.ToAdd.Add(new House(@"Sprites\Buildings\House.png", (new Vector2D(200, 200)), 300, dc));
                     GameWorld.ToRemove.Add(this);
@@ -28,7 +28,7 @@ namespace MedCitySim
             }
             if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.C))
             {
-                if (GameWorld.Lumber >= 5 && GameWorld.Stone >= 5)
+                if (GameWorld.Lumber >= 25 && GameWorld.Stone >= 75)
                 {
                     GameWorld.ToAdd.Add(new Church(@"Sprites\Buildings\Church.png", (new Vector2D(200, 200)), 300));
                     GameWorld.ToRemove.Add(this);
@@ -38,7 +38,7 @@ namespace MedCitySim
             }
             if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.W))
             {
-                if (GameWorld.Lumber >= 5 && GameWorld.Stone >= 5)
+                if (GameWorld.Lumber >= 25 && GameWorld.Stone >= 50 && GameWorld.Iron >= 10)
                 {
                     GameWorld.ToAdd.Add(new Well(@"Sprites\Buildings\WellLille.png", (new Vector2D(200, 200)), 300));
                     GameWorld.ToRemove.Add(this);
@@ -47,7 +47,7 @@ namespace MedCitySim
             }
             if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.F))
             {
-                if (GameWorld.Lumber >= 5 && GameWorld.Stone >= 5)
+                if (GameWorld.Lumber >= 50 && GameWorld.Stone >= 25 && GameWorld.Iron >= 2)
                 {
                     GameWorld.ToAdd.Add(new Farm(@"Sprites\Buildings\Farm.png", (new Vector2D(200, 200)), 300));
                     GameWorld.ToRemove.Add(this);
@@ -56,7 +56,7 @@ namespace MedCitySim
             }
             if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.T))
             {
-                if (GameWorld.Lumber >= 5 && GameWorld.Stone >= 5)
+                if (GameWorld.Lumber >= 25 && GameWorld.Stone >= 50 && GameWorld.Stone >= 15)
                 {
                     GameWorld.ToAdd.Add(new CivilWatch(@"Sprites\Buildings\WatchTowerLille.png", (new Vector2D(200, 200)), 300));
                     GameWorld.ToRemove.Add(this);
@@ -65,7 +65,7 @@ namespace MedCitySim
             }
             if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.L))
             {
-                if (GameWorld.Lumber >= 5 && GameWorld.Stone >= 5)
+                if (GameWorld.Lumber >= 50 && GameWorld.Stone >= 10 && GameWorld.Iron >= 2)
                 {
                     GameWorld.ToAdd.Add(new Lumbermill(@"Sprites\Buildings\LumberMill.png", (new Vector2D(200, 200)), 300));
                     GameWorld.ToRemove.Add(this);
@@ -74,7 +74,7 @@ namespace MedCitySim
             }
             if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.Q))
             {
-                if (GameWorld.Lumber >= 5 && GameWorld.Stone >= 5)
+                if (GameWorld.Lumber >= 50 && GameWorld.Stone >= 10 && GameWorld.Iron >= 2)
                 {
                     GameWorld.ToAdd.Add(new Quarry(@"Sprites\Buildings\Quarry.png", (new Vector2D(200, 200)), 300));
                     GameWorld.ToRemove.Add(this);
@@ -83,7 +83,7 @@ namespace MedCitySim
             }
             if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.O))
             {
-                if (GameWorld.Lumber >= 5 && GameWorld.Stone >= 5)
+                if (GameWorld.Lumber >= 50 && GameWorld.Stone >= 50 && GameWorld.Iron >= 20)
                 {
                     GameWorld.ToAdd.Add(new Blacksmith(@"Sprites\Buildings\Blacksmith.png", (new Vector2D(200, 200)), 300));
                     GameWorld.ToRemove.Add(this);
@@ -92,7 +92,7 @@ namespace MedCitySim
             }
             if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.M))
             {
-                if (GameWorld.Lumber >= 5 && GameWorld.Stone >= 5)
+                if (GameWorld.Lumber >= 10 && GameWorld.Stone >= 50 && GameWorld.Iron >= 2)
                 {
                     GameWorld.ToAdd.Add(new Mine(@"Sprites\Buildings\IronMineLille.png", (new Vector2D(200, 200)), 300));
                     GameWorld.ToRemove.Add(this);
