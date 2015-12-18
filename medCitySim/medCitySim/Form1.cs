@@ -22,7 +22,6 @@ namespace medCitySim
         {
             Game g = new Game();
             g.Show();
-            this.Hide();
         }
 
         private void button2_Click_1(object sender, EventArgs e)

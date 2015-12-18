@@ -133,6 +133,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Construction.mp3" />
+    <Content Include="Sprites\Buildings\IronMineLille.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Libraries\ikpFlac.dll" />
     <Content Include="Libraries\ikpMP3.dll" />
     <Content Include="Libraries\irrKlang.NET4.dll" />
