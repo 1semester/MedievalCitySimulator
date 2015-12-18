@@ -27,7 +27,7 @@ namespace MedCitySim
         private BufferedGraphics backBuffer;
         private DateTime endTime;
         private static int lumber = 150;
-        private static int iron = 10;
+        private static int iron = 100;
         private static int stone = 150;
         private static int food = 10;
         private string cantBuild = "You cant build there!";
@@ -249,11 +249,16 @@ namespace MedCitySim
         }
         private void Update(float fps)
         {
+            citizenPop = 0;
             Keyboard.Update();
             this.currentFPS = fps;
             foreach (GameObject go in objs)
             {
                 go.Update(currentFPS);
+                if(go is Citizen)
+                {
+                    citizenPop++;
+                }
             }
         }
         private void Draw()
