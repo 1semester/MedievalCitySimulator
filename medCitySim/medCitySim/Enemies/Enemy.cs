@@ -18,5 +18,10 @@ namespace MedCitySim
         {
 
         }
+
+        protected override void OnCollision(GameObject other)
+        {
+            base.OnCollision(other);
+        }
     }
 }

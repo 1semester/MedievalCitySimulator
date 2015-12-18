@@ -25,12 +25,16 @@ namespace MedCitySim
                 var citizen = go as Citizen;
 
 
-                if (citizen != null && citizen.currentAssignment == Citizen.Assignment.civilWatch)
+                if (other is Citizen && citizen != null && citizen.currentAssignment == Citizen.Assignment.civilWatch)
                 {
                     GameWorld.ToRemove.Add(this);
 
                 }
             }
+            //if (other is Citizen && Citizen.currentAssignment == Citizen.Assignment.civilWatch)
+            //{
+            //   Citizen.Assignment.
+            //}
         }
 
         public void FindWaypoint()
@@ -78,7 +82,7 @@ namespace MedCitySim
            
             Position.X += 1/currentFPS*(deltaPosition.X*100);
             Position.Y += 1/currentFPS*(deltaPosition.Y*100);
-
+           base.Update(currentFPS);
         }
     }
 }
