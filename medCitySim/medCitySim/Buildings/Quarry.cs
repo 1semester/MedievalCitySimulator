@@ -33,7 +33,7 @@ namespace MedCitySim
 
                 }
             }
-            GameWorld.Stone += 1 + masons;
+            GameWorld.Stone += masons;
 
         }
         protected override void OnCollision(GameObject other)

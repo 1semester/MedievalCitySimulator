@@ -31,8 +31,10 @@ namespace MedCitySim
         private static int stone = 20;
         private static int food = 5;
         private string cantBuild = "You cant build there!";
-        private static Timer timeOfDay;
-        DateTime timeOfDay2 = new DateTime();
+        public static float dayInterval = 300f;
+        private float dayCooldown;
+        private int daycount;
+        private bool nightTime = false;
         #region Get and Sets.
 
         private ISoundEngine engine;
@@ -154,19 +156,6 @@ namespace MedCitySim
             }
         }
 
-        public static Timer TimeOfDay
-        {
-            get
-            {
-                return timeOfDay;
-            }
-
-            set
-            {
-                timeOfDay = value;
-            }
-        }
-
         internal static int CitizenPop
         {
             get
@@ -204,6 +193,7 @@ namespace MedCitySim
         }
         public void SetupWorld()
         {
+            daycount = 1;
             //TimeOfDay.Start();
             //Font e = new Font("Ressourcer", 16);
             //dc.DrawString(string.Format("Wood: {0}  Iron: {1}  Stone: {2}  Food: {3}", Lumber, Iron, Stone, Food), e, Brushes.Black, 200, 0);
@@ -238,6 +228,24 @@ namespace MedCitySim
             UpdateAnimations(currentFPS);
             Draw();
             endTime = DateTime.Now;
+            float dayTime = 1f / currentFPS;
+
+            dayCooldown += dayTime;
+            if (dayCooldown <240)
+            {
+                nightTime = false;
+            }
+            if (dayCooldown >= 240)
+            {
+                nightTime = true;
+            }
+
+            if (dayCooldown >= 300)
+            {
+
+                daycount++;
+                dayCooldown -= dayInterval;
+            }
         }
         private void Update(float fps)
         {
