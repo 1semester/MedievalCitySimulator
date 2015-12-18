@@ -42,8 +42,9 @@ namespace MedCitySim
 
             if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.D))
             {
-                if (GameWorld.Lumber >= 10 && GameWorld.Stone >= 10 && well == true)
+                if (GameWorld.Iron >= 20 && well == true)
                 {
+                    Cost();
                     well = false;
                     GameWorld.ToAdd.Add(new Button(@"Sprites\Button.png", new Vector2D(992, 562)));
                 }
@@ -55,11 +56,13 @@ namespace MedCitySim
 
             if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.H))
             {
-                if (GameWorld.Lumber >= 10 && GameWorld.Stone >= 10 && improvedHouse == true)
+                if (GameWorld.Iron >= 20 && improvedHouse == true)
                 {
                     //change house sprite
                     GameWorld.ToRemove.Add(this);
                     improvedHouse = false;
+                    Cost();
+
                     GameWorld.ToAdd.Add(new Button(@"Sprites\Button.png", new Vector2D(992, 562)));
                     BuildSound();
                 }
@@ -71,9 +74,10 @@ namespace MedCitySim
 
             if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.F))
             {
-                if (GameWorld.Lumber >= 10 && GameWorld.Stone >= 10 && animalBreed == true)
+                if (GameWorld.Iron >= 20 && animalBreed == true)
                 {
                     Farm.workInterval -= 1f;
+                    Cost();
                     animalBreed = false;
                     GameWorld.ToRemove.Add(this);
                     GameWorld.ToAdd.Add(new Button(@"Sprites\Button.png", new Vector2D(992, 562)));
@@ -86,9 +90,10 @@ namespace MedCitySim
 
             if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.A))
             {
-                if (GameWorld.Lumber >= 10 && GameWorld.Stone >= 10 && windmill == true)
+                if (GameWorld.Iron >= 20 && windmill == true)
                 {
                     Farm.workInterval -= 1f;
+                    Cost();
                     windmill = false;
                     GameWorld.ToRemove.Add(this);
                     GameWorld.ToAdd.Add(new Button(@"Sprites\Button.png", new Vector2D(992, 562)));
@@ -101,9 +106,10 @@ namespace MedCitySim
 
             if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.L))
             {
-                if (GameWorld.Lumber >= 10 && GameWorld.Stone >= 10 && sawmill == true)
+                if (GameWorld.Iron >= 20 && sawmill == true)
                 {
                     Lumbermill.workInterval -= 1f;
+                    Cost();
                     sawmill = false;
                     GameWorld.ToRemove.Add(this);
                     GameWorld.ToAdd.Add(new Button(@"Sprites\Button.png", new Vector2D(992, 562)));
@@ -115,9 +121,10 @@ namespace MedCitySim
             }
             if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.U))
             {
-                if (GameWorld.Lumber >= 10 && GameWorld.Stone >= 10 && sawmillTwo == true)
+                if (GameWorld.Iron >= 20 && sawmillTwo == true)
                 {
                     Lumbermill.workInterval -= 1f;
+                    Cost();
                     sawmillTwo = false;
                     GameWorld.ToRemove.Add(this);
                     GameWorld.ToAdd.Add(new Button(@"Sprites\Button.png", new Vector2D(992, 562)));
@@ -130,9 +137,10 @@ namespace MedCitySim
 
             if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.M))
             {
-                if (GameWorld.Lumber >= 10 && GameWorld.Stone >= 10 && mineUpgrade == true)
+                if (GameWorld.Iron >= 20 && mineUpgrade == true)
                 {
                     Mine.workInterval -= 1f;
+                    Cost();
                     mineUpgrade = false;
                     GameWorld.ToRemove.Add(this);
                     GameWorld.ToAdd.Add(new Button(@"Sprites\Button.png", new Vector2D(992, 562)));
@@ -145,9 +153,10 @@ namespace MedCitySim
             }
             if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.E))
             {
-                if (GameWorld.Lumber >= 10 && GameWorld.Stone >= 10 && mineUpgradeTwo == true)
+                if (GameWorld.Iron >= 20 && mineUpgradeTwo == true)
                 {
                     Mine.workInterval -= 1f;
+                    Cost();
                     mineUpgradeTwo = false;
                     GameWorld.ToRemove.Add(this);
                     GameWorld.ToAdd.Add(new Button(@"Sprites\Button.png", new Vector2D(992, 562)));
@@ -159,9 +168,10 @@ namespace MedCitySim
             }
             if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.Q))
             {
-                if (GameWorld.Lumber >= 10 && GameWorld.Stone >= 10 && quarryUpgrade == true)
+                if (GameWorld.Iron >= 20 && quarryUpgrade == true)
                 {
                     Quarry.workInterval -= 1f;
+                    Cost();
                     quarryUpgrade = false;
                     GameWorld.ToRemove.Add(this);
                     GameWorld.ToAdd.Add(new Button(@"Sprites\Button.png", new Vector2D(992, 562)));
@@ -174,10 +184,11 @@ namespace MedCitySim
 
             if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.R))
             {
-                if (GameWorld.Lumber >= 10 && GameWorld.Stone >= 10 && quarryUpgradeTwo == true)
+                if (GameWorld.Iron >= 20 && quarryUpgradeTwo == true)
                 {
                     Quarry.workInterval -= 1f;
                     quarryUpgradeTwo = false;
+                    Cost();
                     GameWorld.ToRemove.Add(this);
                     GameWorld.ToAdd.Add(new Button(@"Sprites\Button.png", new Vector2D(992, 562)));
                 }
@@ -204,6 +215,10 @@ namespace MedCitySim
                 engine.Play2D("Media/efx_NO-Fabio_Farinelli-955789468.mp3", false);
             }
             catch (Exception ex) { }
+        }
+        public void Cost()
+        {
+            GameWorld.Iron -= 20;
         }
         protected void BuildSound()
         {
