@@ -56,7 +56,7 @@ namespace MedCitySim
             }
             if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.T))
             {
-                if (GameWorld.Lumber >= 25 && GameWorld.Stone >= 50 && GameWorld.Stone >= 15)
+                if (GameWorld.Lumber >= 25 && GameWorld.Stone >= 50 && GameWorld.Iron >= 15)
                 {
                     GameWorld.ToAdd.Add(new CivilWatch(@"Sprites\Buildings\WatchTowerLille.png", (new Vector2D(200, 200)), 300));
                     GameWorld.ToRemove.Add(this);
