@@ -19,7 +19,8 @@ namespace MedCitySim
         Random rnd = new Random();
         public Assignment currentAssignment;
         private Vector2D currentWaypoint;
-        
+        public static bool witch = false;
+
 
         public enum Assignment
         {
@@ -285,7 +286,23 @@ namespace MedCitySim
 
                 //}
             }
-            //base.OnCollision(other);
+            foreach (GameObject go in GameWorld.objs)
+            {
+                if (other is Witch)
+                {
+                    var citizen = this as Citizen;
+                    if (citizen != null)
+                    {
+                        if (citizen.currentAssignment == Citizen.Assignment.priest)
+                        {
+                            witch = false;
+                            GameWorld.ToRemove.Add(other);
+                        }
+                    }
+
+                }
+                //base.OnCollision(other);
+            }
         }
     }
 }
