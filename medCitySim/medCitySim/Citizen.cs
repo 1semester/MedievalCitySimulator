@@ -19,7 +19,7 @@ namespace MedCitySim
         Random rnd = new Random();
         public Assignment currentAssignment;
         private Vector2D currentWaypoint;
-      
+        
 
         public enum Assignment
         {
@@ -29,6 +29,7 @@ namespace MedCitySim
             farmer,
             civilWatch,
             miner,
+            mason,
             unassigned
         };
 
@@ -110,6 +111,24 @@ namespace MedCitySim
                 case Assignment.civilWatch:
                     break;
                 case Assignment.miner:
+                    Mine mine = GameWorld.objs.OfType<Mine>().FirstOrDefault();
+
+
+
+                    if (mine != null && currentWaypoint != mine.Position)
+                    {
+                        currentWaypoint = mine.Position;
+
+                        return;
+                    }
+                    if (mine != null && currentWaypoint == mine.Position)
+                    {
+                        currentWaypoint = new Vector2D(500, 500);
+
+                        return;
+                    }
+                    break;
+                case Assignment.mason:
                     Quarry quarry = GameWorld.objs.OfType<Quarry>().FirstOrDefault();
 
 
@@ -175,20 +194,36 @@ namespace MedCitySim
           //  Age++;
             RiskOfDeath(Age,Hunger);
            deltaPosition.Normalize();
-            Vector2D newPosition = new Vector2D(10,10);
-            newPosition.X = Position.X + 1/currentFPS*(deltaPosition.X*100);
-            newPosition.Y = Position.Y + 1/currentFPS*(deltaPosition.Y*100);
+            //Vector2D newPosition = new Vector2D(10,10);
+            Position.X += 1/currentFPS*(deltaPosition.X*100);
+          Position.Y += 1/currentFPS*(deltaPosition.Y*100);
 
-            if (!GameWorld.positionOcuppied(new Vector2D(newPosition.X, newPosition.Y)))
-                Position = newPosition;
-            else if (!GameWorld.positionOcuppied(new Vector2D(newPosition.X, Position.Y)))
-                Position.X = Position.X + 1 / currentFPS * (100);
-            else if (!GameWorld.positionOcuppied(new Vector2D(Position.X, newPosition.Y)))
-                Position.Y = Position.Y + 1 / currentFPS * (100);
-           
+            //if (!GameWorld.positionOcuppied(new Vector2D(newPosition.X, newPosition.Y)))
+            //    Position = newPosition;
+            //else if (!GameWorld.positionOcuppied(new Vector2D(newPosition.X, Position.Y)))
+            //    Position.X = Position.X + 1 / currentFPS * (100);
+            //else if (!GameWorld.positionOcuppied(new Vector2D(Position.X, newPosition.Y)))
+            //    Position.Y = Position.Y + 1 / currentFPS * (100);
 
+            
 
             base.Update(currentFPS);
+        }
+
+        protected override void OnCollision(GameObject other)
+        {
+            foreach (GameObject go in GameWorld.objs)
+            {
+                var raider = go as Raider;
+
+
+                if (raider  != null && currentAssignment != Citizen.Assignment.civilWatch)
+                {
+                    GameWorld.ToRemove.Add(this);
+
+                }
+            }
+            base.OnCollision(other);
         }
     }
 }

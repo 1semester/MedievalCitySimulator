@@ -24,7 +24,7 @@ namespace MedCitySim
         }
         protected override void OnCollision(GameObject other)
         {
-            if (other is Building)
+            if (other is Building || other is UserInterface)
             {
                 canBuild = false;
             }
@@ -69,6 +69,13 @@ namespace MedCitySim
                     {
                         GameWorld.CitizenCap += 4;
                     }
+                }
+            }
+            if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.Escape))
+            {
+                if (speed > 0)
+                {
+                    GameWorld.ToRemove.Add(this);
                 }
             }
             base.Update(currentFPS);

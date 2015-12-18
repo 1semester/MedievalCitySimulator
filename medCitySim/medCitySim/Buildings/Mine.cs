@@ -13,7 +13,7 @@ namespace MedCitySim
         private bool canBuild = true;
         private int speed;
         private int miners;
-        public static float workInterval = 5f;
+        private float workInterval = 5f;
         private float workCooldown;
         public Mine(string imagePath, Vector2D startposition, int speed) : base (imagePath, startposition)
         {
@@ -33,7 +33,7 @@ namespace MedCitySim
 
                 }
             }
-            GameWorld.Iron += 1 + miners;
+            GameWorld.Iron += miners;
 
         }
         protected override void OnCollision(GameObject other)
