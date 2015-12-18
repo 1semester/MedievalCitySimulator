@@ -118,6 +118,13 @@ namespace MedCitySim
                 }
             }
 
+            if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.W))
+            {
+                //GameWorld.ToAdd.Add(new Citizen(@"Sprites\rsz_cop1.png", new Vector2D(500, 500), "lars", true, Citizen.Assignment.unassigned));
+                GameWorld.ToAdd.Add(new Raider(@"Sprites\rsz_cop1.png", new Vector2D(100, 100)));
+                // GameWorld.ToRemove.Add(this);
+            }
+
             if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.Escape))
             {
                 GameWorld.ToRemove.Add(this);
