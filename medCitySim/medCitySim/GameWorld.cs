@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
+using IrrKlang;
 
 namespace MedCitySim
 {
@@ -30,10 +31,23 @@ namespace MedCitySim
         private static int stone = 20;
         private static int food = 5;
         private string cantBuild = "You cant build there!";
-        private float dayInterval = 0f;
-        private float dayCooldown;
-        private int dayNumber;
+        private static Timer timeOfDay;
+        DateTime timeOfDay2 = new DateTime();
         #region Get and Sets.
+
+        private ISoundEngine engine;
+        private void StartSounds()
+        {
+            try
+            {
+                engine = new ISoundEngine();
+                engine.Play2D("Media/Song1.mp3", true);
+                //engine.Play2D("Media/Song2.mp3", false);
+                //engine.Play2D("Media/Song3.mp3", true);
+            }
+            catch (Exception ex) { }
+        }
+
 
         internal static List<GameObject> ToAdd
         {
@@ -140,6 +154,19 @@ namespace MedCitySim
             }
         }
 
+        public static Timer TimeOfDay
+        {
+            get
+            {
+                return timeOfDay;
+            }
+
+            set
+            {
+                timeOfDay = value;
+            }
+        }
+
         internal static int CitizenPop
         {
             get
@@ -177,16 +204,16 @@ namespace MedCitySim
         }
         public void SetupWorld()
         {
-            dayNumber = 1;
+            //TimeOfDay.Start();
             //Font e = new Font("Ressourcer", 16);
             //dc.DrawString(string.Format("Wood: {0}  Iron: {1}  Stone: {2}  Food: {3}", Lumber, Iron, Stone, Food), e, Brushes.Black, 200, 0);
             objs.Add(new UserInterface(@"Sprites\UserInterface.png", (new Vector2D(0, 0))));
-            objs.Add(new Background(@"Sprites\Background.png", (new Vector2D(0, 41))));
-            objs.Add(new Button(@"Sprites\button.png", (new Vector2D(999,614))));
+            objs.Add(new Background(@"Sprites\Background.png", (new Vector2D(0, 30))));
+            objs.Add(new Button(@"Sprites\Buildsort.png", (new Vector2D(992,562))));
+
+            StartSounds();
             
-            
-            
-            Citizen lars = new Citizen(@"Sprites\rsz_cop1.png", new Vector2D(400, 400), "lars", true, Citizen.Assignment.civilWatch);
+            Citizen lars = new Citizen(@"Sprites\rsz_cop1.png", new Vector2D(400, 400), "lars", true, Citizen.Assignment.farmer);
             objs.Add(lars);
 
             //endTime skal kaldes sidst!
@@ -194,7 +221,7 @@ namespace MedCitySim
         }
         public void GameLoop()
         {
-            
+
             //timeOfDay2.Second.
             foreach (GameObject go in toRemove)
             {
@@ -211,18 +238,6 @@ namespace MedCitySim
             UpdateAnimations(currentFPS);
             Draw();
             endTime = DateTime.Now;
-            float dayTime = 1f / currentFPS;
-
-            dayCooldown += dayTime;
-            if (dayCooldown >= 300)
-            {
-
-            }
-            if (dayCooldown >= 420)
-            {
-                dayNumber++;
-                dayCooldown -= dayInterval;
-            }
         }
         private void Update(float fps)
         {
@@ -246,11 +261,11 @@ namespace MedCitySim
                 go.Draw(dc);
             }
             Font e = new Font("Ressourcer", 16);
-            dc.DrawString(string.Format("{0}", Food), e, Brushes.Black, 36, 7);
-            dc.DrawString(string.Format("{0}", Lumber), e, Brushes.Black, 142, 7);
-            dc.DrawString(string.Format("{0}", Stone), e, Brushes.Black, 252, 7);
-            dc.DrawString(string.Format("{0}", Iron), e, Brushes.Black, 357, 7);
-            dc.DrawString(string.Format("{0}", citizenPop), e, Brushes.Black, 1180, 7);
+            dc.DrawString(string.Format("{0}", Food), e, Brushes.Yellow, 36, 7);
+            dc.DrawString(string.Format("{0}", Lumber), e, Brushes.Yellow, 142, 7);
+            dc.DrawString(string.Format("{0}", Stone), e, Brushes.Yellow, 252, 7);
+            dc.DrawString(string.Format("{0}", Iron), e, Brushes.Yellow, 357, 7);
+            dc.DrawString(string.Format("{0}/{1}", citizenPop, citizenCap), e, Brushes.Yellow, 1180, 7);
 
 
 

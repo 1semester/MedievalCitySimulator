@@ -14,7 +14,7 @@ namespace MedCitySim
         private bool canBuild = true;
         private int speed;
         private int lumberjacks;
-        private float workInterval = 5f;
+        public static float workInterval = 5f;
         private float workCooldown;
 
         public Lumbermill(string imagePath, Vector2D startposition, int speed) : base(imagePath,startposition)
