@@ -35,7 +35,7 @@ namespace MedCitySim
 
                 }
             }
-            GameWorld.Food += lumberjacks;
+            GameWorld.Lumber += lumberjacks;
 
         }
         protected override void OnCollision(GameObject other)

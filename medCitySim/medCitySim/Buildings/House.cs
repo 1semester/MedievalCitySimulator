@@ -63,7 +63,12 @@ namespace MedCitySim
                 {
                     speed = 0;
                     Cost();
+                    BuildSound();
                     GameWorld.CitizenCap += 4;
+                    if(ResearchMenu.improvedHouse == false)
+                    {
+                        GameWorld.CitizenCap += 4;
+                    }
                 }
             }
             if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.Escape))

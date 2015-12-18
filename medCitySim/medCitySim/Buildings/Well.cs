@@ -63,6 +63,7 @@ namespace MedCitySim
                 {
                     speed = 0;
                     Cost();
+                    BuildSound();
                 }
             }
             if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.Escape))

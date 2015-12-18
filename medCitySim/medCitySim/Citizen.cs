@@ -19,7 +19,7 @@ namespace MedCitySim
         Random rnd = new Random();
         public Assignment currentAssignment;
         private Vector2D currentWaypoint;
-      
+        
 
         public enum Assignment
         {
@@ -111,6 +111,24 @@ namespace MedCitySim
                 case Assignment.civilWatch:
                     break;
                 case Assignment.miner:
+                    Mine mine = GameWorld.objs.OfType<Mine>().FirstOrDefault();
+
+
+
+                    if (mine != null && currentWaypoint != mine.Position)
+                    {
+                        currentWaypoint = mine.Position;
+
+                        return;
+                    }
+                    if (mine != null && currentWaypoint == mine.Position)
+                    {
+                        currentWaypoint = new Vector2D(500, 500);
+
+                        return;
+                    }
+                    break;
+                case Assignment.mason:
                     Quarry quarry = GameWorld.objs.OfType<Quarry>().FirstOrDefault();
 
 
@@ -186,8 +204,8 @@ namespace MedCitySim
             //    Position.X = Position.X + 1 / currentFPS * (100);
             //else if (!GameWorld.positionOcuppied(new Vector2D(Position.X, newPosition.Y)))
             //    Position.Y = Position.Y + 1 / currentFPS * (100);
-           
 
+            
 
             base.Update(currentFPS);
         }

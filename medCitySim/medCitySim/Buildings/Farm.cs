@@ -13,7 +13,7 @@ namespace MedCitySim
         private bool canBuild = true;
         private int speed;
         private int farmers;
-        private float workInterval = 5f;
+        public static float workInterval = 5f;
         private float workCooldown;
         
         public Farm(string imagePath, Vector2D startposition, int speed) : base(imagePath, startposition)
@@ -81,7 +81,7 @@ namespace MedCitySim
                 {
                     speed = 0;
                     Cost();
-                
+                    BuildSound();
                 }
             }
             if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.Escape))
