@@ -135,9 +135,11 @@ namespace MedCitySim
 
             if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.W))
             {
-                //GameWorld.ToAdd.Add(new Citizen(@"Sprites\rsz_cop1.png", new Vector2D(500, 500), "lars", true, Citizen.Assignment.unassigned));
                 GameWorld.ToAdd.Add(new Witch(@"Sprites\rsz_cop1.png", new Vector2D(400, 400), false, "john"));
-                // GameWorld.ToRemove.Add(this);
+            }
+            if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.Q))
+            {
+                GameWorld.ToAdd.Add(new Raider(@"Sprites\rsz_cop1.png", new Vector2D(400, 400)));
             }
 
             if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.Escape))
