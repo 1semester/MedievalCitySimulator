@@ -65,7 +65,7 @@ namespace MedCitySim
                     Cost();
                     BuildSound();
                     GameWorld.CitizenCap += 4;
-                    if(ResearchMenu.improvedHouse == false)
+                    if (!ResearchMenu.ImprovedHouse)
                     {
                         GameWorld.CitizenCap += 4;
                     }
@@ -78,6 +78,8 @@ namespace MedCitySim
                     GameWorld.ToRemove.Add(this);
                 }
             }
+
+
             base.Update(currentFPS);
         }
     }
