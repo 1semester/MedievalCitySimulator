@@ -15,6 +15,7 @@ namespace MedCitySim
         private int miners;
         public static float workInterval = 5f;
         private float workCooldown;
+        public static bool miner = false;
         public Mine(string imagePath, Vector2D startposition, int speed) : base (imagePath, startposition)
         {
             this.speed = speed;
@@ -49,8 +50,9 @@ namespace MedCitySim
         }
         protected override void Cost()
         {
-            GameWorld.Lumber -= 5;
-            GameWorld.Stone -= 5;
+            GameWorld.Lumber -= 50;
+            GameWorld.Stone -= 10;
+            GameWorld.Stone -= 2;
             base.Cost();
         }
         public override void Update(float currentFPS)
@@ -78,6 +80,8 @@ namespace MedCitySim
                 {
                     speed = 0;
                     Cost();
+                    BuildSound();
+                    miner = true;
                 }
             }
             if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.Escape))

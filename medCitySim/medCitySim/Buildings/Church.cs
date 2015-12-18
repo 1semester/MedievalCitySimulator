@@ -11,6 +11,7 @@ namespace MedCitySim
         private Graphics dc;
         private bool canBuild = true;
         private int speed;
+        public static bool priest = false;
         public Church(string imagePath, Vector2D startposition, int speed) : base(imagePath, startposition)
         {
             this.speed = speed;
@@ -32,8 +33,8 @@ namespace MedCitySim
         }
         protected override void Cost()
         {
-            GameWorld.Lumber -= 5;
-            GameWorld.Stone -= 5;
+            GameWorld.Lumber -= 25;
+            GameWorld.Stone -= 75;
             base.Cost();
         }
         public override void Update(float currentFPS)
@@ -62,6 +63,7 @@ namespace MedCitySim
                     speed = 0;
                     Cost();
                     BuildSound();
+                    priest = true;
                 }
             }
             if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.Escape))

@@ -15,6 +15,7 @@ namespace MedCitySim
         private int farmers;
         public static float workInterval = 5f;
         private float workCooldown;
+        public static bool farmer;
         
         public Farm(string imagePath, Vector2D startposition, int speed) : base(imagePath, startposition)
         {
@@ -52,8 +53,9 @@ namespace MedCitySim
         }
         protected override void Cost()
         {
-            GameWorld.Lumber -= 5;
-            GameWorld.Stone -= 5;
+            GameWorld.Lumber -= 50;
+            GameWorld.Stone -= 25;
+            GameWorld.Iron -= 2;
             base.Cost();
         }
         public override void Update(float currentFPS)
@@ -82,6 +84,7 @@ namespace MedCitySim
                     speed = 0;
                     Cost();
                     BuildSound();
+                    farmer = true;
                 }
             }
             if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.Escape))

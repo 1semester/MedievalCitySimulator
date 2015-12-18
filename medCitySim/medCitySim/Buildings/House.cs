@@ -35,8 +35,8 @@ namespace MedCitySim
         }
         protected override void Cost()
         {
-            GameWorld.Lumber -= 5;
-            GameWorld.Stone -= 5;
+            GameWorld.Lumber -= 30;
+            GameWorld.Stone -= 15;
             base.Cost();
         }
         public override void Update(float currentFPS)
