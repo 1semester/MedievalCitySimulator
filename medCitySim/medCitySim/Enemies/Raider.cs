@@ -27,7 +27,7 @@ namespace MedCitySim
                 var citizen = other as Citizen;
                 if (citizen != null)
                 {
-                    if(citizen.currentAssignment == Citizen.Assignment.civilWatch)
+                    if(citizen.currentAssignment == Citizen.Assignment.soldier)
                     {
                         GameWorld.ToRemove.Add(this);
                     }

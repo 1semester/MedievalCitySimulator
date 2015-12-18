@@ -27,7 +27,7 @@ namespace MedCitySim
             priest,
             smith,
             farmer,
-            civilWatch,
+            soldier,
             miner,
             mason,
             unassigned
@@ -108,7 +108,7 @@ namespace MedCitySim
                         return;
                     }
                     break;
-                case Assignment.civilWatch:
+                case Assignment.soldier:
                     break;
                 case Assignment.miner:
                     Mine mine = GameWorld.objs.OfType<Mine>().FirstOrDefault();
@@ -219,7 +219,7 @@ namespace MedCitySim
                     var citizen = this as Citizen;
                     if (citizen != null)
                     {
-                        if (citizen.currentAssignment == Citizen.Assignment.civilWatch)
+                        if (citizen.currentAssignment == Citizen.Assignment.soldier)
                         {
                             GameWorld.ToRemove.Add(other);
                         }

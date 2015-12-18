@@ -198,7 +198,7 @@ namespace MedCitySim
             //Font e = new Font("Ressourcer", 16);
             //dc.DrawString(string.Format("Wood: {0}  Iron: {1}  Stone: {2}  Food: {3}", Lumber, Iron, Stone, Food), e, Brushes.Black, 200, 0);
             objs.Add(new UserInterface(@"Sprites\UserInterface.png", (new Vector2D(0, 0))));
-            objs.Add(new Background(@"Sprites\Background.png", (new Vector2D(0, 30))));
+            objs.Add(new Background(@"Sprites\Background.png", (new Vector2D(0, 41))));
             objs.Add(new Button(@"Sprites\Button.png", (new Vector2D(999, 614))));
 
             StartSounds();

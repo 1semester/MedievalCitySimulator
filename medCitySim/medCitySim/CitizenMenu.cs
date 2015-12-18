@@ -18,7 +18,7 @@ namespace MedCitySim
         {
            
         
-            if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.C))
+            if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.P))
             {
                 if (Church.priest == true)
                 {
@@ -55,7 +55,7 @@ namespace MedCitySim
                 {
                     GameWorld.Food--;
                     GameWorld.CitizenPop++;
-                    GameWorld.ToAdd.Add(new Citizen(@"Sprites\rsz_cop1.png", new Vector2D(400, 400), "lars", true, Citizen.Assignment.civilWatch));
+                    GameWorld.ToAdd.Add(new Citizen(@"Sprites\rsz_cop1.png", new Vector2D(400, 400), "lars", true, Citizen.Assignment.soldier));
                     GameWorld.ToRemove.Add(this);
                     GameWorld.ToAdd.Add(new Button(@"Sprites\Button.png", new Vector2D(999, 614)));
                 }
@@ -75,7 +75,7 @@ namespace MedCitySim
                 }
                 }
             }
-            if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.Q))
+            if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.A))
             {
                 if (Quarry.mason == true)
                 {
@@ -89,7 +89,7 @@ namespace MedCitySim
                 }
                 }
             }
-            if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.B))
+            if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.S))
             {
                 if (Blacksmith.blacksmith == true)
                 {
