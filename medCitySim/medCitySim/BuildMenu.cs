@@ -11,9 +11,8 @@ namespace MedCitySim
     class BuildMenu : GameObject
     {
         protected ISoundEngine engine;
-       private Graphics dc;
-       public BuildMenu(string imagePath, Vector2D startPosition) : base(imagePath, startPosition)
-      // public BuildMenu(string imagePath, Vector2D position) : base (imagePath, position)
+        private Graphics dc;
+        public BuildMenu(string imagePath, Vector2D startPosition) : base(imagePath, startPosition)
         {
         }
         public override void Update(float currentFPS)
@@ -29,8 +28,8 @@ namespace MedCitySim
                 else
                 {
                     CantBuild();
-                }   
-                    
+                }
+
             }
             if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.C))
             {
@@ -48,7 +47,7 @@ namespace MedCitySim
             }
             if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.W))
             {
-                if (GameWorld.Lumber >= 25 && GameWorld.Stone >= 50 && GameWorld.Iron >= 10)
+                if (GameWorld.Lumber >= 25 && GameWorld.Stone >= 50 && GameWorld.Iron >= 10 && ResearchMenu.Well == false)
                 {
                     GameWorld.ToAdd.Add(new Well(@"Sprites\Buildings\WellLille.png", (new Vector2D(200, 200)), 300));
                     GameWorld.ToRemove.Add(this);

@@ -43,7 +43,7 @@ namespace MedCitySim
             {
                 canBuild = false;
             }
-            else if (other is Background)
+            else if (other is Mountain)
             {
                 canBuild = true;
             }
