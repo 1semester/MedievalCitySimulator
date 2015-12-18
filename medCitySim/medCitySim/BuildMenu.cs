@@ -81,7 +81,7 @@ namespace MedCitySim
                     GameWorld.ToAdd.Add(new Button(@"Sprites\Button.png", new Vector2D(999, 614)));
                 }
             }
-            if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.B))
+            if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.O))
             {
                 if (GameWorld.Lumber >= 5 && GameWorld.Stone >= 5)
                 {

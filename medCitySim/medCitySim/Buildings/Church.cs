@@ -11,6 +11,7 @@ namespace MedCitySim
         private Graphics dc;
         private bool canBuild = true;
         private int speed;
+        public static bool priest = false;
         public Church(string imagePath, Vector2D startposition, int speed) : base(imagePath, startposition)
         {
             this.speed = speed;
@@ -62,6 +63,7 @@ namespace MedCitySim
                     speed = 0;
                     Cost();
                     BuildSound();
+                    priest = true;
                 }
             }
             if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.Escape))

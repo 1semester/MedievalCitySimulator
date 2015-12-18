@@ -15,6 +15,7 @@ namespace MedCitySim
         private int masons;
         public static float workInterval = 5f;
         private float workCooldown;
+        public static bool mason;
         public Quarry(string imagePath, Vector2D startposition, int speed) : base (imagePath, startposition)
         {
             this.speed = speed;
@@ -78,6 +79,8 @@ namespace MedCitySim
                 {
                     speed = 0;
                     Cost();
+                    BuildSound();
+                    mason = true;
                 }
             }
             if (speed == 0)

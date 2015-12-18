@@ -12,6 +12,7 @@ namespace MedCitySim
         private Graphics dc;
         private bool canBuild = true;
         private int speed;
+        public static bool blacksmith = false;
         public Blacksmith(string imagePath, Vector2D startposition, int speed) : base(imagePath, startposition)
         {
             this.speed = speed;
@@ -63,6 +64,7 @@ namespace MedCitySim
                     speed = 0;
                     Cost();
                     BuildSound();
+                    blacksmith = true;
                 }
             }
             if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.Escape))

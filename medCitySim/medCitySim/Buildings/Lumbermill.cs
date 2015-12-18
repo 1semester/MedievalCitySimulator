@@ -16,6 +16,7 @@ namespace MedCitySim
         private int lumberjacks;
         public static float workInterval = 5f;
         private float workCooldown;
+        public static bool lumberjack = false;
 
         public Lumbermill(string imagePath, Vector2D startposition, int speed) : base(imagePath,startposition)
         {
@@ -80,6 +81,8 @@ namespace MedCitySim
                 {
                     speed = 0;
                     Cost();
+                    BuildSound();
+                    lumberjack = true;
                 }
             }
             if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.Escape))
