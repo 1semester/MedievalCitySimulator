@@ -33,7 +33,7 @@ namespace MedCitySim
 
                 }
             }
-            GameWorld.Iron += 1 + miners;
+            GameWorld.Iron += miners;
 
         }
         protected override void OnCollision(GameObject other)
