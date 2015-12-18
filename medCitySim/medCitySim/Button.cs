@@ -21,7 +21,7 @@ namespace MedCitySim
             }
             if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.C))
             {
-                GameWorld.ToAdd.Add(new CitizenMenu(@"Sprites\rsz_cop1.png", new Vector2D(992, 600)));
+                GameWorld.ToAdd.Add(new CitizenMenu(@"Sprites\CitizenMenu.png", new Vector2D(992, 30)));
                 GameWorld.ToRemove.Add(this);
             }
             if (Blacksmith.blacksmith == true)
