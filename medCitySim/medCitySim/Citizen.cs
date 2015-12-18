@@ -214,16 +214,32 @@ namespace MedCitySim
         {
             foreach (GameObject go in GameWorld.objs)
             {
-                var raider = go as Raider;
-
-
-                if (raider  != null && currentAssignment != Citizen.Assignment.civilWatch)
+                if (other is Raider)
                 {
-                    GameWorld.ToRemove.Add(this);
+                    var citizen = this as Citizen;
+                    if (citizen != null)
+                    {
+                        if (citizen.currentAssignment == Citizen.Assignment.civilWatch)
+                        {
+                            GameWorld.ToRemove.Add(other);
+                        }
+                        else
+                        {
+                            GameWorld.ToRemove.Add(this);
+                        }
+                    }
 
                 }
+                //var raider = go as Raider;
+
+
+                //if (raider  != null && currentAssignment != Citizen.Assignment.civilWatch)
+                //{
+                //    GameWorld.ToRemove.Add(this);
+
+                //}
             }
-            base.OnCollision(other);
+            //base.OnCollision(other);
         }
     }
 }
