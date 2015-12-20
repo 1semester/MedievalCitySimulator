@@ -81,8 +81,8 @@ namespace MedCitySim
 
             deltaPosition.Normalize();
 
-            Position.X += 1 / currentFPS * (deltaPosition.X * 100);
-            Position.Y += 1 / currentFPS * (deltaPosition.Y * 100);
+            Position.X += 1 / currentFPS * (deltaPosition.X * 125);
+            Position.Y += 1 / currentFPS * (deltaPosition.Y * 125);
             base.Update(currentFPS);
         }
     }

@@ -109,6 +109,21 @@ namespace MedCitySim
                     }
                     break;
                 case Assignment.soldier:
+                    Raider raider = GameWorld.objs.OfType<Raider>().FirstOrDefault();
+
+
+                    if (raider ==null)
+                    {
+                        float First = rnd.Next(100, 600);
+                        float Second = rnd.Next(100, 600);
+                        currentWaypoint = new Vector2D(First, Second);
+                    }
+                    if (raider != null && currentWaypoint !=raider.Position)
+                    {
+                        currentWaypoint = raider.Position;
+
+                        return;
+                    }
                     break;
                 case Assignment.miner:
                     Mine mine = GameWorld.objs.OfType<Mine>().FirstOrDefault();
@@ -148,15 +163,15 @@ namespace MedCitySim
                     break;
                 case Assignment.unassigned:
 
-               float   First=  rnd.Next(10, 800);
-             float       second = rnd.Next(10, 800);
-                 currentWaypoint= new Vector2D(First,second);
+               float   first=  rnd.Next(100, 800);
+             float       second = rnd.Next(100, 800);
+                 currentWaypoint= new Vector2D(first,second);
                     return;
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
-            this.currentWaypoint = new Vector2D(500,500);
+            //this.currentWaypoint = new Vector2D(500,500);
         }
 
         public void Eat()
@@ -243,14 +258,13 @@ namespace MedCitySim
             //Vector2D newPosition = new Vector2D(10,10);
             Position.X += 1/currentFPS*(deltaPosition.X*100);
           Position.Y += 1/currentFPS*(deltaPosition.Y*100);
+            if (currentAssignment==Assignment.soldier)
+            {
+                Position.X += 1 / currentFPS * (deltaPosition.X * 135);
+                Position.Y += 1 / currentFPS * (deltaPosition.Y * 135);
+            }
 
-            //if (!GameWorld.positionOcuppied(new Vector2D(newPosition.X, newPosition.Y)))
-            //    Position = newPosition;
-            //else if (!GameWorld.positionOcuppied(new Vector2D(newPosition.X, Position.Y)))
-            //    Position.X = Position.X + 1 / currentFPS * (100);
-            //else if (!GameWorld.positionOcuppied(new Vector2D(Position.X, newPosition.Y)))
-            //    Position.Y = Position.Y + 1 / currentFPS * (100);
-
+           
             
 
             base.Update(currentFPS);
