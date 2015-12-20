@@ -34,7 +34,7 @@ namespace MedCitySim
         }
         protected virtual float WorkTimer(float WorkInterval)
         {
-            float WorkTimer = workInterval;
+            float WorkTimer = WorkInterval;
             if (Witch.witchAlive == true)
             {
                 WorkTimer = WorkInterval * 2;

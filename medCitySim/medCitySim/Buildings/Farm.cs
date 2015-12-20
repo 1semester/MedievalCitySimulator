@@ -97,10 +97,12 @@ namespace MedCitySim
             if (speed == 0)
             {
                 float deltaTime = 1f / currentFPS;
-
+              
+                    
                 workCooldown -= deltaTime;
+              
 
-                if (workCooldown <= 0)
+                if (workCooldown <= 0 )
                 {
                     Work();
                     workCooldown += WorkTimer(workInterval);
