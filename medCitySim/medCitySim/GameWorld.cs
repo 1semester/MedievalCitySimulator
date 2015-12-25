@@ -241,10 +241,16 @@ namespace MedCitySim
             if (dayCooldown < 240)
             {
                 nightTime = false;
+                
             }
             if (dayCooldown >= 240)
             {
                 nightTime = true;
+                if (nightTime)
+                {
+                 // Background night = new Background(@"Sprites\Night.png", new Vector2D(0, 41));
+                 //   toAdd.Add(night);
+                }
             }
 
             if (dayCooldown >= 300)

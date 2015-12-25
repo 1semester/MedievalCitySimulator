@@ -56,14 +56,55 @@ namespace MedCitySim
             {
                 currentWaypoint = soldier.Position;
 
-                return;
+               
             }
-            //if (soldier != null && currentWaypoint == soldier.Position)
-            //{
-            //    currentWaypoint = new Vector2D(500, 500);
+           
 
-            //    return;
-            //}
+                Building building = GameWorld.objs.OfType<Building>().FirstOrDefault();
+
+            if (soldier==null && building!=null)
+            {
+                currentWaypoint = building.Position;
+               
+                Vector2D deltaPosition = Position.Subtract(currentWaypoint);
+                    float distanceFromWaypoint = deltaPosition.Magnitude;
+                if (distanceFromWaypoint<10)
+                {
+                currentWaypoint = new Vector2D(0, 350);
+                    
+                }
+               
+                if (distanceFromWaypoint >=240&& distanceFromWaypoint<=245 && currentWaypoint!= new Vector2D(0,350))
+                    {
+                    int raider = 0;
+                    foreach (GameObject go in GameWorld.objs)
+                    {
+                        var citizen = go as Raider;
+
+                        if (citizen != null)
+                        {
+                            raider++;
+
+                        }
+
+
+                    }
+                    GameWorld.Food --;
+                    GameWorld.Iron --;
+                    GameWorld.Lumber --;
+                    GameWorld.Stone --;
+                    //GameWorld.Food -= raider;
+                    //GameWorld.Iron -= raider;
+                    //GameWorld.Lumber -= raider;
+                    //GameWorld.Stone -= raider;
+
+                    GameWorld.ToRemove.Add(this);
+                        
+                    }
+               
+                  
+                
+            }
         }
 
 

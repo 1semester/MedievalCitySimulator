@@ -26,7 +26,13 @@ namespace MedCitySim
                 {
                     GameWorld.Food--;
                     GameWorld.CitizenPop++;
-                    GameWorld.ToAdd.Add(new Citizen(@"Sprites\rsz_cop1.png", new Vector2D(400, 400), "lars", true, Citizen.Assignment.priest));
+                    Church church = GameWorld.objs.OfType<Church>().FirstOrDefault();
+                    if (church != null)
+                    {
+                        float spawnPointX = church.Position.X + 40;
+                        float spawnPointY = church.Position.Y + 40;
+                    GameWorld.ToAdd.Add(new Citizen(@"Sprites\rsz_cop1.png", new Vector2D(spawnPointX, spawnPointY), "lars", true, Citizen.Assignment.priest));
+                    }
                     GameWorld.ToRemove.Add(this);
                     GameWorld.ToAdd.Add(new Button(@"Sprites\Button.png", new Vector2D(999, 614)));
                 }
@@ -43,7 +49,15 @@ namespace MedCitySim
                 {
                     GameWorld.Food--;
                     GameWorld.CitizenPop++;
-                    GameWorld.ToAdd.Add(new Citizen(@"Sprites\rsz_cop1.png", new Vector2D(400, 400), "lars", true, Citizen.Assignment.farmer));
+                        Farm farm = GameWorld.objs.OfType<Farm>().FirstOrDefault();
+                    if (farm!=null)
+                    {
+                        float spawnPointX = farm.Position.X+40;
+                        float spawnPointY = farm.Position.Y+40;
+                        
+                        GameWorld.ToAdd.Add(new Citizen(@"Sprites\rsz_cop1.png", new Vector2D(spawnPointX, spawnPointY), "lars", true, Citizen.Assignment.farmer));
+                        
+                    }
                     GameWorld.ToRemove.Add(this);
                     GameWorld.ToAdd.Add(new Button(@"Sprites\Button.png", new Vector2D(999, 614)));
                 }
@@ -59,7 +73,16 @@ namespace MedCitySim
                 {
                     GameWorld.Food--;
                     GameWorld.CitizenPop++;
-                    GameWorld.ToAdd.Add(new Citizen(@"Sprites\rsz_cop1.png", new Vector2D(400, 400), "lars", true, Citizen.Assignment.soldier));
+                   CivilWatch civilWatch = GameWorld.objs.OfType<CivilWatch>().FirstOrDefault();
+                    if (civilWatch != null)
+                    {
+                        float spawnPointX = civilWatch.Position.X + 40;
+                        float spawnPointY = civilWatch.Position.Y + 40;
+
+                        GameWorld.ToAdd.Add(new Citizen(@"Sprites\rsz_cop1.png", new Vector2D(spawnPointX, spawnPointY), "lars", true, Citizen.Assignment.soldier));
+
+                    }
+                   
                     GameWorld.ToRemove.Add(this);
                     GameWorld.ToAdd.Add(new Button(@"Sprites\Button.png", new Vector2D(999, 614)));
                 }
@@ -75,7 +98,15 @@ namespace MedCitySim
                 {
                     GameWorld.Food--;
                     GameWorld.CitizenPop++;
-                    GameWorld.ToAdd.Add(new Citizen(@"Sprites\rsz_cop1.png", new Vector2D(400, 400), "lars", true, Citizen.Assignment.lumberJack));
+                    Lumbermill lumbermill = GameWorld.objs.OfType<Lumbermill>().FirstOrDefault();
+                    if (lumbermill != null)
+                    {
+                        float spawnPointX = lumbermill.Position.X + 40;
+                        float spawnPointY = lumbermill.Position.Y + 40;
+
+                        GameWorld.ToAdd.Add(new Citizen(@"Sprites\rsz_cop1.png", new Vector2D(spawnPointX, spawnPointY), "lars", true, Citizen.Assignment.lumberJack));
+
+                    }
                     GameWorld.ToRemove.Add(this);
                     GameWorld.ToAdd.Add(new Button(@"Sprites\Button.png", new Vector2D(999, 614)));
                 }
@@ -91,7 +122,15 @@ namespace MedCitySim
                 {
                     GameWorld.Food--;
                     GameWorld.CitizenPop++;
-                    GameWorld.ToAdd.Add(new Citizen(@"Sprites\rsz_cop1.png", new Vector2D(400, 400), "lars", true, Citizen.Assignment.mason));
+                   Quarry quarry = GameWorld.objs.OfType<Quarry>().FirstOrDefault();
+                    if (quarry != null)
+                    {
+                        float spawnPointX = quarry.Position.X + 40;
+                        float spawnPointY = quarry.Position.Y + 40;
+
+                        GameWorld.ToAdd.Add(new Citizen(@"Sprites\rsz_cop1.png", new Vector2D(spawnPointX, spawnPointY), "lars", true, Citizen.Assignment.mason));
+
+                    }
                     GameWorld.ToRemove.Add(this);
                     GameWorld.ToAdd.Add(new Button(@"Sprites\Button.png", new Vector2D(999, 614)));
                 }
@@ -107,7 +146,15 @@ namespace MedCitySim
                 {
                     GameWorld.Food--;
                     GameWorld.CitizenPop++;
-                    GameWorld.ToAdd.Add(new Citizen(@"Sprites\rsz_cop1.png", new Vector2D(400, 400), "lars", true, Citizen.Assignment.smith));
+                    Blacksmith blacksmith = GameWorld.objs.OfType<Blacksmith>().FirstOrDefault();
+                    if (blacksmith != null)
+                    {
+                        float spawnPointX = blacksmith.Position.X + 40;
+                        float spawnPointY = blacksmith.Position.Y + 40;
+
+                        GameWorld.ToAdd.Add(new Citizen(@"Sprites\rsz_cop1.png", new Vector2D(spawnPointX, spawnPointY), "lars", true, Citizen.Assignment.smith));
+
+                    }
                     GameWorld.ToRemove.Add(this);
                     GameWorld.ToAdd.Add(new Button(@"Sprites\Button.png", new Vector2D(999, 614)));
                 }
@@ -123,7 +170,15 @@ namespace MedCitySim
                 {
                     GameWorld.Food--;
                     GameWorld.CitizenPop++;
-                    GameWorld.ToAdd.Add(new Citizen(@"Sprites\rsz_cop1.png", new Vector2D(400, 400), "lars", true, Citizen.Assignment.miner));
+                    Mine mine = GameWorld.objs.OfType<Mine>().FirstOrDefault();
+                    if (mine != null)
+                    {
+                        float spawnPointX = mine.Position.X + 40;
+                        float spawnPointY = mine.Position.Y + 40;
+
+                        GameWorld.ToAdd.Add(new Citizen(@"Sprites\rsz_cop1.png", new Vector2D(spawnPointX, spawnPointY), "lars", true, Citizen.Assignment.miner));
+
+                    }
                     GameWorld.ToRemove.Add(this);
                     GameWorld.ToAdd.Add(new Button(@"Sprites\Button.png", new Vector2D(999, 614)));
                 }
@@ -139,7 +194,36 @@ namespace MedCitySim
             }
             if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.Q))
             {
-                GameWorld.ToAdd.Add(new Raider(@"Sprites\rsz_cop1.png", new Vector2D(400, 400)));
+              
+                    Random rnd = new Random();
+               int spawnpoint= rnd.Next(0, 4);
+                switch (spawnpoint)
+                {
+                    case 0:
+                        float spawnPointX = -30;
+                        float spawnPointY =-30;
+                        GameWorld.ToAdd.Add(new Raider(@"Sprites\rsz_cop1.png", new Vector2D(spawnPointX, spawnPointY)));
+                        break;
+                    case 1:
+                         spawnPointX = -30;
+                         spawnPointY = 1030;
+                        GameWorld.ToAdd.Add(new Raider(@"Sprites\rsz_cop1.png", new Vector2D(spawnPointX, spawnPointY)));
+                        break;
+                    case 2:
+                       spawnPointX = 1130;
+                       spawnPointY = 1030;
+                        GameWorld.ToAdd.Add(new Raider(@"Sprites\rsz_cop1.png", new Vector2D(spawnPointX, spawnPointY)));
+                        break;
+                    case 3:
+                       spawnPointX = 1130;
+                        spawnPointY = -30;
+                        GameWorld.ToAdd.Add(new Raider(@"Sprites\rsz_cop1.png", new Vector2D(spawnPointX, spawnPointY)));
+                        break;
+
+                }
+                   
+                 //   GameWorld.ToAdd.Add(new Raider(@"Sprites\rsz_cop1.png", new Vector2D(spawnPointX, spawnPointY)));
+                
             }
 
             if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.Escape))

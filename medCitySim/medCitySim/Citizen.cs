@@ -97,7 +97,9 @@ namespace MedCitySim
 
                     if (farm != null && currentWaypoint != farm.Position)
                     {
+
                         currentWaypoint = farm.Position;
+                        
 
                         return;
                     }
@@ -112,18 +114,24 @@ namespace MedCitySim
                     Raider raider = GameWorld.objs.OfType<Raider>().FirstOrDefault();
 
 
-                    if (raider ==null)
-                    {
-                        float First = rnd.Next(100, 600);
-                        float Second = rnd.Next(100, 600);
-                        currentWaypoint = new Vector2D(First, Second);
-                    }
-                    if (raider != null && currentWaypoint !=raider.Position)
+                    if (raider != null)
                     {
                         currentWaypoint = raider.Position;
 
                         return;
                     }
+                    //if (raider ==null)
+                    //{
+                    //    float First = rnd.Next(100, 600);
+                    //    float Second = rnd.Next(100, 600);
+                    //    currentWaypoint = new Vector2D(First, Second);
+                    //}
+                    if (raider == null )
+                    {
+                        CivilWatch civilWatch = GameWorld.objs.OfType<CivilWatch>().FirstOrDefault();
+                        currentWaypoint = civilWatch.Position;
+                    }
+                   
                     break;
                 case Assignment.miner:
                     Mine mine = GameWorld.objs.OfType<Mine>().FirstOrDefault();
@@ -256,8 +264,20 @@ namespace MedCitySim
             RiskOfDeath(Age,Hunger);
            deltaPosition.Normalize();
             //Vector2D newPosition = new Vector2D(10,10);
+            if (Witch.witchAlive==false)
+            {
             Position.X += 1/currentFPS*(deltaPosition.X*100);
           Position.Y += 1/currentFPS*(deltaPosition.Y*100);
+                
+            }
+            else if (Witch.witchAlive==true)
+            {
+                Position.X += 1 / currentFPS * (deltaPosition.X * 50);
+                Position.Y += 1 / currentFPS * (deltaPosition.Y * 50);
+                
+            }
+           
+            
             if (currentAssignment==Assignment.soldier)
             {
                 Position.X += 1 / currentFPS * (deltaPosition.X * 135);
@@ -274,6 +294,8 @@ namespace MedCitySim
         {
             foreach (GameObject go in GameWorld.objs)
             {
+
+               
                 if (other is Raider)
                 {
                     var citizen = this as Citizen;
