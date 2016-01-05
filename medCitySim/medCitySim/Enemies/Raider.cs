@@ -8,7 +8,7 @@ namespace MedCitySim
 {
     class Raider : Enemy
     {
-
+        private GameObject targetGo;
         private Vector2D currentWaypoint;
         Random rnd = new Random();
 
@@ -46,15 +46,23 @@ namespace MedCitySim
 
         public void FindWaypoint()
         {
-            Citizen soldier = GameWorld.objs.OfType<Citizen>().FirstOrDefault();
+
+            if (targetGo == null || GameWorld.objs.Contains(targetGo) == false)
+            {
+                var soldiers = GameWorld.objs.OfType<Citizen>().ToArray();
+                
+                targetGo = soldiers.Length > 0 ? soldiers[rnd.Next(0, soldiers.Length)] : null;
+            }
+
+
 
             //float First = rnd.Next(10, 800);
             //float second = rnd.Next(10, 800);
             //currentWaypoint = new Vector2D(First, second);
 
-            if (soldier != null)
+            if (targetGo != null)
             {
-                currentWaypoint = soldier.Position;
+                currentWaypoint = targetGo.Position;
 
                
             }
@@ -62,7 +70,7 @@ namespace MedCitySim
 
                 Building building = GameWorld.objs.OfType<Building>().FirstOrDefault();
 
-            if (soldier==null && building!=null)
+            if (targetGo == null && building!=null)
             {
                 currentWaypoint = building.Position;
                

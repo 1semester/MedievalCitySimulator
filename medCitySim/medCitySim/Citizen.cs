@@ -19,6 +19,7 @@ namespace MedCitySim
         Random rnd = new Random();
         public Assignment currentAssignment;
         private Vector2D currentWaypoint;
+        private byte hit;
 
 
         public enum Assignment
@@ -41,6 +42,7 @@ namespace MedCitySim
             Age = 0;
             this.currentAssignment = assignment;
             this.FindWaypoint();
+            hit = 0;
         }
 
         private void FindWaypoint()
@@ -144,6 +146,7 @@ namespace MedCitySim
                     if (raider == null )
                     {
                         CivilWatch civilWatch = GameWorld.objs.OfType<CivilWatch>().FirstOrDefault();
+                      
                         currentWaypoint = civilWatch.Position;
                     }
                    
@@ -316,13 +319,24 @@ namespace MedCitySim
                     var citizen = this as Citizen;
                     if (citizen != null)
                     {
+                        hit++;
                         if (citizen.currentAssignment == Citizen.Assignment.soldier)
                         {
+                           
                             GameWorld.ToRemove.Add(other);
+                                
+                            
+                        }
+                        if (citizen.currentAssignment == Citizen.Assignment.soldier && hit >=2)
+                        {
+
+                            GameWorld.ToRemove.Add(this);
                         }
                         else
                         {
-                            GameWorld.ToRemove.Add(this);
+                           
+                                GameWorld.ToRemove.Add(this);
+                            
                         }
                     }
 
