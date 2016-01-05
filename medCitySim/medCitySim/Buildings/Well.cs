@@ -23,7 +23,7 @@ namespace MedCitySim
         }
         protected override void OnCollision(GameObject other)
         {
-            if (other is Building || other is UserInterface)
+            if (other is Building || other is UserInterface || other is Mountain || other is Forest)
             {
                 canBuild = false;
             }

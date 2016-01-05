@@ -90,7 +90,22 @@ namespace MedCitySim
                     }
                     break;
                 case Assignment.smith:
+                    Blacksmith bs = GameWorld.objs.OfType<Blacksmith>().FirstOrDefault();
 
+
+
+                    if (bs != null && currentWaypoint != bs.Position)
+                    {
+                        currentWaypoint = bs.Position;
+
+                        return;
+                    }
+                    if (bs != null && currentWaypoint == bs.Position)
+                    {
+                        currentWaypoint = new Vector2D(500, 500);
+
+                        return;
+                    }
                     break;
                 case Assignment.farmer:
                     Farm farm = GameWorld.objs.OfType<Farm>().FirstOrDefault();
