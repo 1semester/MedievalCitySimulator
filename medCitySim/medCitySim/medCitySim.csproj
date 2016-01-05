@@ -58,6 +58,7 @@
     <Compile Include="Buildings\Church.cs" />
     <Compile Include="Buildings\Mine.cs" />
     <Compile Include="Buildings\Quarry.cs" />
+    <Compile Include="Buildings\Storage.cs" />
     <Compile Include="BuildMenu.cs" />
     <Compile Include="Button.cs" />
     <Compile Include="Citizen.cs" />
