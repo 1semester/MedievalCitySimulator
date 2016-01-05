@@ -31,7 +31,7 @@ namespace MedCitySim
                     {
                         float spawnPointX = church.Position.X + 40;
                         float spawnPointY = church.Position.Y + 40;
-                    GameWorld.ToAdd.Add(new Citizen(@"Sprites\rsz_cop1.png", new Vector2D(spawnPointX, spawnPointY), "lars", true, Citizen.Assignment.priest));
+                    GameWorld.ToAdd.Add(new Citizen(@"Sprites\Citizens\CitizenPriest.png", new Vector2D(spawnPointX, spawnPointY), "lars", true, Citizen.Assignment.priest));
                     }
                     GameWorld.ToRemove.Add(this);
                     GameWorld.ToAdd.Add(new Button(@"Sprites\Button.png", new Vector2D(999, 614)));
@@ -55,7 +55,7 @@ namespace MedCitySim
                         float spawnPointX = farm.Position.X+40;
                         float spawnPointY = farm.Position.Y+40;
                         
-                        GameWorld.ToAdd.Add(new Citizen(@"Sprites\rsz_cop1.png", new Vector2D(spawnPointX, spawnPointY), "lars", true, Citizen.Assignment.farmer));
+                        GameWorld.ToAdd.Add(new Citizen(@"Sprites\Citizens\CitizenFarmer.png", new Vector2D(spawnPointX, spawnPointY), "lars", true, Citizen.Assignment.farmer));
                         
                     }
                     GameWorld.ToRemove.Add(this);
@@ -79,7 +79,7 @@ namespace MedCitySim
                         float spawnPointX = civilWatch.Position.X + 40;
                         float spawnPointY = civilWatch.Position.Y + 40;
 
-                        GameWorld.ToAdd.Add(new Citizen(@"Sprites\rsz_cop1.png", new Vector2D(spawnPointX, spawnPointY), "lars", true, Citizen.Assignment.soldier));
+                        GameWorld.ToAdd.Add(new Citizen(@"Sprites\Citizens\CitizenSoldier.png", new Vector2D(spawnPointX, spawnPointY), "lars", true, Citizen.Assignment.soldier));
 
                     }
                    
@@ -104,7 +104,7 @@ namespace MedCitySim
                         float spawnPointX = lumbermill.Position.X + 40;
                         float spawnPointY = lumbermill.Position.Y + 40;
 
-                        GameWorld.ToAdd.Add(new Citizen(@"Sprites\rsz_cop1.png", new Vector2D(spawnPointX, spawnPointY), "lars", true, Citizen.Assignment.lumberJack));
+                        GameWorld.ToAdd.Add(new Citizen(@"Sprites\Citizens\CitizenLumberjack.png", new Vector2D(spawnPointX, spawnPointY), "lars", true, Citizen.Assignment.lumberJack));
 
                     }
                     GameWorld.ToRemove.Add(this);
@@ -128,7 +128,7 @@ namespace MedCitySim
                         float spawnPointX = quarry.Position.X + 40;
                         float spawnPointY = quarry.Position.Y + 40;
 
-                        GameWorld.ToAdd.Add(new Citizen(@"Sprites\rsz_cop1.png", new Vector2D(spawnPointX, spawnPointY), "lars", true, Citizen.Assignment.mason));
+                        GameWorld.ToAdd.Add(new Citizen(@"Sprites\Citizens\CitizenMason.png", new Vector2D(spawnPointX, spawnPointY), "lars", true, Citizen.Assignment.mason));
 
                     }
                     GameWorld.ToRemove.Add(this);
@@ -152,7 +152,7 @@ namespace MedCitySim
                         float spawnPointX = blacksmith.Position.X + 40;
                         float spawnPointY = blacksmith.Position.Y + 40;
 
-                        GameWorld.ToAdd.Add(new Citizen(@"Sprites\rsz_cop1.png", new Vector2D(spawnPointX, spawnPointY), "lars", true, Citizen.Assignment.smith));
+                        GameWorld.ToAdd.Add(new Citizen(@"Sprites\Citizens\CitizenSmith.png", new Vector2D(spawnPointX, spawnPointY), "lars", true, Citizen.Assignment.smith));
 
                     }
                     GameWorld.ToRemove.Add(this);
@@ -176,7 +176,7 @@ namespace MedCitySim
                         float spawnPointX = mine.Position.X + 40;
                         float spawnPointY = mine.Position.Y + 40;
 
-                        GameWorld.ToAdd.Add(new Citizen(@"Sprites\rsz_cop1.png", new Vector2D(spawnPointX, spawnPointY), "lars", true, Citizen.Assignment.miner));
+                        GameWorld.ToAdd.Add(new Citizen(@"Sprites\Citizens\CitizenMiner.png", new Vector2D(spawnPointX, spawnPointY), "lars", true, Citizen.Assignment.miner));
 
                     }
                     GameWorld.ToRemove.Add(this);
@@ -190,7 +190,7 @@ namespace MedCitySim
 
             if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.W))
             {
-                GameWorld.ToAdd.Add(new Witch(@"Sprites\rsz_cop1.png", new Vector2D(400, 400), false, "john"));
+                GameWorld.ToAdd.Add(new Witch(@"Sprites\Citizens\Witch.png", new Vector2D(400, 400), false, "john"));
             }
             if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.Q))
             {
@@ -202,22 +202,22 @@ namespace MedCitySim
                     case 0:
                         float spawnPointX = -30;
                         float spawnPointY =-30;
-                        GameWorld.ToAdd.Add(new Raider(@"Sprites\rsz_cop1.png", new Vector2D(spawnPointX, spawnPointY)));
+                        GameWorld.ToAdd.Add(new Raider(@"Sprites\Citizens\Raider.png", new Vector2D(spawnPointX, spawnPointY)));
                         break;
                     case 1:
                          spawnPointX = -30;
                          spawnPointY = 1030;
-                        GameWorld.ToAdd.Add(new Raider(@"Sprites\rsz_cop1.png", new Vector2D(spawnPointX, spawnPointY)));
+                        GameWorld.ToAdd.Add(new Raider(@"Sprites\Citizens\Raider.png", new Vector2D(spawnPointX, spawnPointY)));
                         break;
                     case 2:
                        spawnPointX = 1130;
                        spawnPointY = 1030;
-                        GameWorld.ToAdd.Add(new Raider(@"Sprites\rsz_cop1.png", new Vector2D(spawnPointX, spawnPointY)));
+                        GameWorld.ToAdd.Add(new Raider(@"Sprites\Citizens\Raider.png", new Vector2D(spawnPointX, spawnPointY)));
                         break;
                     case 3:
                        spawnPointX = 1130;
                         spawnPointY = -30;
-                        GameWorld.ToAdd.Add(new Raider(@"Sprites\rsz_cop1.png", new Vector2D(spawnPointX, spawnPointY)));
+                        GameWorld.ToAdd.Add(new Raider(@"Sprites\Citizens\Raider.png", new Vector2D(spawnPointX, spawnPointY)));
                         break;
 
                 }
