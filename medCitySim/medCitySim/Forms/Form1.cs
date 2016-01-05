@@ -21,13 +21,17 @@ namespace medCitySim
         private void button1_Click(object sender, EventArgs e)
         {
             Game g = new Game();
-            g.Show();
+            Hide();
+            g.ShowDialog(this);
+            Show();
         }
 
         private void button2_Click_1(object sender, EventArgs e)
         {
             HowToPlay help = new HowToPlay();
-            help.Show();
+            Hide();
+            help.ShowDialog(this);
+            Show();
         }
 
         private void button3_Click(object sender, EventArgs e)

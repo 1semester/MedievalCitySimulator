@@ -294,8 +294,13 @@ namespace MedCitySim
 
 
 
-
-            backBuffer.Render();
+            try
+            {
+                backBuffer.Render();
+            }
+            catch (Exception)
+            {
+            }
         }
         private void UpdateAnimations(float currentFPS)
         {
