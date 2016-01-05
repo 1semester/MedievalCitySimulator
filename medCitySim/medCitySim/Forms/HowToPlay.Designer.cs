@@ -28,19 +28,38 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::medCitySim.Properties.Resources.HowToPlay;
+            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(638, 438);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // HowToPlay
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(568, 601);
+            this.ClientSize = new System.Drawing.Size(653, 453);
+            this.Controls.Add(this.pictureBox1);
             this.Name = "HowToPlay";
             this.Text = "HowToPlay";
+            this.Load += new System.EventHandler(this.HowToPlay_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
+
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

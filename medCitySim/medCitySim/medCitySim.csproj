@@ -137,6 +137,7 @@
   <ItemGroup>
     <Content Include="Construction.mp3" />
     <Content Include="efx_NO-Fabio_Farinelli-955789468.mp3" />
+    <None Include="Resources\HowToPlay.png" />
     <Content Include="Sprites\Buildings\IronMineLille.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -200,6 +201,7 @@
     <Content Include="Sprites\Citizens\Witch.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Sprites\HowToPlay.png" />
     <Content Include="Sprites\Night.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
