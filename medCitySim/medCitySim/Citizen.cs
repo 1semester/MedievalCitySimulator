@@ -10,7 +10,7 @@ namespace MedCitySim
 {
     class Citizen :GameObject
     {
-      
+        private GameObject targetGo;
         public string Name { get; set; }
         public int Age { get; set; }
         public bool Gender { get; set; }
@@ -73,8 +73,18 @@ namespace MedCitySim
                     break;
                 case Assignment.priest:
                     Church church = GameWorld.objs.OfType<Church>().FirstOrDefault();
+                    if (targetGo == null || GameWorld.objs.Contains(targetGo) == false)
+                    {
+                        var soldiers = GameWorld.objs.OfType<Witch>().ToArray();
 
-
+                        targetGo = soldiers.Length > 0 ? soldiers[rnd.Next(0, soldiers.Length)] : null;
+                    }
+                   
+                        if (Witch.witchAlive==true )
+                        {
+                            
+                        currentWaypoint = targetGo.Position;
+                        }
 
                     if (church != null && currentWaypoint != church.Position)
                     {
@@ -82,12 +92,12 @@ namespace MedCitySim
 
                         return;
                     }
-                    if (church != null && currentWaypoint == church.Position)
-                    {
-                        currentWaypoint = new Vector2D(500, 500);
+                    //if (church != null && currentWaypoint == church.Position)
+                    //{
+                    //    currentWaypoint = new Vector2D(500, 500);
 
-                        return;
-                    }
+                    //    return;
+                    //}
                     break;
                 case Assignment.smith:
                     Blacksmith bs = GameWorld.objs.OfType<Blacksmith>().FirstOrDefault();
@@ -128,22 +138,29 @@ namespace MedCitySim
                     }
                     break;
                 case Assignment.soldier:
-                    Raider raider = GameWorld.objs.OfType<Raider>().FirstOrDefault();
-
-
-                    if (raider != null)
+                    if (targetGo == null || GameWorld.objs.Contains(targetGo) == false)
                     {
-                        currentWaypoint = raider.Position;
+                        var soldiers = GameWorld.objs.OfType<Raider>().ToArray();
 
-                        return;
+                        targetGo = soldiers.Length > 0 ? soldiers[rnd.Next(0, soldiers.Length)] : null;
+                        if (targetGo!=null)
+                        {
+                            
+                        currentWaypoint = targetGo.Position;
+                        }
                     }
+
+                    //Raider raider = GameWorld.objs.OfType<Raider>().FirstOrDefault();
+
+
+                   
                     //if (raider ==null)
                     //{
                     //    float First = rnd.Next(100, 600);
                     //    float Second = rnd.Next(100, 600);
                     //    currentWaypoint = new Vector2D(First, Second);
                     //}
-                    if (raider == null )
+                    if (targetGo == null )
                     {
                         CivilWatch civilWatch = GameWorld.objs.OfType<CivilWatch>().FirstOrDefault();
                       
@@ -319,7 +336,7 @@ namespace MedCitySim
                     var citizen = this as Citizen;
                     if (citizen != null)
                     {
-                        hit++;
+                        
                         if (citizen.currentAssignment == Citizen.Assignment.soldier)
                         {
                            
@@ -327,11 +344,11 @@ namespace MedCitySim
                                 
                             
                         }
-                        if (citizen.currentAssignment == Citizen.Assignment.soldier && hit >=2)
-                        {
+                        //if (citizen.currentAssignment == Citizen.Assignment.soldier)
+                        //{
 
-                            GameWorld.ToRemove.Add(this);
-                        }
+                        //    GameWorld.ToRemove.Add(this);
+                        //}
                         else
                         {
                            
