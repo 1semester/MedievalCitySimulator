@@ -4,18 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using IrrKlang;
 
 namespace MedCitySim
 {
     class House : Building
     {
-        private Graphics dc;
-        //private static List<Citizen> population = new List<Citizen>(4);
+        protected ISoundEngine engine;
         private bool canBuild = true;
         private int speed;
-        public House(string imagePath, Vector2D startposition, int speed, Graphics dc) : base(imagePath, startposition)
+        public House(string imagePath, Vector2D startposition, int speed) : base(imagePath, startposition)
         {
-            this.dc = dc;
             this.speed = speed;
         }
         protected override void Work()
@@ -70,6 +69,10 @@ namespace MedCitySim
                         GameWorld.CitizenCap += 4;
                     }
                 }
+                else if (!canBuild)
+                {
+                    CantBuild();
+                }
             }
             if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.Escape))
             {
@@ -81,6 +84,15 @@ namespace MedCitySim
 
 
             base.Update(currentFPS);
+        }
+        protected void CantBuild()
+        {
+            try
+            {
+                engine = new ISoundEngine();
+                engine.Play2D("Media/efx_NO-Fabio_Farinelli-955789468.mp3", false);
+            }
+            catch (Exception ex) { }
         }
     }
 }

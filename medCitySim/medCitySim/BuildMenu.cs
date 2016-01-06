@@ -21,7 +21,7 @@ namespace MedCitySim
             {
                 if (GameWorld.Lumber >= 30 && GameWorld.Stone >= 15)
                 {
-                    GameWorld.ToAdd.Add(new House(@"Sprites\Buildings\House.png", (new Vector2D(200, 200)), 300, dc));
+                    GameWorld.ToAdd.Add(new House(@"Sprites\Buildings\House.png", (new Vector2D(200, 200)), 300));
                     GameWorld.ToRemove.Add(this);
                     GameWorld.ToAdd.Add(new Button(@"Sprites\Button.png", new Vector2D(999, 614)));
                 }

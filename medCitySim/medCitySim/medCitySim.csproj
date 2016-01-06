@@ -94,7 +94,6 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Enemies\Raider.cs" />
-    <Compile Include="RandomEvents.cs" />
     <Compile Include="Buildings\Well.cs" />
     <Compile Include="Enemies\WildAnimal.cs" />
     <Compile Include="Enemies\Witch.cs" />
