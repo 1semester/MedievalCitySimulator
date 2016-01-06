@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Runtime.ExceptionServices;
 using System.Runtime.InteropServices;
@@ -22,6 +23,7 @@ namespace MedCitySim
         public Assignment currentAssignment;
         private Vector2D currentWaypoint;
         private byte hit;
+        private Storage storage;
 
 
         public enum Assignment
@@ -44,7 +46,7 @@ namespace MedCitySim
             Age = 0;
             this.currentAssignment = assignment;
             this.FindWaypoint();
-            hit = 0;
+           this.storage= GameWorld.objs.OfType<Storage>().FirstOrDefault();
         }
 
         private void FindWaypoint()
@@ -63,9 +65,9 @@ namespace MedCitySim
                        
                         return;
                     }
-                    if (Lumbermill != null && currentWaypoint == Lumbermill.Position )
+                    if (storage != null && currentWaypoint == Lumbermill.Position )
                     {
-                        currentWaypoint = new Vector2D(500, 500);
+                        currentWaypoint = storage.Position;
 
                         return;
                     }
@@ -85,7 +87,7 @@ namespace MedCitySim
 
                     if (church != null && currentWaypoint != church.Position)
                     {
-                        currentWaypoint = church.Position;
+                        currentWaypoint = storage.Position;
 
                         return;
                     }
@@ -114,7 +116,7 @@ namespace MedCitySim
                     }
                     if (bs != null && currentWaypoint == bs.Position)
                     {
-                        currentWaypoint = new Vector2D(500, 500);
+                        currentWaypoint = storage.Position;
 
                         return;
                     }
@@ -134,7 +136,7 @@ namespace MedCitySim
                     }
                     if (farm != null && currentWaypoint == farm.Position)
                     {
-                        currentWaypoint = new Vector2D(500, 500);
+                        currentWaypoint = storage.Position;
 
                         return;
                     }
@@ -183,7 +185,7 @@ namespace MedCitySim
                     }
                     if (mine != null && currentWaypoint == mine.Position)
                     {
-                        currentWaypoint = new Vector2D(500, 500);
+                        currentWaypoint = storage.Position;
 
                         return;
                     }
@@ -201,7 +203,7 @@ namespace MedCitySim
                     }
                     if (quarry != null && currentWaypoint == quarry.Position)
                     {
-                        currentWaypoint = new Vector2D(500, 500);
+                        currentWaypoint = storage.Position;
 
                         return;
                     }

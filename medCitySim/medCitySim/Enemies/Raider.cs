@@ -68,7 +68,7 @@ namespace MedCitySim
             }
            
 
-                Building building = GameWorld.objs.OfType<Building>().FirstOrDefault();
+                Building building = GameWorld.objs.OfType<Storage>().FirstOrDefault();
 
             if (targetGo == null && building!=null)
             {
