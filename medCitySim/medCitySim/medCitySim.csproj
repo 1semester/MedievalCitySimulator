@@ -58,6 +58,7 @@
     <Compile Include="Buildings\Church.cs" />
     <Compile Include="Buildings\Mine.cs" />
     <Compile Include="Buildings\Quarry.cs" />
+    <Compile Include="Buildings\Storage.cs" />
     <Compile Include="BuildMenu.cs" />
     <Compile Include="Button.cs" />
     <Compile Include="Citizen.cs" />
@@ -136,6 +137,7 @@
   <ItemGroup>
     <Content Include="Construction.mp3" />
     <Content Include="efx_NO-Fabio_Farinelli-955789468.mp3" />
+    <None Include="Resources\HowToPlay.png" />
     <Content Include="Sprites\Buildings\IronMineLille.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -199,6 +201,7 @@
     <Content Include="Sprites\Citizens\Witch.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Sprites\HowToPlay.png" />
     <Content Include="Sprites\Night.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

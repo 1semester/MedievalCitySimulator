@@ -3,40 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Drawing;
 
 namespace MedCitySim
 {
-    class Blacksmith : Building
+    class Storage : Building
     {
-        private Graphics dc;
         private bool canBuild = true;
         private int speed;
-        private int smiths;
-        public static bool blacksmith = false;
-        public static bool worksmith = false;
-        public Blacksmith(string imagePath, Vector2D startposition, int speed) : base(imagePath, startposition)
+        public Storage(string imagePath, Vector2D startposition, int speed) : base(imagePath, startposition)
         {
             this.speed = speed;
         }
         protected override void Work()
         {
-            smiths = 0;
-            foreach (GameObject go in GameWorld.objs)
-            {
-                var citizen = go as Citizen;
-
-
-                if (citizen != null && citizen.currentAssignment == Citizen.Assignment.smith)
-                {
-                    smiths++;
-                }
-            }
-
-            if (smiths >= 1)
-            {
-                worksmith = true;
-            }
+            base.Work();
         }
         protected override void OnCollision(GameObject other)
         {
@@ -44,16 +24,13 @@ namespace MedCitySim
             {
                 canBuild = false;
             }
-            else
+            else if (other is Background)
             {
                 canBuild = true;
             }
         }
         protected override void Cost()
         {
-            GameWorld.Lumber -= 10;
-            GameWorld.Stone -= 50;
-            GameWorld.Iron -= 20;
             base.Cost();
         }
         public override void Update(float currentFPS)
@@ -82,19 +59,7 @@ namespace MedCitySim
                     speed = 0;
                     Cost();
                     BuildSound();
-                    blacksmith = true;
                 }
-            }
-            if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.Escape))
-            {
-                if (speed > 0)
-                {
-                    GameWorld.ToRemove.Add(this);
-                }
-            }
-            if (speed == 0)
-            {
-                Work();
             }
             base.Update(currentFPS);
         }

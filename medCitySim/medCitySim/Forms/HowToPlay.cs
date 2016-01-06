@@ -12,9 +12,25 @@ namespace medCitySim
 {
     public partial class HowToPlay : Form
     {
+        Graphics dc;
         public HowToPlay()
         {
             InitializeComponent();
+        }
+
+        private void HowToPlay_Load(object sender, EventArgs e)
+        {
+            if(dc == null)
+            {
+                dc = CreateGraphics();
+            }
+
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

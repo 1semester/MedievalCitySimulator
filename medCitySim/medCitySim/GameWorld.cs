@@ -204,9 +204,9 @@ namespace MedCitySim
             objs.Add(new Forest(@"Sprites\TreeLineLeft.png", new Vector2D(0, 91)));
             objs.Add(new Forest(@"Sprites\TreeLineRight.png", new Vector2D(932, 91)));
             objs.Add(new Button(@"Sprites\Button.png", (new Vector2D(999, 614))));
+            objs.Add(new Storage(@"Sprites\Buildings\StorageLille.png", (new Vector2D(450, 350)), 0));
 
             StartSounds();
-            
 
 
             //endTime skal kaldes sidst!
