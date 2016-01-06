@@ -82,7 +82,7 @@ namespace MedCitySim
                     
                 }
                
-                if (distanceFromWaypoint >=240&& distanceFromWaypoint<=245 && currentWaypoint!= new Vector2D(0,350))
+                if (distanceFromWaypoint >=500&& distanceFromWaypoint<=505 && currentWaypoint!= new Vector2D(0,350))
                     {
                     int raider = 0;
                     foreach (GameObject go in GameWorld.objs)
@@ -115,9 +115,46 @@ namespace MedCitySim
             }
         }
 
+        public void raid()
+        {
+            if (GameWorld.nightTime==true)
+            {
+                for (int i = 0; i < 5*GameWorld.daycount; i++)
+                {
+                    Random rnd = new Random();
+                    int spawnpoint = rnd.Next(0, 4);
+                    switch (spawnpoint)
+                    {
+                        case 0:
+                            float spawnPointX = -9;
+                            float spawnPointY = 200;
+                            GameWorld.ToAdd.Add(new Raider(@"Sprites\Citizens\Raider.png", new Vector2D(spawnPointX, spawnPointY)));
+                            break;
+                        case 1:
+                            spawnPointX = 700;
+                            spawnPointY = 765;
+                            GameWorld.ToAdd.Add(new Raider(@"Sprites\Citizens\Raider.png", new Vector2D(spawnPointX, spawnPointY)));
+                            break;
+                        case 2:
+                            spawnPointX = 400;
+                            spawnPointY = 765;
+                            GameWorld.ToAdd.Add(new Raider(@"Sprites\Citizens\Raider.png", new Vector2D(spawnPointX, spawnPointY)));
+                            break;
+                        case 3:
+                            spawnPointX = -9;
+                            spawnPointY = 500;
+                            GameWorld.ToAdd.Add(new Raider(@"Sprites\Citizens\Raider.png", new Vector2D(spawnPointX, spawnPointY)));
+                            break;
+
+                    }
+                }
+            }
+        }
+
 
         public override void Update(float currentFPS)
         {
+            raid();
             Vector2D deltaPosition = Position.Subtract(currentWaypoint);
             float distanceFromWaypoint = deltaPosition.Magnitude;
             if (distanceFromWaypoint < 10)

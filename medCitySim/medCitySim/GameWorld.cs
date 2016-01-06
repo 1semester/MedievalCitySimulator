@@ -33,8 +33,8 @@ namespace MedCitySim
         private string cantBuild = "You cant build there!";
         public static float dayInterval = 300f;
         public static float dayCooldown;
-        private int daycount;
-        private bool nightTime = false;
+        public static int daycount= 1;
+       public static bool nightTime = false;
         
         #region Get and Sets.
 
