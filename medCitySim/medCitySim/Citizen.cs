@@ -10,15 +10,15 @@ using IrrKlang;
 
 namespace MedCitySim
 {
-    class Citizen :GameObject
+    class Citizen : GameObject
     {
         protected ISoundEngine engine;
         private GameObject targetGo;
         public string Name { get; set; }
         public int Age { get; set; }
         public bool Gender { get; set; }
-       
-       // private Vector2D currentnode;
+
+        // private Vector2D currentnode;
         Random rnd = new Random((int)DateTime.Now.Ticks);
         public Assignment currentAssignment;
         private Vector2D currentWaypoint;
@@ -40,13 +40,14 @@ namespace MedCitySim
 
         public int Hunger { get; set; }
 
-        public Citizen(string imagePath, Vector2D position, string Name, bool Gender, Assignment assignment) : base(imagePath,position)
+        public Citizen(string imagePath, Vector2D position, string Name, bool Gender, Assignment assignment) : base(imagePath, position)
         {
             Hunger = 0;
             Age = 0;
             this.currentAssignment = assignment;
             this.FindWaypoint();
-           this.storage= GameWorld.objs.OfType<Storage>().FirstOrDefault();
+            this.storage = GameWorld.objs.OfType<Storage>().FirstOrDefault();
+            hit = 0;
         }
 
         private void FindWaypoint()
@@ -54,25 +55,25 @@ namespace MedCitySim
             switch (currentAssignment)
             {
                 case Assignment.lumberJack:
-                
-                   Lumbermill Lumbermill =GameWorld.objs.OfType<Lumbermill>().FirstOrDefault();
 
-                  
+                    Lumbermill Lumbermill = GameWorld.objs.OfType<Lumbermill>().FirstOrDefault();
 
-                    if (Lumbermill != null && currentWaypoint!=Lumbermill.Position )
+
+
+                    if (Lumbermill != null && currentWaypoint != Lumbermill.Position)
                     {
                         currentWaypoint = Lumbermill.Position;
-                       
+
                         return;
                     }
-                    if (storage != null && currentWaypoint == Lumbermill.Position )
+                    if (storage != null && currentWaypoint == Lumbermill.Position)
                     {
                         currentWaypoint = storage.Position;
 
                         return;
                     }
 
-                    
+
 
                     break;
                 case Assignment.priest:
@@ -83,7 +84,7 @@ namespace MedCitySim
 
                         targetGo = soldiers.Length > 0 ? soldiers[rnd.Next(0, soldiers.Length)] : null;
                     }
-                   
+
 
                     if (church != null && currentWaypoint != church.Position)
                     {
@@ -91,11 +92,11 @@ namespace MedCitySim
 
                         return;
                     }
-                        if (targetGo!=null && currentWaypoint ==church.Position )
-                        {
-                            
+                    if (targetGo != null && currentWaypoint == church.Position)
+                    {
+
                         currentWaypoint = targetGo.Position;
-                        }
+                    }
                     //if (church != null && currentWaypoint == church.Position)
                     //{
                     //    currentWaypoint = new Vector2D(500, 500);
@@ -130,7 +131,7 @@ namespace MedCitySim
                     {
 
                         currentWaypoint = farm.Position;
-                        
+
 
                         return;
                     }
@@ -147,30 +148,30 @@ namespace MedCitySim
                         var soldiers = GameWorld.objs.OfType<Raider>().ToArray();
 
                         targetGo = soldiers.Length > 0 ? soldiers[rnd.Next(0, soldiers.Length)] : null;
-                        if (targetGo!=null)
+                        if (targetGo != null)
                         {
-                            
-                        currentWaypoint = targetGo.Position;
+
+                            currentWaypoint = targetGo.Position;
                         }
                     }
 
                     //Raider raider = GameWorld.objs.OfType<Raider>().FirstOrDefault();
 
 
-                   
+
                     //if (raider ==null)
                     //{
                     //    float First = rnd.Next(100, 600);
                     //    float Second = rnd.Next(100, 600);
                     //    currentWaypoint = new Vector2D(First, Second);
                     //}
-                    if (targetGo == null )
+                    if (targetGo == null)
                     {
                         CivilWatch civilWatch = GameWorld.objs.OfType<CivilWatch>().FirstOrDefault();
-                      
+
                         currentWaypoint = civilWatch.Position;
                     }
-                   
+
                     break;
                 case Assignment.miner:
                     Mine mine = GameWorld.objs.OfType<Mine>().FirstOrDefault();
@@ -210,9 +211,9 @@ namespace MedCitySim
                     break;
                 case Assignment.unassigned:
 
-               float   first=  rnd.Next(100, 800);
-             float       second = rnd.Next(100, 800);
-                 currentWaypoint= new Vector2D(first,second);
+                    float first = rnd.Next(100, 800);
+                    float second = rnd.Next(100, 800);
+                    currentWaypoint = new Vector2D(first, second);
                     return;
                     break;
                 default:
@@ -230,34 +231,34 @@ namespace MedCitySim
             //}
             //else if (GameWorld.Food <= citizens * 5)
             //{
-               
-                foreach (GameObject go in GameWorld.objs)
+
+            foreach (GameObject go in GameWorld.objs)
+            {
+                var citizen = go as Citizen;
+
+
+                if (citizen != null)
                 {
-                    var citizen = go as Citizen;
-
-                    
-                    if (citizen != null)
+                    if (GameWorld.Food >= 5)
                     {
-                        if (GameWorld.Food >= 5)
-                        {
-                            
-                        GameWorld.Food -= 5;
-                        }
-                         else if (GameWorld.Food < 5)
-                        {
-                            Hunger++;
-                        }
 
+                        GameWorld.Food -= 5;
                     }
+                    else if (GameWorld.Food < 5)
+                    {
+                        Hunger++;
+                    }
+
+                }
                 //}
-              
+
             }
-           
+
         }
 
         public void RiskOfDeath(int Age, int Hunger)
         {
-            if (GameWorld.dayCooldown>=300)
+            if (GameWorld.dayCooldown >= 300)
             {
                 Age++;
                 Eat();
@@ -269,22 +270,22 @@ namespace MedCitySim
 
                     if (citizen != null)
                     {
-                      
-                float deathChance = Age*(1 + Hunger/10); 
+
+                        float deathChance = Age * (1 + Hunger / 10);
 
 
-                float output = (float) rnd.NextDouble();
-               
-                 if (output*100 < deathChance)
-                {
-                    GameWorld.ToRemove.Add(this);
-                }
+                        float output = (float)rnd.NextDouble();
+
+                        if (output * 100 < deathChance)
+                        {
+                            GameWorld.ToRemove.Add(this);
+                        }
 
                     }
-                   
+
 
                 }
-               
+
             }
         }
 
@@ -292,39 +293,39 @@ namespace MedCitySim
         {
             Vector2D deltaPosition = Position.Subtract(currentWaypoint);
             float distanceFromWaypoint = deltaPosition.Magnitude;
-            if (distanceFromWaypoint < 10 )
+            if (distanceFromWaypoint < 10)
             {
-               
-               
+
+
                 FindWaypoint();
             }
-          
-          
-            RiskOfDeath(Age,Hunger);
-           deltaPosition.Normalize();
+
+
+            RiskOfDeath(Age, Hunger);
+            deltaPosition.Normalize();
             //Vector2D newPosition = new Vector2D(10,10);
-            if (Witch.witchAlive==false)
+            if (Witch.witchAlive == false)
             {
-            Position.X += 1/currentFPS*(deltaPosition.X*100);
-          Position.Y += 1/currentFPS*(deltaPosition.Y*100);
-                
+                Position.X += 1 / currentFPS * (deltaPosition.X * 100);
+                Position.Y += 1 / currentFPS * (deltaPosition.Y * 100);
+
             }
-            else if (Witch.witchAlive==true)
+            else if (Witch.witchAlive == true)
             {
                 Position.X += 1 / currentFPS * (deltaPosition.X * 50);
                 Position.Y += 1 / currentFPS * (deltaPosition.Y * 50);
-                
+
             }
-           
-            
-            if (currentAssignment==Assignment.soldier)
+
+
+            if (currentAssignment == Assignment.soldier)
             {
                 Position.X += 1 / currentFPS * (deltaPosition.X * 135);
                 Position.Y += 1 / currentFPS * (deltaPosition.Y * 135);
             }
 
-           
-            
+
+
 
             base.Update(currentFPS);
         }
@@ -333,32 +334,44 @@ namespace MedCitySim
         {
             foreach (GameObject go in GameWorld.objs)
             {
+                    if (other is Raider && currentAssignment == Assignment.soldier)
+                    {
+                        hit++;
+                    }
 
-               
+
                 if (other is Raider)
                 {
+
                     var citizen = this as Citizen;
                     if (citizen != null)
                     {
-                        
+
                         if (citizen.currentAssignment == Citizen.Assignment.soldier)
                         {
-                           
+
                             GameWorld.ToRemove.Add(other);
-                                
-                            
+
+
                         }
                         //if (citizen.currentAssignment == Citizen.Assignment.soldier)
                         //{
 
                         //    GameWorld.ToRemove.Add(this);
                         //}
-                        else
+                       
+
+                        if (hit == 160 && (currentAssignment == Assignment.soldier))
                         {
-                           
-                                GameWorld.ToRemove.Add(this);
-                            
+                            GameWorld.ToRemove.Add(this);
+
                         }
+
+
+                    //else
+                    //{
+                    //    GameWorld.ToRemove.Add(this);
+                    //}
                     }
 
                 }

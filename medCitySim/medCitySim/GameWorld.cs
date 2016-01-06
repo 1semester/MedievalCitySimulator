@@ -31,11 +31,11 @@ namespace MedCitySim
         private static int stone = 150;
         private static int food = 10;
         private string cantBuild = "You cant build there!";
-        public static float dayInterval = 300f;
+        public static float dayInterval = 120f;
         public static float dayCooldown;
-        public static int daycount= 1;
-       public static bool nightTime = false;
-        
+        public static int daycount = 1;
+        public static bool nightTime = false;
+
         #region Get and Sets.
 
         private ISoundEngine engine;
@@ -186,7 +186,7 @@ namespace MedCitySim
         #endregion
         public GameWorld(Graphics dc, Rectangle displayRectangle)
         {
-           Objs = objs;
+            Objs = objs;
             SetupWorld();
             this.window = displayRectangle;
             this.backBuffer = BufferedGraphicsManager.Current.Allocate(dc, displayRectangle);
@@ -200,7 +200,7 @@ namespace MedCitySim
             //dc.DrawString(string.Format("Wood: {0}  Iron: {1}  Stone: {2}  Food: {3}", Lumber, Iron, Stone, Food), e, Brushes.Black, 200, 0);
             objs.Add(new UserInterface(@"Sprites\UserInterface.png", (new Vector2D(0, 0))));
             objs.Add(new Background(@"Sprites\Background.png", (new Vector2D(0, 41))));
-            objs.Add(new Mountain(@"Sprites\Mountain.png", new Vector2D(0,41)));
+            objs.Add(new Mountain(@"Sprites\Mountain.png", new Vector2D(0, 41)));
             objs.Add(new Forest(@"Sprites\TreeLineLeft.png", new Vector2D(0, 91)));
             objs.Add(new Forest(@"Sprites\TreeLineRight.png", new Vector2D(932, 91)));
             objs.Add(new Button(@"Sprites\Button.png", (new Vector2D(999, 614))));
@@ -232,40 +232,32 @@ namespace MedCitySim
             Draw();
             endTime = DateTime.Now;
 
-            
+
         }
         private void Update(float fps)
         {
             float dayTime = 1f / currentFPS;
             dayCooldown += dayTime;
-            if (dayCooldown < 240)
-            {
-                nightTime = false;
-                
-            }
-            if (dayCooldown >= 240)
-            {
-                nightTime = true;
-                if (nightTime)
-                {
-                 // Background night = new Background(@"Sprites\Night.png", new Vector2D(0, 41));
-                 //   toAdd.Add(night);
-                }
-            }
 
-            if (dayCooldown >= 300)
-            {
 
+            if (dayCooldown >= 120)//skal ændres til 120 !! det her er debug tid
+            {
+                Raider.Raid();
                 daycount++;
                 dayCooldown -= dayInterval;
             }
+
+
+
+
+
             citizenPop = 0;
             Keyboard.Update();
             this.currentFPS = fps;
             foreach (GameObject go in objs)
             {
                 go.Update(currentFPS);
-                if(go is Citizen)
+                if (go is Citizen)
                 {
                     citizenPop++;
                 }
@@ -274,10 +266,6 @@ namespace MedCitySim
         private void Draw()
         {
             dc.Clear(Color.Beige);
-#if DEBUG
-            Font f = new Font("Yellow", 16);
-            dc.DrawString(string.Format("FPS: {0}", currentFPS), f, Brushes.Black, 0, 0);
-#endif
 
             foreach (GameObject go in objs)
             {
@@ -290,6 +278,11 @@ namespace MedCitySim
             dc.DrawString(string.Format("{0}", Iron), e, Brushes.Yellow, 357, 7);
             dc.DrawString(string.Format("{0}/{1}", citizenPop, citizenCap), e, Brushes.Yellow, 1180, 7);
             dc.DrawString(string.Format("Day: {0}", daycount), e, Brushes.Yellow, 1020, 7);
+#if DEBUG
+            Font f = new Font("Yellow", 16);
+            dc.DrawString(string.Format("FPS: {0}", currentFPS), f, Brushes.Black, 400, 7);
+            dc.DrawString(string.Format("Daytimer: {0}", dayCooldown), f, Brushes.Black, 400, 20);
+#endif
 
 
 
@@ -316,11 +309,11 @@ namespace MedCitySim
         {
             Rectangle rect = new Rectangle();
             rect.X = Convert.ToInt32(position.X);
-            rect.Y = Convert.ToInt32(position.Y) ;
+            rect.Y = Convert.ToInt32(position.Y);
 
-           rect.Width = rect.Height = 1;
-            
-            
+            rect.Width = rect.Height = 1;
+
+
             foreach (GameObject go in objs)
             {
                 if (go is Background)
@@ -331,10 +324,10 @@ namespace MedCitySim
                     continue;
                 if (go.CollisionBox.IntersectsWith(rect))
                 {
-                     return true;
+                    return true;
                 }
-                    
-               
+
+
             }
             return false;
         }

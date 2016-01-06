@@ -82,7 +82,7 @@ namespace MedCitySim
                     
                 }
                
-                if (distanceFromWaypoint >=500&& distanceFromWaypoint<=505 && currentWaypoint!= new Vector2D(0,350))
+                if (distanceFromWaypoint >=500&& distanceFromWaypoint<=515 && currentWaypoint!= new Vector2D(0,350))
                     {
                     int raider = 0;
                     foreach (GameObject go in GameWorld.objs)
@@ -115,10 +115,9 @@ namespace MedCitySim
             }
         }
 
-        public void raid()
+        public  static void Raid()
         {
-            if (GameWorld.nightTime==true)
-            {
+           
                 for (int i = 0; i < 5*GameWorld.daycount; i++)
                 {
                     Random rnd = new Random();
@@ -149,12 +148,12 @@ namespace MedCitySim
                     }
                 }
             }
-        }
+        
 
 
         public override void Update(float currentFPS)
         {
-            raid();
+            
             Vector2D deltaPosition = Position.Subtract(currentWaypoint);
             float distanceFromWaypoint = deltaPosition.Magnitude;
             if (distanceFromWaypoint < 10)
