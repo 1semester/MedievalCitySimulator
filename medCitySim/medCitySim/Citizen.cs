@@ -16,7 +16,7 @@ namespace MedCitySim
         public bool Gender { get; set; }
        
        // private Vector2D currentnode;
-        Random rnd = new Random();
+        Random rnd = new Random((int)DateTime.Now.Ticks);
         public Assignment currentAssignment;
         private Vector2D currentWaypoint;
         private byte hit;
@@ -68,7 +68,7 @@ namespace MedCitySim
                         return;
                     }
 
-
+                    
 
                     break;
                 case Assignment.priest:
@@ -80,7 +80,7 @@ namespace MedCitySim
                         targetGo = soldiers.Length > 0 ? soldiers[rnd.Next(0, soldiers.Length)] : null;
                     }
                    
-                        if (Witch.witchAlive==true )
+                        if (targetGo!=null && currentWaypoint ==church.Position )
                         {
                             
                         currentWaypoint = targetGo.Position;
