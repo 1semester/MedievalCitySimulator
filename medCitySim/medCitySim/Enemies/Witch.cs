@@ -20,7 +20,7 @@ namespace MedCitySim
         }
         protected override void OnCollision(GameObject other)
         {
-            throw new NotImplementedException();
+            
         }
         public override void Update(float fps)
         {

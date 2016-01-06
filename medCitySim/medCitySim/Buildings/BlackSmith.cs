@@ -13,14 +13,31 @@ namespace MedCitySim
         protected ISoundEngine engine;
         private bool canBuild = true;
         private int speed;
+        private int smiths;
         public static bool blacksmith = false;
+        public static bool worksmith = false;
         public Blacksmith(string imagePath, Vector2D startposition, int speed) : base(imagePath, startposition)
         {
             this.speed = speed;
         }
         protected override void Work()
         {
-            base.Work();
+            smiths = 0;
+            foreach (GameObject go in GameWorld.objs)
+            {
+                var citizen = go as Citizen;
+
+
+                if (citizen != null && citizen.currentAssignment == Citizen.Assignment.smith)
+                {
+                    smiths++;
+                }
+            }
+
+            if (smiths >= 1)
+            {
+                worksmith = true;
+            }
         }
         protected override void OnCollision(GameObject other)
         {
@@ -79,6 +96,10 @@ namespace MedCitySim
                 {
                     GameWorld.ToRemove.Add(this);
                 }
+            }
+            if (speed == 0)
+            {
+                Work();
             }
             base.Update(currentFPS);
         }

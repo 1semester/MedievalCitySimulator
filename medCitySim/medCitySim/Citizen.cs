@@ -5,11 +5,13 @@ using System.Runtime.ExceptionServices;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using IrrKlang;
 
 namespace MedCitySim
 {
     class Citizen :GameObject
     {
+        protected ISoundEngine engine;
         private GameObject targetGo;
         public string Name { get; set; }
         public int Age { get; set; }
@@ -376,6 +378,7 @@ namespace MedCitySim
                     {
                         if (citizen.currentAssignment == Citizen.Assignment.priest)
                         {
+                            WitchDies();
                             Witch.witchAlive = false;
                             GameWorld.ToRemove.Add(other);
                         }
@@ -384,6 +387,16 @@ namespace MedCitySim
                 }
                 //base.OnCollision(other);
             }
+        }
+
+        protected void WitchDies()
+        {
+            try
+            {
+                engine = new ISoundEngine();
+                engine.Play2D("Media/wololo.mp3", false);
+            }
+            catch (Exception ex) { }
         }
     }
 }
