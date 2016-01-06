@@ -82,11 +82,6 @@ namespace MedCitySim
                         targetGo = soldiers.Length > 0 ? soldiers[rnd.Next(0, soldiers.Length)] : null;
                     }
                    
-                        if (targetGo!=null && currentWaypoint ==church.Position )
-                        {
-                            
-                        currentWaypoint = targetGo.Position;
-                        }
 
                     if (church != null && currentWaypoint != church.Position)
                     {
@@ -94,6 +89,11 @@ namespace MedCitySim
 
                         return;
                     }
+                        if (targetGo!=null && currentWaypoint ==church.Position )
+                        {
+                            
+                        currentWaypoint = targetGo.Position;
+                        }
                     //if (church != null && currentWaypoint == church.Position)
                     //{
                     //    currentWaypoint = new Vector2D(500, 500);
