@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
-using System.Runtime.ExceptionServices;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using IrrKlang;
 
 namespace MedCitySim
@@ -14,6 +8,7 @@ namespace MedCitySim
     {
         protected ISoundEngine engine;
         private GameObject targetGo;
+        private GameObject targetGoNext;
         public string Name { get; set; }
         public int Age { get; set; }
         public bool Gender { get; set; }
@@ -86,23 +81,28 @@ namespace MedCitySim
                     }
 
 
-                    if (church != null && currentWaypoint != church.Position)
-                    {
-                        currentWaypoint = storage.Position;
+                    //if (church != null && currentWaypoint != church.Position)
+                    //{
+                    //    currentWaypoint = church.Position;
 
-                        return;
-                    }
-                    if (targetGo != null && currentWaypoint == church.Position)
+                        
+                    //}
+                    if (targetGo != null)
                     {
 
                         currentWaypoint = targetGo.Position;
                     }
-                    //if (church != null && currentWaypoint == church.Position)
-                    //{
-                    //    currentWaypoint = new Vector2D(500, 500);
+                    if (targetGoNext == null || GameWorld.objs.Contains(targetGo) == false && currentWaypoint == targetGoNext.Position)
+                    {
+                        var soldiers = GameWorld.objs.OfType<Building>().ToArray();
 
-                    //    return;
-                    //}
+                        targetGoNext = soldiers.Length > 0 ? soldiers[rnd.Next(0, soldiers.Length)] : null;
+                    }
+                    if (targetGo==null)
+                    {
+                        currentWaypoint = targetGoNext.Position;
+                    }
+                   
                     break;
                 case Assignment.smith:
                     Blacksmith bs = GameWorld.objs.OfType<Blacksmith>().FirstOrDefault();
@@ -148,29 +148,26 @@ namespace MedCitySim
                         var soldiers = GameWorld.objs.OfType<Raider>().ToArray();
 
                         targetGo = soldiers.Length > 0 ? soldiers[rnd.Next(0, soldiers.Length)] : null;
-                        if (targetGo != null)
+                       
+                    }
+                    if (targetGo != null && currentWaypoint!=targetGo.Position)
+                    {
+
+                        currentWaypoint = targetGo.Position;
+                    }
+                    
+                    if (targetGoNext == null || GameWorld.objs.Contains(targetGo) == false && currentWaypoint==targetGoNext.Position)
+                    {
+                        var soldiers = GameWorld.objs.OfType<Building>().ToArray();
+
+                        targetGoNext = soldiers.Length > 0 ? soldiers[rnd.Next(0, soldiers.Length)] : null;
+                    }
+                        if (targetGo == null && currentWaypoint !=targetGoNext.Position)
                         {
 
-                            currentWaypoint = targetGo.Position;
+                            currentWaypoint = targetGoNext.Position;
                         }
-                    }
-
-                    //Raider raider = GameWorld.objs.OfType<Raider>().FirstOrDefault();
-
-
-
-                    //if (raider ==null)
-                    //{
-                    //    float First = rnd.Next(100, 600);
-                    //    float Second = rnd.Next(100, 600);
-                    //    currentWaypoint = new Vector2D(First, Second);
-                    //}
-                    if (targetGo == null)
-                    {
-                        CivilWatch civilWatch = GameWorld.objs.OfType<CivilWatch>().FirstOrDefault();
-
-                        currentWaypoint = civilWatch.Position;
-                    }
+                  
 
                     break;
                 case Assignment.miner:
@@ -340,7 +337,7 @@ namespace MedCitySim
                     }
 
 
-                if (other is Raider)
+                if (other is Raider || other is WildAnimal)
                 {
 
                     var citizen = this as Citizen;
@@ -368,10 +365,10 @@ namespace MedCitySim
                         }
 
 
-                    //else
-                    //{
-                    //    GameWorld.ToRemove.Add(this);
-                    //}
+                        else
+                        {
+                            GameWorld.ToRemove.Add(this);
+                        }
                     }
 
                 }
@@ -408,8 +405,11 @@ namespace MedCitySim
         {
             try
             {
+                
+                    
                 engine = new ISoundEngine();
                 engine.Play2D("Media/wololo.mp3", false);
+                
             }
             catch (Exception ex) { }
         }

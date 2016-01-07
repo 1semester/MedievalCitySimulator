@@ -9,7 +9,7 @@ namespace MedCitySim
     class WildAnimal : Enemy
     {
         private Vector2D currentWaypoint;
-        Random rnd = new Random();
+        //Random rnd = new Random((int)DateTime.Now.Ticks);
 
         public WildAnimal(string imagePath, Vector2D position) : base(imagePath, position)
         {
@@ -40,9 +40,7 @@ namespace MedCitySim
         {
             Citizen soldier = GameWorld.objs.OfType<Citizen>().FirstOrDefault();
 
-            //float First = rnd.Next(10, 800);
-            //float second = rnd.Next(10, 800);
-            //currentWaypoint = new Vector2D(First, second);
+           
 
             if (soldier != null)
             {
@@ -50,12 +48,42 @@ namespace MedCitySim
 
                 return;
             }
-            //if (soldier != null && currentWaypoint == soldier.Position)
-            //{
-            //    currentWaypoint = new Vector2D(500, 500);
+           
+        
+        }
 
-            //    return;
-            //}
+        public static void AnimalAttack()
+        {
+
+            for (int i = 0; i < 5 * GameWorld.daycount; i++)
+            {
+                Random rnd = new Random();
+                int spawnpoint = rnd.Next(0, 4);
+                switch (spawnpoint)
+                {
+                    case 0:
+                        float spawnPointX = -9;
+                        float spawnPointY = 200;
+                        GameWorld.ToAdd.Add(new Raider(@"Sprites\Citizens\WildAnimal.png", new Vector2D(spawnPointX, spawnPointY)));
+                        break;
+                    case 1:
+                        spawnPointX = 700;
+                        spawnPointY = 765;
+                        GameWorld.ToAdd.Add(new Raider(@"Sprites\Citizens\WildAnimal.png", new Vector2D(spawnPointX, spawnPointY)));
+                        break;
+                    case 2:
+                        spawnPointX = 400;
+                        spawnPointY = 765;
+                        GameWorld.ToAdd.Add(new Raider(@"Sprites\Citizens\WildAnimal.png", new Vector2D(spawnPointX, spawnPointY)));
+                        break;
+                    case 3:
+                        spawnPointX = -9;
+                        spawnPointY = 500;
+                        GameWorld.ToAdd.Add(new Raider(@"Sprites\Citizens\WildAnimal.png", new Vector2D(spawnPointX, spawnPointY)));
+                        break;
+
+                }
+            }
         }
 
 
