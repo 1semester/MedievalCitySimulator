@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 using System.Drawing;
-using System.Windows.Forms;
+
 using IrrKlang;
 
 namespace MedCitySim
@@ -35,6 +32,7 @@ namespace MedCitySim
         public static float dayCooldown;
         public static int daycount = 1;
         public static bool nightTime = false;
+        private bool spawning = true;
 
         #region Get and Sets.
 
@@ -242,9 +240,19 @@ namespace MedCitySim
 
             if (dayCooldown >= 120)//skal ændres til 120 !! det her er debug tid
             {
+                spawning = true;
+                if (spawning==true)
+                {
+                    
                 Raider.Raid();
+                }
                 daycount++;
                 dayCooldown -= dayInterval;
+            }
+            if (dayCooldown>=10.000000 && dayCooldown <=10.100000&& spawning==true)
+            {
+                WildAnimal.AnimalAttack();
+                spawning = false;
             }
 
 

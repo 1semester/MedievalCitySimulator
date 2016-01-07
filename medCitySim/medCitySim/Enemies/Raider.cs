@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
+
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace MedCitySim
 {
@@ -10,7 +9,7 @@ namespace MedCitySim
     {
         private GameObject targetGo;
         private Vector2D currentWaypoint;
-        Random rnd = new Random();
+        Random rnd = new Random((int)DateTime.Now.Ticks);
 
         public Raider(string imagePath, Vector2D position) : base(imagePath, position)
         {
