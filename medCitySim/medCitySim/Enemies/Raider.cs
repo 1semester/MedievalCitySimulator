@@ -68,7 +68,7 @@ namespace MedCitySim
             }
            
 
-                Building building = GameWorld.objs.OfType<Building>().FirstOrDefault();
+                Building building = GameWorld.objs.OfType<Storage>().FirstOrDefault();
 
             if (targetGo == null && building!=null)
             {
@@ -82,7 +82,7 @@ namespace MedCitySim
                     
                 }
                
-                if (distanceFromWaypoint >=240&& distanceFromWaypoint<=245 && currentWaypoint!= new Vector2D(0,350))
+                if (distanceFromWaypoint >=500&& distanceFromWaypoint<=515 && currentWaypoint!= new Vector2D(0,350))
                     {
                     int raider = 0;
                     foreach (GameObject go in GameWorld.objs)
@@ -115,9 +115,45 @@ namespace MedCitySim
             }
         }
 
+        public  static void Raid()
+        {
+           
+                for (int i = 0; i < 5*GameWorld.daycount; i++)
+                {
+                    Random rnd = new Random();
+                    int spawnpoint = rnd.Next(0, 4);
+                    switch (spawnpoint)
+                    {
+                        case 0:
+                            float spawnPointX = -9;
+                            float spawnPointY = 200;
+                            GameWorld.ToAdd.Add(new Raider(@"Sprites\Citizens\Raider.png", new Vector2D(spawnPointX, spawnPointY)));
+                            break;
+                        case 1:
+                            spawnPointX = 700;
+                            spawnPointY = 765;
+                            GameWorld.ToAdd.Add(new Raider(@"Sprites\Citizens\Raider.png", new Vector2D(spawnPointX, spawnPointY)));
+                            break;
+                        case 2:
+                            spawnPointX = 400;
+                            spawnPointY = 765;
+                            GameWorld.ToAdd.Add(new Raider(@"Sprites\Citizens\Raider.png", new Vector2D(spawnPointX, spawnPointY)));
+                            break;
+                        case 3:
+                            spawnPointX = -9;
+                            spawnPointY = 500;
+                            GameWorld.ToAdd.Add(new Raider(@"Sprites\Citizens\Raider.png", new Vector2D(spawnPointX, spawnPointY)));
+                            break;
+
+                    }
+                }
+            }
+        
+
 
         public override void Update(float currentFPS)
         {
+            
             Vector2D deltaPosition = Position.Subtract(currentWaypoint);
             float distanceFromWaypoint = deltaPosition.Magnitude;
             if (distanceFromWaypoint < 10)
