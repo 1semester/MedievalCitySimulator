@@ -15,6 +15,10 @@ namespace MedCitySim
         public BuildMenu(string imagePath, Vector2D startPosition) : base(imagePath, startPosition)
         {
         }
+        /// <summary>
+        /// The update in the buildmenu checks for when the player presses one of the assigned keys, that is used for the class
+        /// </summary>
+        /// <param name="currentFPS"></param>
         public override void Update(float currentFPS)
         {
             if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.H))
@@ -145,11 +149,9 @@ namespace MedCitySim
             }
             base.Update(currentFPS);
         }
-        protected override void OnCollision(GameObject other)
-        {
-            //    throw new NotImplementedException();
-        }
-
+        /// <summary>
+        /// This method holds the sound that is played, when the player cant build, or if there isnt enough ressources
+        /// </summary>
         protected void CantBuild()
         {
             try
