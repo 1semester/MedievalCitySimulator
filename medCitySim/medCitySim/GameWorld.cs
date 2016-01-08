@@ -249,7 +249,7 @@ namespace MedCitySim
                 daycount++;
                 dayCooldown -= dayInterval;
             }
-            if (dayCooldown>=10.000000 && dayCooldown <=10.100000&& spawning==true)
+            if (dayCooldown>=60.000000 && dayCooldown <=60.100000&& spawning==true)
             {
                 WildAnimal.AnimalAttack();
                 spawning = false;
