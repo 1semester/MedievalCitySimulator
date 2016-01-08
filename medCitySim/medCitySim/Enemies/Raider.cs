@@ -1,6 +1,6 @@
 ﻿using System;
-
 using System.Linq;
+using System.Security;
 
 
 namespace MedCitySim
@@ -10,13 +10,21 @@ namespace MedCitySim
         private GameObject targetGo;
         private Vector2D currentWaypoint;
         Random rnd = new Random((int)DateTime.Now.Ticks);
-
+        /// <summary>
+        /// constructor for raider
+        /// </summary>
+        /// <param name="imagePath"> imagepath for sprite</param>
+        /// <param name="position"> start position in vector2D</param>
         public Raider(string imagePath, Vector2D position) : base(imagePath, position)
         {
 
             this.FindWaypoint();
         }
 
+        /// <summary>
+        ///  checks collision against all other objects 
+        /// </summary>
+        /// <param name="other"> all other obejcts to check against</param>
         protected override void OnCollision(GameObject other)
         {
 
@@ -37,12 +45,11 @@ namespace MedCitySim
                 }
 
             }
-            //if (other is Citizen && Citizen.currentAssignment == Citizen.Assignment.civilWatch)
-            //{
-            //   Citizen.Assignment.
-            //}
+           
         }
-
+        /// <summary>
+        ///  makes an array of citizen to walk towards if there isnt any citizens  they walk towards a building
+        /// </summary>
         public void FindWaypoint()
         {
 
@@ -52,25 +59,18 @@ namespace MedCitySim
                 
                 targetGo = soldiers.Length > 0 ? soldiers[rnd.Next(0, soldiers.Length)] : null;
             }
-
-
-
-            //float First = rnd.Next(10, 800);
-            //float second = rnd.Next(10, 800);
-            //currentWaypoint = new Vector2D(First, second);
-
-            if (targetGo != null)
-            {
+           if (targetGo != null)
+            {// walk towards  citizen
                 currentWaypoint = targetGo.Position;
+            }
 
                
-            }
            
 
                 Building building = GameWorld.objs.OfType<Storage>().FirstOrDefault();
 
             if (targetGo == null && building!=null)
-            {
+            { //Walk towards building and  steals ressource
                 currentWaypoint = building.Position;
                
                 Vector2D deltaPosition = Position.Subtract(currentWaypoint);
@@ -100,10 +100,7 @@ namespace MedCitySim
                     GameWorld.Iron --;
                     GameWorld.Lumber --;
                     GameWorld.Stone --;
-                    //GameWorld.Food -= raider;
-                    //GameWorld.Iron -= raider;
-                    //GameWorld.Lumber -= raider;
-                    //GameWorld.Stone -= raider;
+                   
 
                     GameWorld.ToRemove.Add(this);
                         
@@ -113,7 +110,9 @@ namespace MedCitySim
                 
             }
         }
-
+        /// <summary>
+        /// function for raiders to spawn at four random spawns 
+        /// </summary>
         public  static void Raid()
         {
            
@@ -149,7 +148,10 @@ namespace MedCitySim
             }
         
 
-
+        /// <summary>
+        /// updates each loop
+        /// </summary>
+        /// <param name="currentFPS"></param>
         public override void Update(float currentFPS)
         {
             
