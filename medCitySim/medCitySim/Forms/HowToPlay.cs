@@ -13,11 +13,18 @@ namespace medCitySim
     public partial class HowToPlay : Form
     {
         Graphics dc;
+        /// <summary>
+        /// Initializes the form
+        /// </summary>
         public HowToPlay()
         {
             InitializeComponent();
         }
-
+        /// <summary>
+        /// Draws the image for How To Play
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void HowToPlay_Load(object sender, EventArgs e)
         {
             if(dc == null)
@@ -27,7 +34,11 @@ namespace medCitySim
 
 
         }
-
+        /// <summary>
+        /// Handles the click function on the picture.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void pictureBox1_Click(object sender, EventArgs e)
         {
 

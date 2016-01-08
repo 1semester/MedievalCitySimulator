@@ -13,14 +13,16 @@ namespace MedCitySim
         public int Age { get; set; }
         public bool Gender { get; set; }
 
-        // private Vector2D currentnode;
+
         Random rnd = new Random((int)DateTime.Now.Ticks);
         public Assignment currentAssignment;
         private Vector2D currentWaypoint;
         private byte hit;
         private Storage storage;
 
-
+        /// <summary>
+        /// is the assignment enum for what kind of citizen they are
+        /// </summary>
         public enum Assignment
         {
             lumberJack,
@@ -34,7 +36,14 @@ namespace MedCitySim
         };
 
         public int Hunger { get; set; }
-
+/// <summary>
+/// is the constructor for citizens
+/// </summary>
+/// <param name="imagePath">the image path for the sprite</param>
+/// <param name="position"> the startposition in vector2D</param>
+/// <param name="Name">name for future plans</param>
+/// <param name="Gender"> gender for future plans  </param>
+/// <param name="assignment"> what type of citizen they are</param>
         public Citizen(string imagePath, Vector2D position, string Name, bool Gender, Assignment assignment) : base(imagePath, position)
         {
             Hunger = 0;
@@ -44,7 +53,10 @@ namespace MedCitySim
             this.storage = GameWorld.objs.OfType<Storage>().FirstOrDefault();
             hit = 0;
         }
-
+        /// <summary>
+        /// switches on the citzens assignment and gives them their current
+        /// waypoint and destination
+        /// </summary>
         private void FindWaypoint()
         {
             switch (currentAssignment)
@@ -81,12 +93,7 @@ namespace MedCitySim
                     }
 
 
-                    //if (church != null && currentWaypoint != church.Position)
-                    //{
-                    //    currentWaypoint = church.Position;
-
-                        
-                    //}
+                   
                     if (targetGo != null)
                     {
 
@@ -216,18 +223,15 @@ namespace MedCitySim
                 default:
                     throw new ArgumentOutOfRangeException();
             }
-            //this.currentWaypoint = new Vector2D(500,500);
+            
         }
-
+        /// <summary>
+        /// loopes the objs list trough  and finds the objs citizen and  makes them eat 5 food
+        ///  each from the food ressource , if they cant eat their amount  their hunger will go up by one. 
+        /// </summary>
         public void Eat()
         {
-            //int citizens = GameWorld.CitizenPop;
-            //if (GameWorld.Food>=citizens*5)
-            //{
-            //    GameWorld.Food -= citizens * 5;
-            //}
-            //else if (GameWorld.Food <= citizens * 5)
-            //{
+            
 
             foreach (GameObject go in GameWorld.objs)
             {
@@ -247,15 +251,20 @@ namespace MedCitySim
                     }
 
                 }
-                //}
+               
 
             }
 
         }
-
+        /// <summary>
+        /// checks if the citizen is starving and their age and gives it a chance of death based on the algorithm
+        ///  and then the random generates a number if the number is within the deathchance they will die. 
+        /// </summary>
+        /// <param name="Age"> is their current age which is 0 at instanstiation  and goes up by one by each day</param>
+        /// <param name="Hunger"> hunger is when they can't eat their hunger will go up by one</param>
         public void RiskOfDeath(int Age, int Hunger)
         {
-            if (GameWorld.dayCooldown >= 300)
+            if (GameWorld.dayCooldown >= 120)
             {
                 Age++;
                 Eat();
@@ -286,6 +295,10 @@ namespace MedCitySim
             }
         }
 
+        /// <summary>
+        ///  updates each loop.
+        /// </summary>
+        /// <param name="currentFPS"> the fps which the game runs is calculated in gameworld </param>
         public override void Update(float currentFPS)
         {
             Vector2D deltaPosition = Position.Subtract(currentWaypoint);
@@ -300,7 +313,7 @@ namespace MedCitySim
 
             RiskOfDeath(Age, Hunger);
             deltaPosition.Normalize();
-            //Vector2D newPosition = new Vector2D(10,10);
+           
             if (Witch.witchAlive == false)
             {
                 Position.X += 1 / currentFPS * (deltaPosition.X * 100);
@@ -326,7 +339,10 @@ namespace MedCitySim
 
             base.Update(currentFPS);
         }
-
+        /// <summary>
+        /// looops and checks collision
+        /// </summary>
+        /// <param name="other"> checks collision with this obejct against all other objects </param>
         protected override void OnCollision(GameObject other)
         {
             foreach (GameObject go in GameWorld.objs)
@@ -400,7 +416,9 @@ namespace MedCitySim
                 //base.OnCollision(other);
             }
         }
-
+        /// <summary>
+        /// when the witch dies  it plays a sound.
+        /// </summary>
         protected void WitchDies()
         {
             try

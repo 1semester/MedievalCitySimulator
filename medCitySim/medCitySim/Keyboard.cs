@@ -28,7 +28,10 @@ namespace MedCitySim
         //    }
         //    keysToCheck = keys.ToArray();
         //}
-
+        /// <summary>
+        /// This update uses a HashSet to detect which keys are pressed, it adds them to one list, and removes them again immediately, so that it only detects
+        /// the keypress once.
+        /// </summary>
         public static void Update()
         {
             foreach (var key in keysToCheck)
