@@ -8,20 +8,26 @@ namespace MedCitySim
 {
     class Storage : Building
     {
+        /// <summary>
+        /// the constructor is used to create instanses of the class
+        /// </summary>
+        /// <param name="imagePath"></param>
+        /// <param name="startposition"></param>
+        /// <param name="speed"></param>
         public Storage(string imagePath, Vector2D startposition) : base(imagePath, startposition)
         {
         }
-        protected override void Work()
-        {
-            base.Work();
-        }
+        /// <summary>
+        /// is not used in this building
+        /// </summary>
+        /// <param name="other"></param>
         protected override void OnCollision(GameObject other)
         {
         }
-        protected override void Cost()
-        {
-            base.Cost();
-        }
+        /// <summary>
+        /// is not used in this building
+        /// </summary>
+        /// <param name="currentFPS"></param>
         public override void Update(float currentFPS)
         {
             base.Update(currentFPS);

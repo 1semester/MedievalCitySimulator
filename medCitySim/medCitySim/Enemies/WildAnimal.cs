@@ -9,12 +9,20 @@ namespace MedCitySim
     class WildAnimal : Enemy
     {
         private Vector2D currentWaypoint;
-        //Random rnd = new Random((int)DateTime.Now.Ticks);
-
+      
+        /// <summary>
+        /// makes the constructor for WildAnimal 
+        /// </summary>
+        /// <param name="imagePath"> imagepath for sprite</param>
+        /// <param name="position"> start position in vector2D</param>
         public WildAnimal(string imagePath, Vector2D position) : base(imagePath, position)
         {
             FindWaypoint();
         }
+        /// <summary>
+        ///  checks collision aginst other objects 
+        /// </summary>
+        /// <param name="other"> all other objects</param>
         protected override void OnCollision(GameObject other)
         {
 
@@ -35,7 +43,9 @@ namespace MedCitySim
 
             }
         }
-
+        /// <summary>
+        /// finds the first instance of a citizen  and walks towards it
+        /// </summary>
         public void FindWaypoint()
         {
             Citizen soldier = GameWorld.objs.OfType<Citizen>().FirstOrDefault();
@@ -51,7 +61,9 @@ namespace MedCitySim
            
         
         }
-
+        /// <summary>
+        /// the function for animals to attack 
+        /// </summary>
         public static void AnimalAttack()
         {
 
@@ -86,7 +98,10 @@ namespace MedCitySim
             }
         }
 
-
+        /// <summary>
+        /// updates each loop
+        /// </summary>
+        /// <param name="currentFPS"> fps is calculated in gameworld</param>
         public override void Update(float currentFPS)
         {
             Vector2D deltaPosition = Position.Subtract(currentWaypoint);

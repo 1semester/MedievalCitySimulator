@@ -10,17 +10,33 @@ namespace MedCitySim
 {
     class House : Building
     {
+        /// <summary>
+        /// the fields that is used in this class
+        /// </summary>
         protected ISoundEngine engine;
         private bool canBuild = true;
         private int speed;
+        /// <summary>
+        /// the constructor is used to create instanses of the class
+        /// </summary>
+        /// <param name="imagePath"></param>
+        /// <param name="startposition"></param>
+        /// <param name="speed"></param>
         public House(string imagePath, Vector2D startposition, int speed) : base(imagePath, startposition)
         {
             this.speed = speed;
         }
+        /// <summary>
+        /// used to determin the work for the building
+        /// </summary>
         protected override void Work()
         {
             base.Work();
         }
+        /// <summary>
+        /// checks the collision and determins if you can or cannot place the building
+        /// </summary>
+        /// <param name="other"></param>
         protected override void OnCollision(GameObject other)
         {
             if (other is Building || other is UserInterface || other is Mountain || other is Forest)
@@ -32,12 +48,19 @@ namespace MedCitySim
                 canBuild = true;
             }
         }
+        /// <summary>
+        /// Cost is used to pull resource from GameWorld
+        /// </summary>
         protected override void Cost()
         {
             GameWorld.Lumber -= 30;
             GameWorld.Stone -= 15;
             base.Cost();
         }
+        /// <summary>
+        /// update every loop
+        /// </summary>
+        /// <param name="currentFPS"></param>
         public override void Update(float currentFPS)
         {
             if (Keyboard.IsKeyDown(System.Windows.Forms.Keys.Left))
@@ -85,6 +108,9 @@ namespace MedCitySim
 
             base.Update(currentFPS);
         }
+        /// <summary>
+        /// used to play a sound every time you cant build a building 
+        /// </summary>
         protected void CantBuild()
         {
             try

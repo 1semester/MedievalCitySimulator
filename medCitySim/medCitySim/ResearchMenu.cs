@@ -9,6 +9,11 @@ namespace MedCitySim
 {
     class ResearchMenu : GameObject
     {
+        /// <summary>
+        /// These bools control whether a research can be bought or not.
+        /// Once a research have been purchased it will be set to false, and theres an if statement, checking if its true or false.
+        /// 
+        /// </summary>
         protected ISoundEngine engine;
         public ResearchMenu(string imagePath, Vector2D startPosition) : base(imagePath, startPosition) { }
         private static bool well = true;
@@ -21,7 +26,9 @@ namespace MedCitySim
         public static bool mineUpgradeTwo = true;
         public static bool quarryUpgrade = true;
         public static bool quarryUpgradeTwo = true;
-
+        /// <summary>
+        /// Here are all the different researches.
+        /// </summary>
         public static bool Well
         {
             get
@@ -206,7 +213,9 @@ namespace MedCitySim
             }
 
         }
-        
+        /// <summary>
+        /// This function plays a sound if a research cannot be bought.
+        /// </summary>
         protected void CantResearch()
         {
             try
@@ -220,6 +229,9 @@ namespace MedCitySim
         {
             GameWorld.Iron -= 20;
         }
+        /// <summary>
+        /// This function will play the sound when a research is succesfully bought.
+        /// </summary>
         protected void BuildSound()
         {
             try

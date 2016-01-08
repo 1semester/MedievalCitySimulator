@@ -12,12 +12,18 @@ namespace medCitySim
 {
     public partial class Form1 : Form
     {
-        
+        /// <summary>
+        /// Initializes the Form
+        /// </summary>
         public Form1()
         {
             InitializeComponent();
         }
-
+        /// <summary>
+        /// Starts the game
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
             Game g = new Game();
@@ -25,7 +31,11 @@ namespace medCitySim
             g.ShowDialog(this);
             Show();
         }
-
+        /// <summary>
+        /// Displays the How To Play form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button2_Click_1(object sender, EventArgs e)
         {
             HowToPlay help = new HowToPlay();
@@ -33,7 +43,11 @@ namespace medCitySim
             help.ShowDialog(this);
             Show();
         }
-
+        /// <summary>
+        /// Closes the form.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button3_Click(object sender, EventArgs e)
         {
             this.Close();
