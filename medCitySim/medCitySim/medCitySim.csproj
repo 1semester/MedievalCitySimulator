@@ -94,7 +94,6 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Enemies\Raider.cs" />
-    <Compile Include="RandomEvents.cs" />
     <Compile Include="Buildings\Well.cs" />
     <Compile Include="Enemies\WildAnimal.cs" />
     <Compile Include="Enemies\Witch.cs" />
@@ -135,9 +134,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Construction.mp3" />
-    <Content Include="efx_NO-Fabio_Farinelli-955789468.mp3" />
+    <Content Include="Sounds\Construction.mp3" />
+    <Content Include="Sounds\efx_NO-Fabio_Farinelli-955789468.mp3" />
     <None Include="Resources\HowToPlay.png" />
+    <Content Include="Sounds\wololo.mp3" />
     <Content Include="Sprites\Buildings\IronMineLille.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -4,12 +4,13 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using IrrKlang;
 
 namespace MedCitySim
 {
     class Quarry : Building
     {
-        private Graphics dc;
+        protected ISoundEngine engine;
         private bool canBuild = true;
         private int speed;
         private int masons;
@@ -83,6 +84,10 @@ namespace MedCitySim
                     BuildSound();
                     mason = true;
                 }
+                else if (!canBuild)
+                {
+                    CantBuild();
+                }
             }
             if (speed == 0)
             {
@@ -105,6 +110,15 @@ namespace MedCitySim
             }
 
             base.Update(currentFPS);
+        }
+        protected void CantBuild()
+        {
+            try
+            {
+                engine = new ISoundEngine();
+                engine.Play2D("Media/efx_NO-Fabio_Farinelli-955789468.mp3", false);
+            }
+            catch (Exception ex) { }
         }
     }
 }

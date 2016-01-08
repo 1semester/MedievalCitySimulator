@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 using System.Drawing;
-using System.Windows.Forms;
+
 using IrrKlang;
 
 namespace MedCitySim
@@ -31,12 +28,13 @@ namespace MedCitySim
         private static int stone = 150;
         private static int food = 10;
         private string cantBuild = "You cant build there!";
-        public static float dayInterval = 300f;
+        public static float dayInterval = 120f;
         public static float dayCooldown;
-        private int daycount;
-        private bool nightTime = false;
+        public static int daycount = 1;
+        public static bool nightTime = false;
+        private bool spawning = true;
+
         
-        #region Get and Sets.
 
         private ISoundEngine engine;
         private void StartSounds()
@@ -182,23 +180,21 @@ namespace MedCitySim
                 citizenCap = value;
             }
         }
-        #endregion
         /// <summary>
-        /// This displays a red rectangle around the sprites
+        /// This function displays the rectangles on sprites.
         /// </summary>
         /// <param name="dc"></param>
         /// <param name="displayRectangle"></param>
         public GameWorld(Graphics dc, Rectangle displayRectangle)
         {
-           Objs = objs;
+            Objs = objs;
             SetupWorld();
             this.window = displayRectangle;
             this.backBuffer = BufferedGraphicsManager.Current.Allocate(dc, displayRectangle);
             this.dc = backBuffer.Graphics;
         }
         /// <summary>
-        /// This function draws all of the sprites when the came is launched.
-        /// It also starts any given sounds and the daycounter.
+        /// This function runs everything that will be drawn and started when the game is launched
         /// </summary>
         public void SetupWorld()
         {
@@ -208,11 +204,11 @@ namespace MedCitySim
             //dc.DrawString(string.Format("Wood: {0}  Iron: {1}  Stone: {2}  Food: {3}", Lumber, Iron, Stone, Food), e, Brushes.Black, 200, 0);
             objs.Add(new UserInterface(@"Sprites\UserInterface.png", (new Vector2D(0, 0))));
             objs.Add(new Background(@"Sprites\Background.png", (new Vector2D(0, 41))));
-            objs.Add(new Mountain(@"Sprites\Mountain.png", new Vector2D(0,41)));
+            objs.Add(new Mountain(@"Sprites\Mountain.png", new Vector2D(0, 41)));
             objs.Add(new Forest(@"Sprites\TreeLineLeft.png", new Vector2D(0, 91)));
             objs.Add(new Forest(@"Sprites\TreeLineRight.png", new Vector2D(932, 91)));
             objs.Add(new Button(@"Sprites\Button.png", (new Vector2D(999, 614))));
-            objs.Add(new Storage(@"Sprites\Buildings\StorageLille.png", (new Vector2D(450, 350)), 0));
+            objs.Add(new Storage(@"Sprites\Buildings\StorageLille.png", (new Vector2D(496, 466))));
 
             StartSounds();
 
@@ -221,7 +217,7 @@ namespace MedCitySim
             endTime = DateTime.Now;
         }
         /// <summary>
-        /// Gameloop makes sure that everything is updated with all the inputs.
+        /// Makes sure everything based on inputs is updated within the game.
         /// </summary>
         public void GameLoop()
         {
@@ -240,59 +236,60 @@ namespace MedCitySim
             currentFPS = 1000 / milliSeconds;
             Update(currentFPS);
             Draw();
-            endTime = DateTime.Now;            
+            endTime = DateTime.Now;
+
+
         }
         /// <summary>
-        /// This function updates everything within the game, for example the day and night timer, citizen counter and so on.
+        /// This function updates everything regarding timers and handles the spawning of raiders and wildanimals.
+        /// It also updates citizen population along with the keyboard class.
         /// </summary>
         /// <param name="fps"></param>
         private void Update(float fps)
         {
             float dayTime = 1f / currentFPS;
             dayCooldown += dayTime;
-            if (dayCooldown < 240)
+
+
+            if (dayCooldown >= 120)//skal ændres til 120 !! det her er debug tid
             {
-                nightTime = false;
-                
-            }
-            if (dayCooldown >= 240)
-            {
-                nightTime = true;
-                if (nightTime)
+                spawning = true;
+                if (spawning==true)
                 {
-                 // Background night = new Background(@"Sprites\Night.png", new Vector2D(0, 41));
-                 //   toAdd.Add(night);
+                    
+                Raider.Raid();
                 }
-            }
-
-            if (dayCooldown >= 300)
-            {
-
                 daycount++;
                 dayCooldown -= dayInterval;
             }
+            if (dayCooldown>=60.000000 && dayCooldown <=60.100000&& spawning==true)
+            {
+                WildAnimal.AnimalAttack();
+                spawning = false;
+            }
+
+
+
+
+
             citizenPop = 0;
             Keyboard.Update();
             this.currentFPS = fps;
             foreach (GameObject go in objs)
             {
                 go.Update(currentFPS);
-                if(go is Citizen)
+                if (go is Citizen)
                 {
                     citizenPop++;
                 }
             }
         }
         /// <summary>
-        /// This function will draw any strings we want on the screen.
+        /// This function draws all the strings we want to be shown on the screen when the game is launched.
         /// </summary>
         private void Draw()
         {
             dc.Clear(Color.Beige);
-#if DEBUG
-            Font f = new Font("Yellow", 16);
-            dc.DrawString(string.Format("FPS: {0}", currentFPS), f, Brushes.Black, 0, 0);
-#endif
 
             foreach (GameObject go in objs)
             {
@@ -305,6 +302,11 @@ namespace MedCitySim
             dc.DrawString(string.Format("{0}", Iron), e, Brushes.Yellow, 357, 7);
             dc.DrawString(string.Format("{0}/{1}", citizenPop, citizenCap), e, Brushes.Yellow, 1180, 7);
             dc.DrawString(string.Format("Day: {0}", daycount), e, Brushes.Yellow, 1020, 7);
+#if DEBUG
+            Font f = new Font("Yellow", 16);
+            dc.DrawString(string.Format("FPS: {0}", currentFPS), f, Brushes.Black, 400, 7);
+            dc.DrawString(string.Format("Daytimer: {0}", dayCooldown), f, Brushes.Black, 400, 20);
+#endif
 
 
 

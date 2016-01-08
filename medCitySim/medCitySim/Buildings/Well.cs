@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using IrrKlang;
 
 
 namespace MedCitySim
 {
     class Well: Building
     {
-        private Graphics dc;
+        protected ISoundEngine engine;
         private bool canBuild = true;
         private int speed;
         public Well(string imagePath, Vector2D startposition, int speed): base (imagePath, startposition)
@@ -66,6 +67,10 @@ namespace MedCitySim
                     Cost();
                     BuildSound();
                 }
+                else if (!canBuild)
+                {
+                    CantBuild();
+                }
             }
             if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.Escape))
             {
@@ -75,6 +80,15 @@ namespace MedCitySim
                 }
             }
             base.Update(currentFPS);
+        }
+        protected void CantBuild()
+        {
+            try
+            {
+                engine = new ISoundEngine();
+                engine.Play2D("Media/efx_NO-Fabio_Farinelli-955789468.mp3", false);
+            }
+            catch (Exception ex) { }
         }
     }
 }

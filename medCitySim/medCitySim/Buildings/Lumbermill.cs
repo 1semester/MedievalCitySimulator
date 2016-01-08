@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using IrrKlang;
 
 
 namespace MedCitySim
 {
     class Lumbermill : Building
     {
-        private Graphics dc;
+        protected ISoundEngine engine;
         private bool canBuild = true;
         private int speed;
         private int lumberjacks;
@@ -42,11 +43,11 @@ namespace MedCitySim
         }
         protected override void OnCollision(GameObject other)
         {
-            if (other is Building || other is UserInterface || other is Mountain || other is Forest)
+            if (other is Building || other is UserInterface || other is Mountain)
             {
                 canBuild = false;
             }
-            else if (other is Background)
+            else if (other is Background && other is Forest)
             {
                 canBuild = true;
             }
@@ -86,6 +87,10 @@ namespace MedCitySim
                     BuildSound();
                     lumberjack = true;
                 }
+                else if (!canBuild)
+                {
+                    CantBuild();
+                }
             }
             if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.Escape))
             {
@@ -109,6 +114,15 @@ namespace MedCitySim
             }
 
             base.Update(currentFPS);
+        }
+        protected void CantBuild()
+        {
+            try
+            {
+                engine = new ISoundEngine();
+                engine.Play2D("Media/efx_NO-Fabio_Farinelli-955789468.mp3", false);
+            }
+            catch (Exception ex) { }
         }
     }
 }

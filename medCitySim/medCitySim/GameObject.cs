@@ -1,8 +1,6 @@
-﻿using System;
+﻿
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 using System.Drawing;
 
 namespace MedCitySim
@@ -35,9 +33,9 @@ namespace MedCitySim
                 position = value;
             }
         }
-
+        /// <param name="imagePath"> Used to write the path for the image </param>
+        /// <param name="startPosition"> The Vector2D class takes an X and a Y coordinate for where the sprites is drawn from </param>
         public GameObject(string imagePath, Vector2D startPosition)
-        //public GameObject(string imagePath,Vector2D position)
         {
             string[] imagePaths = imagePath.Split(';');
             this.animationFrames = new List<Image>();
@@ -48,25 +46,31 @@ namespace MedCitySim
             }
             this.sprite = this.animationFrames[0];
             this.position = startPosition;
-           // this.position = position;
         }
+        /// <summary>
+        /// The update checks for collision for each GameObject the inherrits this method.
+        /// </summary>
+        /// <param name="currentFPS"></param>
         public virtual void Update(float currentFPS)
         {
             CheckCollosion();
         }
+        /// <summary>
+        /// Draw uses the Graphics to draw the sprites
+        /// </summary>
+        /// <param name="dc"> the graphics </param>
         public virtual void Draw(Graphics dc)
         {
             dc.DrawImage(sprite, position.X, position.Y, sprite.Width, sprite.Height);
             dc.DrawRectangle(new Pen(Brushes.Red), CollisionBox.X, CollisionBox.Y, CollisionBox.Width, CollisionBox.Height);
-            //dc.DrawImage(sprite, new PointF(position.X, position.Y));
         }
-        public void UpdateAnimations(float currentFPS)
-        {
-
-        }
+        /// <summary>
+        /// Detects wether or not two GameObjects collide
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns></returns>
         public bool IsCollidingWith(GameObject other)
         {
-            //return (CollisionBox.IntersectsWith(other.CollisionBox));
             if ((CollisionBox.IntersectsWith(other.CollisionBox)))
             {
                 return true;
@@ -76,6 +80,9 @@ namespace MedCitySim
                 return false;
             }
         }
+        /// <summary>
+        /// Checks the collsion on GameObjects
+        /// </summary>
         private void CheckCollosion()
         {
             foreach (GameObject go in GameWorld.Objs)
@@ -89,10 +96,13 @@ namespace MedCitySim
                 }
             }
         }
+        /// <summary>
+        /// This method is virtual, so that all GameObjects can inherrit it, but dont have too.
+        /// When inherrited, the individual GameObject has a unique string of code for the event.
+        /// </summary>
+        /// <param name="other"></param>
         protected virtual void OnCollision(GameObject other)
         {
-            
-            //this.position = position;
         }
     }
 }
