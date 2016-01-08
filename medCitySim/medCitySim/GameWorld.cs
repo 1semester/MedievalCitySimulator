@@ -182,8 +182,12 @@ namespace MedCitySim
                 citizenCap = value;
             }
         }
-
         #endregion
+        /// <summary>
+        /// This displays a red rectangle around the sprites
+        /// </summary>
+        /// <param name="dc"></param>
+        /// <param name="displayRectangle"></param>
         public GameWorld(Graphics dc, Rectangle displayRectangle)
         {
            Objs = objs;
@@ -192,6 +196,10 @@ namespace MedCitySim
             this.backBuffer = BufferedGraphicsManager.Current.Allocate(dc, displayRectangle);
             this.dc = backBuffer.Graphics;
         }
+        /// <summary>
+        /// This function draws all of the sprites when the came is launched.
+        /// It also starts any given sounds and the daycounter.
+        /// </summary>
         public void SetupWorld()
         {
             daycount = 1;
@@ -212,6 +220,9 @@ namespace MedCitySim
             //endTime skal kaldes sidst!
             endTime = DateTime.Now;
         }
+        /// <summary>
+        /// Gameloop makes sure that everything is updated with all the inputs.
+        /// </summary>
         public void GameLoop()
         {
 
@@ -228,12 +239,13 @@ namespace MedCitySim
             int milliSeconds = deltaTime.Milliseconds > 0 ? deltaTime.Milliseconds : 1;
             currentFPS = 1000 / milliSeconds;
             Update(currentFPS);
-            UpdateAnimations(currentFPS);
             Draw();
-            endTime = DateTime.Now;
-
-            
+            endTime = DateTime.Now;            
         }
+        /// <summary>
+        /// This function updates everything within the game, for example the day and night timer, citizen counter and so on.
+        /// </summary>
+        /// <param name="fps"></param>
         private void Update(float fps)
         {
             float dayTime = 1f / currentFPS;
@@ -271,6 +283,9 @@ namespace MedCitySim
                 }
             }
         }
+        /// <summary>
+        /// This function will draw any strings we want on the screen.
+        /// </summary>
         private void Draw()
         {
             dc.Clear(Color.Beige);
@@ -301,42 +316,6 @@ namespace MedCitySim
             catch (Exception)
             {
             }
-        }
-        private void UpdateAnimations(float currentFPS)
-        {
-
-        }
-        public static void PrintStringOnScreen(string s, Graphics dc)
-        {
-            Font f = new Font("Yellow", 16);
-            dc.DrawString(string.Format(s), f, Brushes.Red, GameWorld.DisplayRectangle.Width / 2, GameWorld.DisplayRectangle.Height / 2);
-        }
-
-        public static bool positionOcuppied(Vector2D position)
-        {
-            Rectangle rect = new Rectangle();
-            rect.X = Convert.ToInt32(position.X);
-            rect.Y = Convert.ToInt32(position.Y) ;
-
-           rect.Width = rect.Height = 1;
-            
-            
-            foreach (GameObject go in objs)
-            {
-                if (go is Background)
-                    continue;
-                if (go is Citizen)
-                    continue;
-                if (go is UserInterface)
-                    continue;
-                if (go.CollisionBox.IntersectsWith(rect))
-                {
-                     return true;
-                }
-                    
-               
-            }
-            return false;
         }
     }
 }
