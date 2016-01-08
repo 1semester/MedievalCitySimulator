@@ -10,6 +10,9 @@ namespace MedCitySim
 {
     class Mine : Building
     {
+        /// <summary>
+        /// the fields that is used in this class
+        /// </summary>
         protected ISoundEngine engine;
         private bool canBuild = true;
         private int speed;
@@ -17,10 +20,19 @@ namespace MedCitySim
         public static float workInterval = 5f;
         private float workCooldown;
         public static bool miner = false;
+        /// <summary>
+        /// the constructor is used to create instanses of the class
+        /// </summary>
+        /// <param name="imagePath"></param>
+        /// <param name="startposition"></param>
+        /// <param name="speed"></param>
         public Mine(string imagePath, Vector2D startposition, int speed) : base (imagePath, startposition)
         {
             this.speed = speed;
         }
+        /// <summary>
+        /// used to determin the work for the building
+        /// </summary>
         protected override void Work()
         {
             miners = 0;
@@ -38,6 +50,10 @@ namespace MedCitySim
             GameWorld.Iron += miners;
 
         }
+        /// <summary>
+        /// checks the collision and determins if you can or cannot place the building
+        /// </summary>
+        /// <param name="other"></param>
         protected override void OnCollision(GameObject other)
         {
             if (other is Building || other is UserInterface)
@@ -49,6 +65,9 @@ namespace MedCitySim
                 canBuild = true;
             }
         }
+        /// <summary>
+        /// Cost is used to pull resource from GameWorld
+        /// </summary>
         protected override void Cost()
         {
             GameWorld.Lumber -= 50;
@@ -56,6 +75,10 @@ namespace MedCitySim
             GameWorld.Stone -= 2;
             base.Cost();
         }
+        /// <summary>
+        /// update every loop and run the work method after the object is placed
+        /// </summary>
+        /// <param name="currentFPS"></param>
         public override void Update(float currentFPS)
         {
             if (Keyboard.IsKeyDown(System.Windows.Forms.Keys.Left))
@@ -111,6 +134,9 @@ namespace MedCitySim
 
             base.Update(currentFPS);
         }
+        /// <summary>
+        /// used to play a sound every time you cant build a building 
+        /// </summary>
         protected void CantBuild()
         {
             try
