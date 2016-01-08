@@ -15,10 +15,12 @@ namespace MedCitySim
         {
 
         }
+        /// <summary>
+        /// The citizenmenu, checks for when the player presses one of the assigned buttons, to recruit a citizen
+        /// </summary>
+        /// <param name="currentFPS"></param>
         public override void Update(float currentFPS)
         {
-
-
             if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.P))
             {
                 if (GameWorld.Food >= 1 && GameWorld.CitizenPop < GameWorld.CitizenCap && Church.priest == true)
@@ -35,12 +37,10 @@ namespace MedCitySim
                     GameWorld.ToRemove.Add(this);
                     GameWorld.ToAdd.Add(new Button(@"Sprites\Button.png", new Vector2D(999, 614)));
                 }
-
                 else
                 {
                     CantRecruit();
                 }
-
             }
             if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.F))
             {
@@ -60,7 +60,6 @@ namespace MedCitySim
                     GameWorld.ToRemove.Add(this);
                     GameWorld.ToAdd.Add(new Button(@"Sprites\Button.png", new Vector2D(999, 614)));
                 }
-
                 else
                 {
                     CantRecruit();
@@ -81,7 +80,6 @@ namespace MedCitySim
                         GameWorld.ToAdd.Add(new Citizen(@"Sprites\Citizens\CitizenSoldier.png", new Vector2D(spawnPointX, spawnPointY), "lars", true, Citizen.Assignment.soldier));
 
                     }
-
                     GameWorld.ToRemove.Add(this);
                     GameWorld.ToAdd.Add(new Button(@"Sprites\Button.png", new Vector2D(999, 614)));
                 }
@@ -229,7 +227,9 @@ namespace MedCitySim
             }
             base.Update(currentFPS);
         }
-
+        /// <summary>
+        /// This method holds the sound, that is played, when the player cant build.
+        /// </summary>
         protected void CantRecruit()
         {
             try

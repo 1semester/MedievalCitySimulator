@@ -8,10 +8,19 @@ namespace MedCitySim
 {
     class Button : GameObject
     {
+        /// <summary>
+        /// This class is made like a menu, so the player can use keybinds, to get into other menues.
+        /// </summary>
+        /// <param name="imagePath"></param>
+        /// <param name="startPosition"></param>
         public Button(string imagePath, Vector2D startPosition) : base(imagePath, startPosition)
         {
 
         }
+        /// <summary>
+        /// The update method contains the keys, that are availeble in the button class.
+        /// </summary>
+        /// <param name="currentFPS"></param>
         public override void Update(float currentFPS)
         {
             if (Keyboard.IsKeyPressed(System.Windows.Forms.Keys.B))
@@ -32,10 +41,6 @@ namespace MedCitySim
                     GameWorld.ToRemove.Add(this);
                 }
             }
-        }
-        protected override void OnCollision(GameObject other)
-        {
-            throw new NotImplementedException();
         }
     }
 }

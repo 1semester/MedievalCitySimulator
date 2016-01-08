@@ -35,7 +35,6 @@ namespace MedCitySim
         }
 
         public GameObject(string imagePath, Vector2D startPosition)
-        //public GameObject(string imagePath,Vector2D position)
         {
             string[] imagePaths = imagePath.Split(';');
             this.animationFrames = new List<Image>();
@@ -46,7 +45,6 @@ namespace MedCitySim
             }
             this.sprite = this.animationFrames[0];
             this.position = startPosition;
-           // this.position = position;
         }
         public virtual void Update(float currentFPS)
         {
@@ -56,15 +54,9 @@ namespace MedCitySim
         {
             dc.DrawImage(sprite, position.X, position.Y, sprite.Width, sprite.Height);
             dc.DrawRectangle(new Pen(Brushes.Red), CollisionBox.X, CollisionBox.Y, CollisionBox.Width, CollisionBox.Height);
-            //dc.DrawImage(sprite, new PointF(position.X, position.Y));
-        }
-        public void UpdateAnimations(float currentFPS)
-        {
-
         }
         public bool IsCollidingWith(GameObject other)
         {
-            //return (CollisionBox.IntersectsWith(other.CollisionBox));
             if ((CollisionBox.IntersectsWith(other.CollisionBox)))
             {
                 return true;
@@ -89,8 +81,6 @@ namespace MedCitySim
         }
         protected virtual void OnCollision(GameObject other)
         {
-            
-            //this.position = position;
         }
     }
 }
